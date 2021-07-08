@@ -17,8 +17,8 @@ StartTime = time.time()
 
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
-if Var.:
-    session_name = str(Var.ANDENCENTO_SESSIONN)
+if Var.ANDENCENTO_SESSION:
+    session_name = str(Var.ANDENCENTO_SESSION)
     bot = TelegramClient(StringSession(session_name), Var.APP_ID, Var.API_HASH)
 else:
     session_name = "startup"
