@@ -26,7 +26,7 @@ from var import Var
 # ENV
 ENV = bool(os.environ.get("ENV", False))
 if ENV:
-    from userAndencento.config import Config
+    from userbot.config import Config
 else:
     if os.path.exists("Config.py"):
         from Config import Development as Config
@@ -37,19 +37,19 @@ def load_module(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
-        import userAndencento.utils
+        import userbot.utils
 
-        path = Path(f"userAndencento/plugins/{shortname}.py")
-        name = "userAndencento.plugins.{}".format(shortname)
+        path = Path(f"userbot/plugins/{shortname}.py")
+        name = "userbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         LOGS.info("Successfully imported " + shortname)
     else:
-        import userAndencento.utils
+        import userbot.utils
 
-        path = Path(f"userAndencento/plugins/{shortname}.py")
-        name = "userAndencento.plugins.{}".format(shortname)
+        path = Path(f"userbot/plugins/{shortname}.py")
+        name = "userbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.Andencento = Andencento
@@ -60,42 +60,42 @@ def load_module(shortname):
         mod.LOGS = LOGS
         mod.tgAndencento = Andencento.tgAndencento
         mod.sudo_cmd = sudo_cmd
-        sys.modules["userAndencento"] = userAndencento
-        sys.modules["userAndencento.utils"] = userAndencento.utils
-        sys.modules["Extre.events"] = userAndencento.utils
-        sys.modules["userAndencento.events"] = userAndencento.utils
-        sys.modules["ULTRA.utils"] = userAndencento.utils
-        sys.modules["userAndencento.Config"] = userAndencento.config
-        sys.modules["userAndencento.uniborConfig"] = userAndencento.config
-        sys.modules["ub"] = userAndencento
-        sys.modules["var"] = userAndencento.var
-        sys.modules["jarvis"] = userAndencento
-        sys.modules["support"] = userAndencento
-        sys.modules["userAndencento"] = userAndencento
-        sys.modules["teleAndencento"] = userAndencento
-        sys.modules["fridayAndencento"] = userAndencento
-        sys.modules["jarvis.utils"] = userAndencento.utils
-        sys.modules["uniborg.util"] = userAndencento.utils
-        sys.modules["teleAndencento.utils"] = userAndencento.utils
-        sys.modules["userAndencento.utils"] = userAndencento.utils
-        sys.modules["userAndencento.events"] = userAndencento.utils
-        sys.modules["jarvis.jconfig"] = userAndencento.config
-        sys.modules["userAndencento.config"] = userAndencento.config
-        sys.modules["fridayAndencento.utils"] = userAndencento.utils
-        sys.modules["fridayAndencento.Config"] = userAndencento.config
-        sys.modules["userAndencento.uniborgConfig"] = userAndencento.config
+        sys.modules["userbot"] = userbot
+        sys.modules["userbot.utils"] = userbot.utils
+        sys.modules["Extre.events"] = userbot.utils
+        sys.modules["userbot.events"] = userbot.utils
+        sys.modules["ULTRA.utils"] = userbot.utils
+        sys.modules["userbot.Config"] = userbot.config
+        sys.modules["userbot.uniborConfig"] = userbot.config
+        sys.modules["ub"] = userbot
+        sys.modules["var"] = userbot.var
+        sys.modules["jarvis"] = userbot
+        sys.modules["support"] = userbot
+        sys.modules["userbot"] = userbot
+        sys.modules["teleAndencento"] = userbot
+        sys.modules["fridayAndencento"] = userbot
+        sys.modules["jarvis.utils"] = userbot.utils
+        sys.modules["uniborg.util"] = userbot.utils
+        sys.modules["teleAndencento.utils"] = userbot.utils
+        sys.modules["userbot.utils"] = userbot.utils
+        sys.modules["userbot.events"] = userbot.utils
+        sys.modules["jarvis.jconfig"] = userbot.config
+        sys.modules["userbot.config"] = userbot.config
+        sys.modules["fridayAndencento.utils"] = userbot.utils
+        sys.modules["fridayAndencento.Config"] = userbot.config
+        sys.modules["userbot.uniborgConfig"] = userbot.config
         mod.edit_or_reply = edit_or_reply
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
-        sys.modules["uniborg.util"] = userAndencento.utils
+        sys.modules["uniborg.util"] = userbot.utils
         mod.Config = Config
         mod.borg = Andencento
         mod.edit_or_reply = edit_or_reply
         # support for paperplaneextended
-        sys.modules["userAndencento.mainfiles.events"] = userAndencento.utils
+        sys.modules["userbot.mainfiles.events"] = userbot.utils
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["userAndencento.plugins." + shortname] = mod
+        sys.modules["userbot.plugins." + shortname] = mod
         LOGS.info("Andencento imported " + shortname)
 
 def remove_plugin(shortname):
