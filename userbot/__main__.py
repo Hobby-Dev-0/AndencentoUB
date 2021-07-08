@@ -10,7 +10,7 @@ from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRe
 from . import LOGS, bot, tbot
 from config import Config
 from .utils import load_module
-from .version import __ver__ as Andencentover
+Andencentover = "0.1
 hl = Config.HANDLER
 Andencento_PIC = Config.ALIVE_PIC or None
 
