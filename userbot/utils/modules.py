@@ -26,7 +26,7 @@ from var import Var
 # ENV
 ENV = bool(os.environ.get("ENV", False))
 if ENV:
-    from config.config import Config
+    from userbot.config import Config
 else:
     if os.path.exists("Config.py"):
         from Config import Development as Config
@@ -79,11 +79,11 @@ def load_module(shortname):
         sys.modules["telebot.utils"] = userbot.utils
         sys.modules["userbot.utils"] = userbot.utils
         sys.modules["userbot.events"] = userbot.utils
-        sys.modules["jarvis.jconfig"] = userbot.config.config
-        sys.modules["userbot.config"] = userbot.config.config
+        sys.modules["jarvis.jconfig"] = userbot.config
+        sys.modules["userbot.config"] = userbot.config
         sys.modules["fridaybot.utils"] = userbot.utils
-        sys.modules["fridaybot.Config"] = userbot.config.config
-        sys.modules["userbot.uniborgConfig"] = userbot.config.config
+        sys.modules["fridaybot.Config"] = userbot.config
+        sys.modules["userbot.uniborgConfig"] = userbot.config
         mod.edit_or_reply = edit_or_reply
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
