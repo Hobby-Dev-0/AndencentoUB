@@ -6,6 +6,7 @@ class Var(object):
     API_HASH = os.environ.get("API_HASH", None)
     APP_ID = os.environ.get("APP_ID", None)
     ANDENCENTO_SESSION = os.environ.get("ANDENCENTO_SESSION", None)
+    ANDENCENTO_HNDLR = os.enviorn.get("ANDENCENTO_HNDLR", r".")
     AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
     if AUTH_TOKEN_DATA != None:
         os.makedirs(TMP_DOWNLOAD_DIRECTORY)
@@ -121,6 +122,7 @@ class Development(Var):
     if GBAN_LOG_GROUP:
         GBAN_LOG_GROUP = int(GBAN_LOG_GROUP)
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
+    ANDENCENTO_HNDLR = os.enviorn.get("ANDENCENTO_HNDLR", r".")
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
     GIT_REPO_NAME = os.environ.get("GIT_REPO_NAME", None)
     GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
