@@ -3,7 +3,7 @@ import re
 
 from telethon import events
 
-from .. import bot
+from .. import Andencento
 from ..config import Config
 
 
@@ -27,15 +27,15 @@ def iadmin():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            myid = await bot.get_me()
-            myperm = await bot.get_permissions(event.chat_id, myid)
+            myid = await Andencento.get_me()
+            myperm = await Andencento.get_permissions(event.chat_id, myid)
             if myperm.is_admin:
                 await func(event)
             if myperm.is_creator:
                 await func(event)
             else:
                 await event.edit(
-                    "I'm not admin. Chutíya sala."
+                    "I'm not admin.."
                 )
 
         return wrapper
@@ -44,13 +44,13 @@ def iadmin():
 
 
 # user you replied is a bot?
-def if_bot():
+def if_Andencento():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
             reply_msg = await event.get_reply_message()
             reply_msg.sender
-            if not reply_msg.sender.bot:
+            if not reply_msg.sender.Andencento:
                 await func(event)
             else:
                 await event.edit("That's a Bot I Guess. Please reply to actual users..")
