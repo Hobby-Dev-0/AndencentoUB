@@ -9,4 +9,4 @@ from .progress import *
 from .runner import *
 from .tools import *
 from .tweets import *
-from .vids import *
+from .vidos import *
