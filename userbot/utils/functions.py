@@ -25,7 +25,7 @@ from ..config import Config
 class Loader:
     def __init__(self, func=None, **args):
         self.Var = Var
-        bot.add_event_handler(func, events.NewMessage(**args))
+        Andencento.add_event_handler(func, events.NewMessage(**args))
 
 
 # Check if Admin

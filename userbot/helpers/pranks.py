@@ -16,7 +16,7 @@ from validators.url import url
 
 # ifone xxx
 async def iphonex(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=iphonex&url={text}").json()
+    r = requests.get(f"https://nekoAndencento.xyz/api/imagegen?type=iphonex&url={text}").json()
     kraken = r.get("message")
     Eivaurl = url(kraken)
     if not Eivaurl:
@@ -31,7 +31,7 @@ async def iphonex(text):
 # eat this
 async def baguette(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=baguette&url={text}"
+        f"https://nekoAndencento.xyz/api/imagegen?type=baguette&url={text}"
     ).json()
     kraken = r.get("message")
     Eivaurl = url(kraken)
@@ -46,7 +46,7 @@ async def baguette(text):
 
 # 3 threats to society
 async def threats(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=threats&url={text}").json()
+    r = requests.get(f"https://nekoAndencento.xyz/api/imagegen?type=threats&url={text}").json()
     kraken = r.get("message")
     Eivaurl = url(kraken)
     if not Eivaurl:
@@ -62,7 +62,7 @@ async def threats(text):
 
 # r u lolicon?
 async def lolice(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=lolice&url={text}").json()
+    r = requests.get(f"https://nekoAndencento.xyz/api/imagegen?type=lolice&url={text}").json()
     kraken = r.get("message")
     Eivaurl = url(kraken)
     if not Eivaurl:
@@ -78,7 +78,7 @@ async def lolice(text):
 
 # this shit is trash
 async def trash(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=trash&url={text}").json()
+    r = requests.get(f"https://nekoAndencento.xyz/api/imagegen?type=trash&url={text}").json()
     kraken = r.get("message")
     Eivaurl = url(kraken)
     if not Eivaurl:
@@ -94,7 +94,7 @@ async def trash(text):
 
 # OwO
 async def awooify(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=awooify&url={text}").json()
+    r = requests.get(f"https://nekoAndencento.xyz/api/imagegen?type=awooify&url={text}").json()
     kraken = r.get("message")
     Eivaurl = url(kraken)
     if not Eivaurl:
@@ -111,7 +111,7 @@ async def awooify(text):
 # use your trap card
 async def trap(text1, text2, text3):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=trap&name={text1}&author={text2}&image={text3}"
+        f"https://nekoAndencento.xyz/api/imagegen?type=trap&name={text1}&author={text2}&image={text3}"
     ).json()
     kraken = r.get("message")
     Eivaurl = url(kraken)
@@ -129,7 +129,7 @@ async def trap(text1, text2, text3):
 # cornhub 🌽
 async def phcomment(text1, text2, text3):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=phcomment&image={text1}&text={text2}&username={text3}"
+        f"https://nekoAndencento.xyz/api/imagegen?type=phcomment&image={text1}&text={text2}&username={text3}"
     ).json()
     kraken = r.get("message")
     Eivaurl = url(kraken)

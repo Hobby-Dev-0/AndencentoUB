@@ -8,8 +8,8 @@ from ..version import __Eiva__
 from telethon import version
 
 
-Eiva_USER = bot.me.first_name
-ForGo10God = bot.uid
+Eiva_USER = Andencento.me.first_name
+ForGo10God = Andencento.uid
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 hl = Config.HANDLER
 h2 = Config.ANDENCENTO_HNDLR
@@ -21,7 +21,7 @@ async def get_user_id(ids):
     if str(ids).isdigit():
         userid = int(ids)
     else:
-        userid = (await bot.get_entity(ids)).id
+        userid = (await Andencento.get_entity(ids)).id
     return userid
 
 sudos = Config.SUDO_USERS

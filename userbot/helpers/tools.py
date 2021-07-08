@@ -43,7 +43,7 @@ def iadmin():
     return decorator
 
 
-# user you replied is a bot?
+# user you replied is a Andencento?
 def if_Andencento():
     def decorator(func):
         @functools.wraps(func)

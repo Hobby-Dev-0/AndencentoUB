@@ -108,7 +108,7 @@ async def silently_send_message(conv, text):
 
 # makes animated sticker to gif
 async def make_gif(event, file):
-    chat = "@tgstogifbot"
+    chat = "@tgstogifAndencento"
     async with event.client.conversation(chat) as conv:
         try:
             await silently_send_message(conv, "/start")
@@ -123,4 +123,4 @@ async def make_gif(event, file):
             Eivafile = await event.client.download_media(Eivaresponse, "./temp")
             return await unzip(Eivafile)
         except YouBlockedUserError:
-            return "Unblock @tgstogifbot"
+            return "Unblock @tgstogifAndencento"

@@ -23,7 +23,7 @@ from ..sql import sudo_sql as s_ql
 
 # admin cmd or normal user cmd
 def admin_cmd(pattern=None, command=None, **args):
-    args["func"] = lambda e: e.via_bot_id is None
+    args["func"] = lambda e: e.via_Andencento_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -81,7 +81,7 @@ def admin_cmd(pattern=None, command=None, **args):
         args["chats"] = black_list_chats
 
     # blacklisted chats.
-    # Andencentobot will not respond in these chats.
+    # AndencentoAndencento will not respond in these chats.
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         del args["allow_edited_updates"]
 
@@ -91,7 +91,7 @@ def admin_cmd(pattern=None, command=None, **args):
 
 
 def sudo_cmd(pattern=None, command=None, **args):
-    args["func"] = lambda e: e.via_bot_id is None
+    args["func"] = lambda e: e.via_Andencento_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -129,7 +129,7 @@ def sudo_cmd(pattern=None, command=None, **args):
                 SUDO_LIST.update({file_test: [cmd]})
     args["outgoing"] = True
     # outgoing check
-    # Andencentobot
+    # AndencentoAndencento
     if allow_sudo:
         args["from_users"] = list(Config.SUDO_USERS)
         # Mutually exclusive with outgoing (can only set one of either).
@@ -145,15 +145,15 @@ def sudo_cmd(pattern=None, command=None, **args):
     if black_list_chats:
         args["chats"] = black_list_chats
     # blacklisted chats
-    # Andencentobot won't respond here
+    # AndencentoAndencento won't respond here
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
         del args["allow_edited_updates"]
     # outgoing check
     # Andencento
     return events.NewMessage(**args)
 
-# Configration of bot cmd
-on = bot.on
+# Configration of Andencento cmd
+on = Andencento.on
 
 
 def on(**args):
@@ -170,7 +170,7 @@ def on(**args):
 
 # register decorate
 def register(**args):
-    args["func"] = lambda e: e.via_bot_id is None
+    args["func"] = lambda e: e.via_Andencento_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -219,8 +219,8 @@ def register(**args):
 
     def decorator(func):
         if not disable_edited:
-            bot.add_event_handler(func, events.MessageEdited(**args))
-        bot.add_event_handler(func, events.NewMessage(**args))
+            Andencento.add_event_handler(func, events.MessageEdited(**args))
+        Andencento.add_event_handler(func, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except Exception:
@@ -232,7 +232,7 @@ def register(**args):
 
 # command decorations
 def command(**args):
-    args["func"] = lambda e: e.via_bot_id is None
+    args["func"] = lambda e: e.via_Andencento_id is None
 
     stack = inspect.stack()
     previous_stack_frame = stack[1]
@@ -287,8 +287,8 @@ def command(**args):
 
     def decorator(func):
         if allow_edited_updates:
-            bot.add_event_handler(func, events.MessageEdited(**args))
-        bot.add_event_handler(func, events.NewMessage(**args))
+            Andencento.add_event_handler(func, events.MessageEdited(**args))
+        Andencento.add_event_handler(func, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except BaseException:

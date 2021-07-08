@@ -18,7 +18,7 @@ jobs:
 
         with:
 
-          find: "bot"
+          find: "Andencento"
 
           replace: "Andencento"
 

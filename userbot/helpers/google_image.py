@@ -523,11 +523,11 @@ class googleimagesdownload:
             browser.find_element_by_id("smb").click()
             for _ in range(50):
                 element.send_keys(Keys.PAGE_DOWN)
-                time.sleep(0.3)  # bot id protection
+                time.sleep(0.3)  # Andencento id protection
         except BaseException:
             for _ in range(10):
                 element.send_keys(Keys.PAGE_DOWN)
-                time.sleep(0.3)  # bot id protection
+                time.sleep(0.3)  # Andencento id protection
 
         print("Reached end of Page.")
         time.sleep(0.5)
@@ -1459,23 +1459,23 @@ class googleimagesdownload:
         if arguments["keywords_from_file"]:
             search_keyword = self.keywords_from_file(arguments["keywords_from_file"])
 
-        # both time and time range should not be allowed in the same query
+        # Andencentoh time and time range should not be allowed in the same query
         if arguments["time"] and arguments["time_range"]:
             raise ValueError(
                 "Either time or time range should be used in a query. Both cannot be used at the same time."
             )
 
-        # both time and time range should not be allowed in the same query
+        # Andencentoh time and time range should not be allowed in the same query
         if arguments["size"] and arguments["exact_size"]:
             raise ValueError(
                 'Either "size" or "exact_size" should be used in a query. Both cannot be used at the same time.'
             )
 
-        # both image directory and no image directory should not be allowed in
+        # Andencentoh image directory and no image directory should not be allowed in
         # the same query
         if arguments["image_directory"] and arguments["no_directory"]:
             raise ValueError(
-                "You can either specify image directory or specify no image directory, not both!"
+                "You can either specify image directory or specify no image directory, not Andencentoh!"
             )
 
         # Additional words added to keywords

@@ -16,7 +16,7 @@ from validators.url import url
 # lost president. Sed loif
 async def trumptweet(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=trumptweet&text={text}"
+        f"https://nekoAndencento.xyz/api/imagegen?type=trumptweet&text={text}"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -32,7 +32,7 @@ async def trumptweet(text):
 # change my mind 👀
 async def changemymind(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=changemymind&text={text}"
+        f"https://nekoAndencento.xyz/api/imagegen?type=changemymind&text={text}"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -48,7 +48,7 @@ async def changemymind(text):
 # kanna says
 async def kannagen(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=kannagen&text={text}"
+        f"https://nekoAndencento.xyz/api/imagegen?type=kannagen&text={text}"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -64,7 +64,7 @@ async def kannagen(text):
 # Na-Mo
 async def moditweet(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi"
+        f"https://nekoAndencento.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -80,7 +80,7 @@ async def moditweet(text):
 # mia aunty. 💞
 async def miatweet(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa"
+        f"https://nekoAndencento.xyz/api/imagegen?type=tweet&text={text}&username=miakhalifa"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -96,7 +96,7 @@ async def miatweet(text):
 # dani forever 🙂💞
 async def dani(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=dani_daniels___"
+        f"https://nekoAndencento.xyz/api/imagegen?type=tweet&text={text}&username=dani_daniels___"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -112,7 +112,7 @@ async def dani(text):
 # you know what it is
 async def papputweet(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=rahulgandhi"
+        f"https://nekoAndencento.xyz/api/imagegen?type=tweet&text={text}&username=rahulgandhi"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -128,7 +128,7 @@ async def papputweet(text):
 # nothing better that this
 async def sunnytweet(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=sunnyleone"
+        f"https://nekoAndencento.xyz/api/imagegen?type=tweet&text={text}&username=sunnyleone"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -144,7 +144,7 @@ async def sunnytweet(text):
 # comit a sin
 async def sinstweet(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=johnnysins"
+        f"https://nekoAndencento.xyz/api/imagegen?type=tweet&text={text}&username=johnnysins"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -160,7 +160,7 @@ async def sinstweet(text):
 # divider ("No offense plox")
 async def taklatweet(text):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=Mahatma_Gandhi_"
+        f"https://nekoAndencento.xyz/api/imagegen?type=tweet&text={text}&username=Mahatma_Gandhi_"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
@@ -176,7 +176,7 @@ async def taklatweet(text):
 # make your own tweet
 async def tweets(text1, text2):
     r = requests.get(
-        f"https://nekobot.xyz/api/imagegen?type=tweet&text={text1}&username={text2}"
+        f"https://nekoAndencento.xyz/api/imagegen?type=tweet&text={text1}&username={text2}"
     ).json()
     wew = r.get("message")
     hburl = url(wew)
