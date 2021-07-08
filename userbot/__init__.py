@@ -11,10 +11,21 @@ from telethon import TelegramClient
 from telethon.sessions import StringSession
 
 from config import Config
+from var import Var
 
 StartTime = time.time()
 
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
+
+if Var.:
+    session_name = str(Var.ANDENCENTO_SESSIONN)
+    bot = TelegramClient(StringSession(session_name), Var.APP_ID, Var.API_HASH)
+else:
+    session_name = "startup"
+    bot = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
+
+
+
 
 if CONSOLE_LOGGER_VERBOSE:
     basicConfig(
@@ -39,7 +50,6 @@ except Exception:
 
 
 
-atbot = TelegramClient('Andencento', api_id=Config.APP_ID, api_hash=Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
 
 
 # global variables
