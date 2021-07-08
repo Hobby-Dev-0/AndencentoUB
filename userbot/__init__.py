@@ -38,8 +38,8 @@ except Exception:
     HEROKU_APP = None
 
 
-if Config.STRING_SESSION:
-    session_name = str(Config.STRING_SESSION)
+if Config.ANDENCENTO_SESSION:
+    session_name = str(Config.ANDENCENTO_SESSION)
     try:
         if session_name.endswith("="):
             bot = TelegramClient(
@@ -48,15 +48,15 @@ if Config.STRING_SESSION:
         else:
             bot = TelegramClient(
                 "BOT_TOKEN", api_id=Config.APP_ID, api_hash=Config.API_HASH
-            ).start(bot_token=Config.STRING_SESSION)
+            ).start(bot_token=Config.ANDENCENTO_SESSION)
     except Exception as e:
-        LOGS.warn(f"STRING_SESSION - {str(e)}")
+        LOGS.warn(f"EivaBOT_SESSION - {str(e)}")
         sys.exit()
 else:
     session_name = "startup"
     bot = TelegramClient(session_name, Config.APP_ID, Config.API_HASH)
 
-tbot = TelegramClient('Andencento', api_id=Config.APP_ID, api_hash=Config.API_HASH).start(bot_token=Config.TG_BOT_TOKEN_BF_HER)
+tbot = TelegramClient('Andencento', api_id=Config.APP_ID, api_hash=Config.API_HASH).start(bot_token=Config.BOT_TOKEN)
 
 
 # global variables
@@ -73,3 +73,4 @@ LASTMSG = {}
 ISAFK = False
 AFKREASON = None
 SUDO_LIST = {}
+
