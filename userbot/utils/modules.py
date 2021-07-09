@@ -20,6 +20,7 @@ from .. import *
 from ..helpers import *
 from ..config import *
 from ..utils import *
+from .decorators import *
 from var import Var
 
 
