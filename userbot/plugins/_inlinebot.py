@@ -17,7 +17,7 @@ from telethon.tl.functions.messages import ExportChatInviteRequest
 
 # Thanks to Shivansh To give permisson to import 3 plugins from Eiva Bot
 
-from . import *
+Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
 Eiva_row = Config.BUTTONS_IN_HELP
 Eiva_emoji = Config.EMOJI_IN_HELP
