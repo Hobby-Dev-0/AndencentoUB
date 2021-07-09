@@ -4,7 +4,7 @@ import os
 
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
-
+from userbot.utils import *
 from . import *
 from ..sql import pmpermit_sql as pm_sql
 
@@ -21,7 +21,7 @@ Eiva_FIRST = (
     "{}\n\n**Please Choose Why You Are Here!!**".format(Eiva_mention, CSTM_PMP)
 )
 
-@bot.on(Eiva_cmd(pattern="block$"))
+@bot.on(admin_cmd(pattern="block$"))
 async def approve_p_m(event):
     if event.fwd_from:
         return
