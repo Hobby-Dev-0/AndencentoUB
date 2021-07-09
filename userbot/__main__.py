@@ -1,4 +1,4 @@
-
+import glob
 from userbot import Andencento
 from sys import argv
 import sys
@@ -42,7 +42,6 @@ else:
             Andencento.start()
 
 
-import glob
 
 path = 'userbot/plugins/*.py'
 files = glob.glob(path)
