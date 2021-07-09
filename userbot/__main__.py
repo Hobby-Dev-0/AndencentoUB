@@ -57,12 +57,6 @@ for name in files:
         load_module(shortname.replace(".py", ""))
 
         
-async def op():
-    await Andencento(JoinChannelRequest("@Andencento"))
-    else:
-        pass
-
-Andencento.loop.create_task(op())
  
 print("Andencento Deployed And Working Fine")
 
