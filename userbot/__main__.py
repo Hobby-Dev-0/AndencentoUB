@@ -43,7 +43,8 @@ else:
 
 
 
-path = 'userbot/plugins/*.py'
+# imports plugins...
+path = "userbot/plugins/*.py"
 files = glob.glob(path)
 for name in files:
     with open(name) as f:
