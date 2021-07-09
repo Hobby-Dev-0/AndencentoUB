@@ -40,9 +40,3 @@ else:
             LOGS.info(" Andencento Startup Completed")
         else:
             Andencento.start()
-
-if len(sys.argv) not in (1, 3, 4):
-    Andencento.disconnect()
-else:
-    Andencento.tgbot = None
-    Andencento.run_until_disconnected()
