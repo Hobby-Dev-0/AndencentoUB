@@ -41,11 +41,8 @@ else:
         else:
             Andencento.start()
 
-
-            
-            
-            
-if len(argv) not in (1, 3, 4):
+if len(sys.argv) not in (1, 3, 4):
     Andencento.disconnect()
 else:
+    Andencento.tgbot = None
     Andencento.run_until_disconnected()
