@@ -42,10 +42,9 @@ else:
             Andencento.start()
 
 
-print("Andencento Deployed And Working Fine For Assistance")
-
-
-
+            
+            
+            
 if len(argv) not in (1, 3, 4):
     Andencento.disconnect()
 else:
