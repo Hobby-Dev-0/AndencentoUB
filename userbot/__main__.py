@@ -8,19 +8,17 @@ from telethon import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 
 from . import LOGS
-from . import Andencento as bot
+from . import Andencento
 from config import Config
 from .utils import load_module
-Andencentover = "0.1"
-hl = Config.HANDLER
-Andencento_PIC = Config.ALIVE_PIC or None
+
 
 # let's get the bot ready
 async def Andencento_bot(bot_token):
     try:
-        await bot.start(bot_token)
-        bot.me = await bot.get_me()
-        bot.uid = telethon.utils.get_peer_id(bot.me)
+        await Andencento.start(bot_token)
+        Andencento.me = await bot.get_me()
+        Andencento.uid = telethon.utils.get_peer_id(Andencento.me)
     except Exception as e:
         LOGS.error(f"ANDENCENTO_SESSION - {str(e)}")
         sys.exit()
@@ -28,21 +26,21 @@ async def Andencento_bot(bot_token):
 
 # Andencento bot starter...
 if len(sys.argv) not in (1, 3, 4):
-    bot.disconnect()
+    Andencento.disconnect()
 else:
-    bot.tgbot = None
+    Andencento.tgbot = None
     try:
         if Config.BOT_USERNAME is not None:
             LOGS.info("Checking Telegram Bot Username...")
-            bot.tgbot = TelegramClient(
+            Andencento.tgbot = TelegramClient(
                 "BOT_TOKEN", api_id=Config.APP_ID, api_hash=Config.API_HASH
             ).start(bot_token=Config.BOT_TOKEN)
             LOGS.info("Checking Completed. Proceeding to next step...")
             LOGS.info(" Starting Andencento")
-            bot.loop.run_until_complete(Andencento_bot(Config.BOT_USERNAME))
+            Andencento.loop.run_until_complete(Andencento_bot(Config.BOT_USERNAME))
             LOGS.info(" Andencento Startup Completed")
         else:
-            bot.start()
+            Andencento.start()
     except Exception as e:
         LOGS.error(f"BOT_TOKEN - {str(e)}")
         sys.exit()
@@ -57,7 +55,7 @@ for name in files:
         load_module(shortname.replace(".py", ""))
 
 if len(sys.argv) not in (1, 3, 4):
-    bot.disconnect()
+    Andencento.disconnect()
 else:
-    bot.tgbot = None
-    bot.run_until_disconnected()
+    Andencento.tgbot = None
+    Andencento.run_until_disconnected()
