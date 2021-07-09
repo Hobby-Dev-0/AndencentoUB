@@ -22,8 +22,9 @@ from ..config import Config
 from ..sql import sudo_sql as s_ql
 
 # admin cmd or normal user cmd
+
 def admin_cmd(pattern=None, command=None, **args):
-    args["func"] = lambda e: e.via_Andencento_id is None
+    args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -42,13 +43,13 @@ def admin_cmd(pattern=None, command=None, **args):
             except BaseException:
                 CMD_LIST.update({file_test: [cmd]})
         else:
-            if len(Config.ANDENCENTO_HNDLR) == 2:
-                Andencentoreg = "^" + Config.ANDENCENTO_HNDLR
-                reg = Config.ANDENCENTO_HNDLR[1]
-            elif len(Config.ANDENCENTO_HNDLR) == 1:
-                Andencentoreg = "^\\" + Config.ANDENCENTO_HNDLR
-                reg = Config.ANDENCENTO_HNDLR
-            args["pattern"] = re.compile(Andencentoreg + pattern)
+            if len(Config.HANDLER) == 2:
+                catreg = "^" + Config.HANDLER
+                reg = Config.HANDLER[1]
+            elif len(Config.HANDLER) == 1:
+                catreg = "^\\" + Config.HANDLER
+                reg = Config.HANDLER
+            args["pattern"] = re.compile(catreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
@@ -61,8 +62,7 @@ def admin_cmd(pattern=None, command=None, **args):
                 CMD_LIST.update({file_test: [cmd]})
 
     args["outgoing"] = True
-    # decides that other users can use it or not
-    # Andencento outgoing
+    # should this command be available for other users?
     if allow_sudo:
         args["from_users"] = list(Config.SUDO_USERS)
         # Mutually exclusive with outgoing (can only set one of either).
@@ -73,21 +73,22 @@ def admin_cmd(pattern=None, command=None, **args):
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
 
-    # blacklisted chats. 
-    # Andencento will not respond in these chats.
+    # add blacklist chats, UB should not respond in these chats
     args["blacklist_chats"] = True
-    black_list_chats = list(Config.BL_CHAT)
-    if black_list_chats:
+    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
+    if len(black_list_chats) > 0:
         args["chats"] = black_list_chats
 
-    # blacklisted chats.
-    # AndencentoAndencento will not respond in these chats.
+    # add blacklist chats, UB should not respond in these chats
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
+        args["allow_edited_updates"]
         del args["allow_edited_updates"]
 
-    # plugin check for outgoing commands
+    # check if the plugin should listen for outgoing 'messages'
 
     return events.NewMessage(**args)
+
+
 
 
 def sudo_cmd(pattern=None, command=None, **args):
