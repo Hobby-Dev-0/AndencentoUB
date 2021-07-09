@@ -55,6 +55,8 @@ for name in files:
         shortname = path1.stem
         load_module(shortname.replace(".py", ""))
 
+print("Andencento Deployed And Working Fine")
+
 if len(sys.argv) not in (1, 3, 4):
     Andencento.disconnect()
 else:
