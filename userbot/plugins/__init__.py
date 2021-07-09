@@ -12,10 +12,10 @@ Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
 
 
-from DYNAMIC import CMD_HELP, CMD_HELP_BOT
+from .. import CMD_HELP, CMD_HELP_BOT
 import os
 
-COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r".")
+COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
 
 #################################################################################################################
 
