@@ -90,6 +90,10 @@ class Development(Var):
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 
 
+    
+class Development(Var):
+    LOGGER = True
+    
 class Production(Config):
     LOGGER = False
 
