@@ -6,7 +6,7 @@ class Var(object):
     API_HASH = os.environ.get("API_HASH", None)
     APP_ID = os.environ.get("APP_ID", None)
     ANDENCENTO_SESSION = os.environ.get("ANDENCENTO_SESSION", None)
-    ANDENCENTO_HNDLR = os.enviorn.get("ANDENCENTO_HNDLR", r".")
+    ANDENCENTO_HNDLR = os.environ.get("ANDENCENTO_HNDLR", r"\.")
     AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
     if AUTH_TOKEN_DATA != None:
         os.makedirs(TMP_DOWNLOAD_DIRECTORY)
