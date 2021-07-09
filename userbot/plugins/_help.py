@@ -6,6 +6,8 @@ from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 
 from . import *
 
+Eiva_channel = "@Andencento"
+
 msg = f"""
 **⚡ ᴜʟᴛɪᴍᴀᴛᴇ ᴜꜱᴇʀʙᴏᴛ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ⚡**
   •        [📑 Repo 📑](https://github.com/Team-Andencento/Andencento)
