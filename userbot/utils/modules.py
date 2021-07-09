@@ -19,7 +19,7 @@ from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
 from .. import *
 from ..helpers import *
 from ..config import *
-from ..utils import *
+from . import *
 from .decorators import *
 from var import Var
 
