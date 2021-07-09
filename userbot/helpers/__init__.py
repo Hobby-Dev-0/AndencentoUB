@@ -1,6 +1,6 @@
 from .converter import *
 from .exceptions import *
-from .google import *
+from .google_image import *
 from .image import *
 from .jwatch import *
 from .mmf import *
