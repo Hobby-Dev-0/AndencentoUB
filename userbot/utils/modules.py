@@ -60,8 +60,8 @@ def load_module(shortname):
         mod = importlib.util.module_from_spec(spec)
         mod.Andencento = Andencento
         mod.bot = Andencento
-        mod.delete_hell = delete_hell
-        mod.eod = delete_hell
+        mod.delete_hell = delete
+        mod.eod = delete
         mod.admin_cmd = admin_cmd
         mod.Var = Var
         mod.command = command
