@@ -11,7 +11,7 @@ from . import LOGS
 from . import Andencento as bot
 from config import Config
 from .utils import load_module
-Andencentover = "0.1
+Andencentover = "0.1"
 hl = Config.HANDLER
 Andencento_PIC = Config.ALIVE_PIC or None
 
