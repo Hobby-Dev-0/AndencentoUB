@@ -294,8 +294,9 @@ def register(**args):
 
 
 # command decorations
+
 def command(**args):
-    args["func"] = lambda e: e.via_Andencento_id is None
+    args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
     previous_stack_frame = stack[1]
@@ -341,7 +342,7 @@ def command(**args):
         pass
 
     args["blacklist_chats"] = True
-    black_list_chats = list(Config.BL_CHAT)
+    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
     if len(black_list_chats) > 0:
         args["chats"] = black_list_chats
 
@@ -350,8 +351,8 @@ def command(**args):
 
     def decorator(func):
         if allow_edited_updates:
-            Andencento.add_event_handler(func, events.MessageEdited(**args))
-        Andencento.add_event_handler(func, events.NewMessage(**args))
+            bot.add_event_handler(func, events.MessageEdited(**args))
+        bot.add_event_handler(func, events.NewMessage(**args))
         try:
             LOAD_PLUG[file_test].append(func)
         except BaseException:
@@ -359,3 +360,4 @@ def command(**args):
         return func
 
     return decorator
+  
