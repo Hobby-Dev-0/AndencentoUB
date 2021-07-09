@@ -45,7 +45,8 @@ else:
         LOGS.error(f"BOT_TOKEN - {str(e)}")
         sys.exit()
         
- 
+
+
 # imports plugins...
 path = "userbot/plugins/*.py"
 files = glob.glob(path)
@@ -55,6 +56,14 @@ for name in files:
         shortname = path1.stem
         load_module(shortname.replace(".py", ""))
 
+        
+async def op():
+    await Andencento(JoinChannelRequest("@Andencento"))
+except BashException:
+    pass
+
+Andencento.loop.create_task(op())
+ 
 print("Andencento Deployed And Working Fine")
 
 if len(sys.argv) not in (1, 3, 4):
