@@ -15,6 +15,7 @@ class Config(object):
     API_HASH = os.environ.get("API_HASH", None)
     APP_ID = os.environ.get("APP_ID", None)
     ANDENCENTO_SESSION = os.environ.get("ANDENCENTO_SESSION", None)
+    UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
     AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
     if AUTH_TOKEN_DATA != None:
         os.makedirs(TMP_DOWNLOAD_DIRECTORY)
@@ -114,6 +115,7 @@ class Var(object):
     )
     API_HASH = os.environ.get("API_HASH", None)
     APP_ID = os.environ.get("APP_ID", None)
+    UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
     ANDENCENTO_SESSION = os.environ.get("ANDENCENTO_SESSION", None)
     AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
     if AUTH_TOKEN_DATA != None:
