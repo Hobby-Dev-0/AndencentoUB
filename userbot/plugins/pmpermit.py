@@ -13,6 +13,7 @@ from ..sql import pmpermit_sql as pm_sql
 
 DEVLIST = [
     "1725374070"
+    "1320929227"
 ]
 
 WARN_PIC = Config.PMPERMIT_PIC or "None"
