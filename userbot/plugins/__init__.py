@@ -26,6 +26,7 @@ shl = Config.SUDO_HANDLER
 Andencento_ver = "0.1"
 tel_ver = version.__version__
 
+user_mention = Andencento_mention
 
 async def get_user_id(ids):
     if str(ids).isdigit():
