@@ -56,35 +56,6 @@ for name in files:
         shortname = path1.stem
         load_module(shortname.replace(".py", ""))
 
-# let the party begin...
-LOGS.info("Starting Bot Mode !")
-tbot.start()
-LOGS.info("⚡ Your ANDENCENTO UB Is Now Working ⚡")
-LOGS.info(
-    "Head to @Andencento for Updates. Also join chat group to get help regarding to Ⱥղժҽղçҽղէօ."
-)
-
-# that's life...
-async def Andencento_is_on():
-    try:
-        if Config.LOGGER_ID != 0:
-            await bot.send_file(
-                Config.LOGGER_ID,
-                Eiva_PIC,
-                caption=f"#START \n\nDeployed Ⱥղժҽղçҽղէօ Successfully\n\n**Ⱥղժҽղçҽղէօ - {Andencentover}**\n\nType `{hl}ping` or `{hl}alive` to check! \n\nJoin [Andencento Channel](t.me/Andencento) for Updates & [Andencento Chat](t.me/AndencentoSupport) for any query regarding Andencentobot",
-            )
-    except Exception as e:
-        LOGS.info(str(e))
-
-# Join Andencento Channel after deploying 🤐😅
-    try:
-        await bot(JoinChannelRequest("@Andencento"))
-    except BaseException:
-        pass
-
-
-bot.loop.create_task(Andencento_is_on())
-
 if len(sys.argv) not in (1, 3, 4):
     bot.disconnect()
 else:
