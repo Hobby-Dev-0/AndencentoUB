@@ -64,7 +64,7 @@ class Config(object):
     MONGO_URI = os.environ.get("MONGO_URI", None)
     MY_CHANNEL = os.environ.get("YOUR_CHANNEL", "Andencento")
     MY_GROUP = os.environ.get("YOUR_GROUP", "AndencentoSupport")
-    ANDENCENTO_HNDLR = os.enviorn.get("ANDENCENTO_HNDLR", r".")
+    ANDENCENTO_HNDLR = os.enviorn.get("ANDENCENTO_HNDLR", ".")
     OCR_API = os.environ.get("OCR_API", None)
     PLUGIN_CHANNEL = os.environ.get("PLUGIN_CHANNEL", None)
     if PLUGIN_CHANNEL:
