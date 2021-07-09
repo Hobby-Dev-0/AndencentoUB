@@ -7,9 +7,9 @@ from telethon.errors.rpcerrorlist import BotMethodInvalidError as dedbot
 from . import *
 
 msg = f"""
-**⚡ ʟɛɢɛռɖaʀʏ ᴀғ EIVABOT⚡**
-  •        [📑 Repo 📑](https://github.com/TeamEivaBot/EivaBot)
-  •        [🚀 Deploy 🚀](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FTeamEivaBot%2FEivaBot&template=https%3A%2F%2Fgithub.com%2FTeamEivabot%2FEivabot)
+**⚡ ᴜʟᴛɪᴍᴀᴛᴇ ᴜꜱᴇʀʙᴏᴛ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ⚡**
+  •        [📑 Repo 📑](https://github.com/Team-Andencento/Andencento)
+  •        [🚀 Deploy 🚀](https://github.com/Team-Andencento/Andencento)
   •  ©️ {Eiva_channel} ™
 """
 botname = Config.BOT_USERNAME
