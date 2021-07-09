@@ -6,6 +6,7 @@ import os
 import re
 import sys
 
+from . import *
 from .. import Andencento
 Eiva_USER = Andencento.me.first_name
 from telethon import Button, custom, events, functions
