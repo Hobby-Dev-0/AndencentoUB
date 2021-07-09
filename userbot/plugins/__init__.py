@@ -16,7 +16,7 @@ ForGo10God = Andencento.uid
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
 Andencento_USER = bot.me.first_name
-Andencento_mention = f"[{Andencento_user}](tg://user?id={ForGo10God})"
+Andencento_mention = f"[{Andencento_USER}](tg://user?id={ForGo10God})"
 Andencento_logo = "./userbot/resources/andencento_logo.jpg"
 cjb = "./userbot/resources/cjb.jpg"
 restlo = "./userbot/resources/rest.jpeg"
