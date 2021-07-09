@@ -1,5 +1,6 @@
 import os
 from telethon.tl.types import ChatBannedRights
+class Var(object):
 class Development(Var):
     LOGGER = True
     ABUSE = os.environ.get("ABUSE", None)
