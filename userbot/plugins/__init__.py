@@ -6,6 +6,11 @@ from ..utils import *
 from telethon import version
 
 
+from userbot import *
+from userbot.config import Config
+from userbot.helpers import *
+from userbot.utils import *
+
 Eiva_USER = Andencento.me.first_name
 ForGo10God = Andencento.uid
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
