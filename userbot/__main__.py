@@ -17,7 +17,7 @@ from .utils import load_module
 async def Andencento_bot(bot_token):
     try:
         await Andencento.start(bot_token)
-        Andencento.me = await bot.get_me()
+        Andencento.me = await Andencento.get_me()
         Andencento.uid = telethon.utils.get_peer_id(Andencento.me)
     except Exception as e:
         LOGS.error(f"ANDENCENTO_SESSION - {str(e)}")
