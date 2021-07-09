@@ -70,7 +70,6 @@ def load_module(shortname):
         sys.modules["userbot.Config"] = userbot.config
         sys.modules["userbot.uniborConfig"] = userbot.config
         sys.modules["ub"] = userbot
-        sys.modules["var"] = userbot.var
         sys.modules["jarvis"] = userbot
         sys.modules["support"] = userbot
         sys.modules["userbot"] = userbot
