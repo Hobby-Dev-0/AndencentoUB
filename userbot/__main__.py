@@ -59,7 +59,7 @@ for name in files:
         
 async def op():
     await Andencento(JoinChannelRequest("@Andencento"))
-except BashException:
+else:
     pass
 
 Andencento.loop.create_task(op())
