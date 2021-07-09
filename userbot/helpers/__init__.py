@@ -7,5 +7,5 @@ from .pranks import *
 from .progress import *
 from .runner import *
 from .tools import *
-from .tweets import *
+from .tweet import *
 from .vidos import *
