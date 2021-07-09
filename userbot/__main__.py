@@ -41,9 +41,6 @@ else:
             LOGS.info(" Andencento Startup Completed")
         else:
             Andencento.start()
-    except Exception as e:
-        LOGS.error(f"BOT_TOKEN - {str(e)}")
-        sys.exit()
 
 # imports plugins...
 path = "userbot/plugins/*.py"
