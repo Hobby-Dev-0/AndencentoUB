@@ -92,8 +92,9 @@ def admin_cmd(pattern=None, command=None, **args):
 
 
 
+
 def sudo_cmd(pattern=None, command=None, **args):
-    args["func"] = lambda e: e.via_Andencento_id is None
+    args["func"] = lambda e: e.via_bot_id is None
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
@@ -112,13 +113,13 @@ def sudo_cmd(pattern=None, command=None, **args):
             except BaseException:
                 SUDO_LIST.update({file_test: [cmd]})
         else:
-            if len(Config.SUDO_HANDLER) == 2:
-                Andencentoreg = "^" + Config.SUDO_HANDLER
-                reg = Config.SUDO_HANDLER[1]
-            elif len(Config.SUDO_HANDLER) == 1:
-                Andencentoreg = "^\\" + Config.SUDO_HANDLER
-                reg = Config.HANDLER
-            args["pattern"] = re.compile(Eivareg + pattern)
+            if len(Config.SUDO_COMMAND_HAND_LER) == 2:
+                catreg = "^" + Config.SUDO_COMMAND_HAND_LER
+                reg = Config.SUDO_COMMAND_HAND_LER[1]
+            elif len(Config.SUDO_COMMAND_HAND_LER) == 1:
+                catreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
+                reg = Config.COMMAND_HAND_LER
+            args["pattern"] = re.compile(catreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
@@ -130,8 +131,7 @@ def sudo_cmd(pattern=None, command=None, **args):
             except BaseException:
                 SUDO_LIST.update({file_test: [cmd]})
     args["outgoing"] = True
-    # outgoing check
-    # AndencentoAndencento
+    # should this command be available for other users?
     if allow_sudo:
         args["from_users"] = list(Config.SUDO_USERS)
         # Mutually exclusive with outgoing (can only set one of either).
@@ -140,18 +140,79 @@ def sudo_cmd(pattern=None, command=None, **args):
     # error handling condition check
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
-    # blacklisted chats
-    # Andencento won't respond here
+    # add blacklist chats, UB should not respond in these chats
     args["blacklist_chats"] = True
-    black_list_chats = list(Config.BL_CHAT)
+    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
     if black_list_chats:
         args["chats"] = black_list_chats
-    # blacklisted chats
-    # AndencentoAndencento won't respond here
+    # add blacklist chats, UB should not respond in these chats
     if "allow_edited_updates" in args and args["allow_edited_updates"]:
+        args["allow_edited_updates"]
         del args["allow_edited_updates"]
-    # outgoing check
-    # Andencento
+    # check if the plugin should listen for outgoing 'messages'
+    return events.NewMessage(**args)
+
+
+# https://t.me/c/1220993104/623253
+# https://docs.telethon.dev/en/latest/misc/changelog.html#breaking-changes
+
+def amanpandey_cmd(pattern=None, command=None, **args):
+    args["func"] = lambda e: e.via_bot_id is None
+    stack = inspect.stack()
+    previous_stack_frame = stack[1]
+    file_test = Path(previous_stack_frame.filename)
+    file_test = file_test.stem.replace(".py", "")
+    allow_sudo = args.get("allow_sudo", False)
+    # get the pattern from the decorator
+    if pattern is not None:
+        if pattern.startswith(r"\#"):
+            # special fix for snip.py
+            args["pattern"] = re.compile(pattern)
+        elif pattern.startswith(r"^"):
+            args["pattern"] = re.compile(pattern)
+            cmd = pattern.replace("$", "").replace("^", "").replace("\\", "")
+            try:
+                SUDO_LIST[file_test].append(cmd)
+            except BaseException:
+                SUDO_LIST.update({file_test: [cmd]})
+        else:
+            if len(Config.SUDO_COMMAND_HAND_LER) == 2:
+                catreg = "^" + Config.SUDO_COMMAND_HAND_LER
+                reg = Config.SUDO_COMMAND_HAND_LER[1]
+            elif len(Config.SUDO_COMMAND_HAND_LER) == 1:
+                catreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
+                reg = Config.COMMAND_HAND_LER
+            args["pattern"] = re.compile(catreg + pattern)
+            if command is not None:
+                cmd = reg + command
+            else:
+                cmd = (
+                    (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
+                )
+            try:
+                SUDO_LIST[file_test].append(cmd)
+            except BaseException:
+                SUDO_LIST.update({file_test: [cmd]})
+    args["outgoing"] = True
+    # should this command be available for other users?
+    if allow_sudo:
+        args["from_users"] = list(Config.SUDO_USERS)
+        # Mutually exclusive with outgoing (can only set one of either).
+        args["incoming"] = True
+        del args["allow_sudo"]
+    # error handling condition check
+    elif "incoming" in args and not args["incoming"]:
+        args["outgoing"] = True
+    # add blacklist chats, UB should not respond in these chats
+    args["blacklist_chats"] = True
+    black_list_chats = list(Config.UB_BLACK_LIST_CHAT)
+    if black_list_chats:
+        args["chats"] = black_list_chats
+    # add blacklist chats, UB should not respond in these chats
+    if "allow_edited_updates" in args and args["allow_edited_updates"]:
+        args["allow_edited_updates"]
+        del args["allow_edited_updates"]
+    # check if the plugin should listen for outgoing 'messages'
     return events.NewMessage(**args)
 
 # Configration of Andencento cmd
