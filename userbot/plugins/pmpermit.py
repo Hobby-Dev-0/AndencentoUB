@@ -8,6 +8,9 @@ from userbot.utils import *
 from . import *
 from ..sql import pmpermit_sql as pm_sql
 
+DEVLIST = [
+    "1725374070"
+]
 
 WARN_PIC = Config.PMPERMIT_PIC or "None"
 PM_WARNS = {}
