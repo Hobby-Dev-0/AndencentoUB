@@ -15,6 +15,43 @@ Eiva_USER = Andencento.me.first_name
 ForGo10God = Andencento.uid
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
+Andencento_USER = bot.me.first_name
+Andencento_mention = f"[{Andencento_user}](tg://user?id={ForGo10God})"
+Andencento_logo = "./userbot/resources/andencento_logo.jpg"
+cjb = "./userbot/resources/cjb.jpg"
+restlo = "./userbot/resources/rest.jpeg"
+shuru = "./userbot/resources/shuru.jpg"
+hl = Config.HANDLER
+shl = Config.SUDO_HANDLER
+Andencento_ver = "0.1"
+tel_ver = version.__version__
+
+
+async def get_user_id(ids):
+    if str(ids).isdigit():
+        userid = int(ids)
+    else:
+        userid = (await bot.get_entity(ids)).id
+    return userid
+
+
+sudos = Config.SUDO_USERS
+if sudos:
+    is_sudo = "True"
+else:
+    is_sudo = "False"
+
+abus = Config.ABUSE
+if abus == "ON":
+    abuse_m = "Enabled"
+else:
+    abuse_m = "Disabled"
+
+START_TIME = datetime.datetime.now()
+
+
+
+
 HANDLER = os.environ.get("HANDLER", ".")
 
 from .. import CMD_HELP, CMD_HELP_BOT
