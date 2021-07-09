@@ -10,10 +10,12 @@ Eiva_USER = Andencento.me.first_name
 ForGo10God = Andencento.uid
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
-
+HANDLER = os.environ.get("HANDLER", ".")
 
 from .. import CMD_HELP, CMD_HELP_BOT
 import os
+
+chnl_link = "https://t.me/Andencento"
 
 COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
 
