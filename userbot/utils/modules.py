@@ -60,6 +60,8 @@ def load_module(shortname):
         mod = importlib.util.module_from_spec(spec)
         mod.Andencento = Andencento
         mod.bot = Andencento
+        mod.delete_hell = delete_hell
+        mod.eod = delete_hell
         mod.admin_cmd = admin_cmd
         mod.Var = Var
         mod.command = command
@@ -97,6 +99,7 @@ def load_module(shortname):
         mod.Config = Config
         mod.borg = Andencento
         mod.edit_or_reply = edit_or_reply
+        mod.eor = edit_or_reply
         # support for paperplaneextended
         sys.modules["userbot.mainfiles.events"] = userbot.utils
         spec.loader.exec_module(mod)
