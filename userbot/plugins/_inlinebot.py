@@ -6,6 +6,8 @@ import os
 import re
 import sys
 
+from .. import Andencento
+Eiva_USER = Andencento.me.first_name
 from telethon import Button, custom, events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.events import InlineQuery, callbackquery
