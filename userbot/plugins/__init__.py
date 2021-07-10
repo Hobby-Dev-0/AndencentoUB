@@ -10,6 +10,8 @@ from userbot import *
 from userbot.config import Config
 from userbot.helpers import *
 from userbot.utils import *
+from userbot.random_strings import *
+from telethon import version
 
 Eiva_USER = Andencento.me.first_name
 ForGo10God = Andencento.uid
