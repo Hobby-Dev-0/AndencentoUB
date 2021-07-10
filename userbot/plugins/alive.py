@@ -11,6 +11,7 @@ import os
 import random
 from telethon import events, TelegramClient
 from . import *
+YOUR_NAME = os.environ.get("YOUR_NAME")
 from telethon.tl.types import ChannelParticipantsAdmins
 
 
