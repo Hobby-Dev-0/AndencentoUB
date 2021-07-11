@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "EivaAndencento"
+          find: "HellBot"
 
-          replace: "userbot"
+          replace: "Andencento"
 
       - name: Create Pull Request
 
