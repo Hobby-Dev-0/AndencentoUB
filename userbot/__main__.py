@@ -47,6 +47,14 @@ else:
         
 
 
+path = 'userbot/assistant/*.py'
+files = glob.glob(path)
+for name in files:
+    with open(name) as f:
+        path1 = Path(f.name)
+        shortname = path1.stem
+        start_assistant(shortname.replace(".py", ""))   
+
 # imports plugins...
 path = "userbot/plugins/*.py"
 files = glob.glob(path)
