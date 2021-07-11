@@ -13,7 +13,7 @@ from userbot.utils import *
 from userbot.random_strings import *
 from telethon import version
 
-uptime = f"{str(datetime.datetime.now()
+uptime = f"{str(datetime.datetime.now() - START_TIME).split('.')[0]}"
 
 Eiva_USER = Andencento.me.first_name
 ForGo10God = Andencento.uid
