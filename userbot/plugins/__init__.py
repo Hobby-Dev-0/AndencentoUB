@@ -19,7 +19,7 @@ from userbot.helpers import *
 from userbot.utils import *
 from userbot.random_strings import *
 from telethon import version
-uptime = Andencento.get_readable_time((time.time() - StartTime))
+uptime = "dekhna jaruri hai kya"
 
 Eiva_USER = Andencento.me.first_name
 ForGo10God = Andencento.uid
