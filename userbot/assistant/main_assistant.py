@@ -7,13 +7,13 @@ from telethon import Button, custom, events
 from telethon.tl.functions.users import GetFullUserRequest
 
 from .. import bot
-from ..sql_helper.blacklist_assistant import (
+from ..sql.blacklist_assistant import (
     add_nibba_in_db,
     is_he_added,
     removenibba,
 )
-from ..sql_helper.botusers_sql import add_me_in_db, his_userid
-from ..plugins.sql_helper.idadder_sql import (
+from ..sql.botusers_sql import add_me_in_db, his_userid
+from .sql.idadder_sql import (
     add_usersid_in_db,
     already_added,
     get_all_users,
