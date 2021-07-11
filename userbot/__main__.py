@@ -45,7 +45,6 @@ else:
         LOGS.error(f"BOT_TOKEN - {str(e)}")
         sys.exit()
         
-print ("Loading Assistant Then Loading Modules")
 
 path = 'userbot/assistant/*.py'
 files = glob.glob(path)
@@ -55,7 +54,6 @@ for name in files:
         shortname = path1.stem
         start_assistant(shortname.replace(".py", ""))   
 
-print ("Assistant Loaded Loading Modules")
 
 # imports plugins...
 path = "userbot/plugins/*.py"
