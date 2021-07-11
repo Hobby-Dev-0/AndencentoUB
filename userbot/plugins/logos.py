@@ -54,7 +54,7 @@ async def lg1(userevent):
     draw.text(
         (w_, h_), text, font=font, fill="white", stroke_width=strik, stroke_fill="black"
     )
-    file_name = "HellBot.png"
+    file_name = "Andencento .png"
     img.save(file_name, "png")
     await bot.send_file(
         userevent.chat_id,

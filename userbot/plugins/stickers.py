@@ -101,7 +101,7 @@ async def kang(args):
         packnick = (
             f"{userbot} Vol.{pack}"
             if userbot
-            else f"@{user.username}'s HellBot Vol.{pack}"
+            else f"@{user.username}'s Andencento  Vol.{pack}"
         )
         cmd = "/newpack"
         file = io.BytesIO()
@@ -137,7 +137,7 @@ async def kang(args):
                     packnick = (
                         f"{userbot} Vol.{pack}"
                         if userbot
-                        else f"@{user.username}'s HellBot Vol.{pack}"
+                        else f"@{user.username}'s Andencento  Vol.{pack}"
                     )
                     await user.edit(
                         "`Switching to Pack "

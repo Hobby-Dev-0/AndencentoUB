@@ -277,7 +277,7 @@ CmdHelp("managers").add_command(
 ).add_command(
   "ls", "<path name>", "Gives the list of all files in the given path"
 ).add_info(
-  "HellBot Managers."
+  "Andencento  Managers."
 ).add_warning(
   "✅ Harmless Module."
 ).add()
