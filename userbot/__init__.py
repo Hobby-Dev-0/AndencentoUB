@@ -10,8 +10,11 @@ from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
+
 from config import Config
 from var import Var
+
+ALIVE_NAME = Config.YOUR_NAME
 
 StartTime = time.time()
 
