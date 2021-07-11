@@ -33,7 +33,7 @@ async def restart(event):
         execl(executable, executable, "bash", "start.sh")
         
         
-@tgbot.on(events.NewMessage(pattern="^/id"))
+@tgbot.on(events.NewMessage(pattern="^/restart"))
 async def re(user):
     if user.reply_to_msg_id:
       await event.get_input_chat()
