@@ -5,6 +5,13 @@ from ..helpers import *
 from ..utils import *
 from telethon import version
 
+from telethon import version
+from telethon.errors.rpcerrorlist import (
+    MediaEmptyError,
+    WebpageCurlFailedError,
+    WebpageMediaEmptyError,
+)
+from telethon.events import CallbackQuery
 
 from userbot import *
 from userbot.config import Config
@@ -12,7 +19,7 @@ from userbot.helpers import *
 from userbot.utils import *
 from userbot.random_strings import *
 from telethon import version
-
+uptime = await get_readable_time((time.time() - StartTime))
 
 Eiva_USER = Andencento.me.first_name
 ForGo10God = Andencento.uid
