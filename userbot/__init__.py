@@ -49,7 +49,7 @@ except Exception:
     HEROKU_APP = None
 
 
-
+bot = Andencento
 
 
 # global variables
