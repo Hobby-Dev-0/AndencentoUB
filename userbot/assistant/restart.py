@@ -42,7 +42,7 @@ async def re(user):
             bot_api_file_id = pack_bot_file_id(r_msg.media)
             await tgbot.send_message(
               event.chat_id,
-              "restarting dyno"
+              "restarting dyno",
     if HEROKU_API_KEY:
         await restart(event)
     else:
