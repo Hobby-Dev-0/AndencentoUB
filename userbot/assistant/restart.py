@@ -43,7 +43,8 @@ async def re(user):
             await tgbot.send_message(
               event.chat_id,
               "restarting dyno"
-                if HEROKU_API_KEY :
-                await restart(event)
-           else:
-                await tgbot.send_message("Please Set Your `HEROKU_API_KEY` to restart ᴀɴᴅᴇɴᴄᴇɴᴛᴏ")
+    if HEROKU_API_KEY:
+        await restart(event)
+    else:
+        await event.edit("Please Set Your `HEROKU_API_KEY` to restart ᴀɴᴅᴇɴᴄᴇɴᴛᴏ")
+
