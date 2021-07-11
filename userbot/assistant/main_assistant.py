@@ -13,7 +13,7 @@ from ..sql.blacklist_assistant import (
     removenibba,
 )
 from ..sql.botusers_sql import add_me_in_db, his_userid
-from .sql.idadder_sql import (
+from ..sql.idadder_sql import (
     add_usersid_in_db,
     already_added,
     get_all_users,
