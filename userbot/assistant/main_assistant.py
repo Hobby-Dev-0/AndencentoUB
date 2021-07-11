@@ -20,7 +20,6 @@ from ..sql.idadder_sql import (
 )
 
 
-
 @tgbot.on(events.NewMessage(pattern="^/start"))
 async def start(event):
     starkbot = await tgbot.get_me()
@@ -29,14 +28,13 @@ async def start(event):
     replied_user = await event.client(GetFullUserRequest(event.sender_id))
     firstname = replied_user.user.first_name
     vent = event.chat_id
-    PM_IMG = "https://telegra.ph/file/f7a8575e7242f1eb2e3f8.jpg"
-    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [Team Andencento](t.me/AndencentoSupport)"
+    starttext = f"Hello, {firstname} ! Nice To Meet You, Well I Am {bot_id}, An Powerfull Assistant Bot. \n\nMy [➤ Master](tg://user?id={bot.uid}) \nYou Can Talk/Contact My Master Using This Bot. \n\nIf You Want Your Own Assistant You Can Deploy From Button Below. \n\nPowered By [Andencento](https://t.me/Andencentosupport)"
     if event.sender_id == bot.uid:
         await tgbot.send_message(
             vent,
             message=f"Hi Master, It's Me {bot_id}, Your Assistant ! \nWhat You Wanna Do today ?",
             buttons=[
-                [custom.Button.inline("Show Users LIST", data="users")],
+                [custom.Button.inline("Show Users 🔥", data="users")],
                 [custom.Button.inline("Commands For Assistant", data="gibcmd")],
                 [
                     Button.url(
@@ -55,8 +53,8 @@ async def start(event):
             message=starttext,
             link_preview=False,
             buttons=[
-                [custom.Button.inline("Deploy your Andencento USERBOT 🇮🇳", data="deploy")],
-                [Button.url("Help Me ❓", "t.me/AndencendoSupport")],
+                [custom.Button.inline("Deploy your Andencento", data="deploy")],
+                [Button.url("Help Me ❓", "https://t.me/AndencentoSupport")],
             ],
         )
 
@@ -72,8 +70,13 @@ async def help(event):
             event.chat_id,
             message="You Can Deploy Andencento In Heroku By Following Steps Bellow, You Can See Some Quick Guides On Support Channel Or On Your Own Assistant Bot. \nThank You For Contacting Me.",
             buttons=[
-                [Button.url("Deploy repo 📺", "https://github.com/Noob-Stranger/andencento")],
-                [Button.url("Need Help ❓", "t.me/Andencento")],
+                [
+                    Button.url(
+                        "Deploy Tutorial 📺",
+                        "Coming Soon",
+                    )
+                ],
+                [Button.url("Need Help ❓", "https://t.me/AndencentoSupport")],
             ],
         )
 
@@ -113,7 +116,7 @@ async def all_messages_catcher(event):
         return
     if event.raw_text.startswith("/"):
         pass
-    elif event.sender_id == bot.uid or event.sender_id = (await tgbot.get_me()).id: # don't forward bot messages
+    elif event.sender_id == bot.uid:
         return
     else:
         await event.get_sender()
@@ -126,13 +129,13 @@ async def all_messages_catcher(event):
 
 @tgbot.on(events.NewMessage(func=lambda e: e.is_private))
 async def sed(event):
-    msg.id
-    msg_s = event.raw_text
-    if event.sender_id == bot.uid or event.sender_id == (await tgbot.get_me()).id: # do not forward bot msgs it's spam
-        if event.raw_text.startswith("/"):
+    msg = await event.get_reply_message()
+    user_id, reply_message_id = his_userid(msg.id)
+    if event.sender_id == bot.uid:
+        if event.text.startswith("/"):
             pass
         else:
-            await tgbot.send_message(user_id, msg_s)
+            await tgbot.send_message(user_id, event.message)
 
 
 # broadcast
