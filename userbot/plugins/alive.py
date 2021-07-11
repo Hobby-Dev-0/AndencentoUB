@@ -25,7 +25,6 @@ EXTREMEPRO += f"┣•➳➠ `ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ :` `1.21.
 EXTREMEPRO += f"┣•➳➠ `ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴠᴇʀꜱɪᴏɴ :` `0.0.1`\n"
 EXTREMEPRO += f"┣•➳➠ `ᴘʏᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ :` `3.9.5`\n"
 EXTREMEPRO += f"┣•➳➠ `ꜱᴜᴘᴘᴏʀᴛ :` [𝔖𝔲𝔭𝔭𝔬𝔯𝔱](https://t.me/Andencentosupport)\n"
-EXTREMEPRO += f"┣•➳➠ `υρтιмє :` `{uptime}` \n"
 EXTREMEPRO += f"┣•➳➠ `яєρσ🔥 :` [яєρσ🔥](https://github.com/Team-Andencento/Andencento)\n"
 EXTREMEPRO += f"┣•➳➠ `ɖɛքʟօʏ⚡ :` [ɖɛքʟօʏ⚡Me](https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FTeam-Andencento%2FAndencento-Deploy-Pack&template=https%3A%2F%2Fgithub.com%2FTeam-Andencento%2FAndencento-Deploy-Pack)\n"
 EXTREMEPRO += f"┗━━━━━━━━━━━━━━━━━━━\n"
