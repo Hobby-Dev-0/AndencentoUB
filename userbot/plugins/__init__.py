@@ -5,7 +5,7 @@ from ..helpers import *
 from ..utils import *
 from telethon import version
 
-
+START_TIME = datetime.datetime.now()
 from userbot import *
 from userbot.config import Config
 from userbot.helpers import *
