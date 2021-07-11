@@ -8,6 +8,8 @@ import sys
 from os import execl
 from time import sleep
 
+LOAD_ASSISTANT = os.environ.get("LOAD_ASSISTANT")
+
 from . import *
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -43,7 +45,7 @@ async def re(user):
             await tgbot.send_message(
               event.chat_id,
               "restarting dyno",
-    if HEROKU_API_KEY:
+    if LOAD_ASSISTANT = true
         await restart(event)
     else:
         await event.edit("Please Set Your `HEROKU_API_KEY` to restart ᴀɴᴅᴇɴᴄᴇɴᴛᴏ")
