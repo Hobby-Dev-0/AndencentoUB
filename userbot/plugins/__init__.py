@@ -1,11 +1,11 @@
-import datetime
+
 from .. import *
 from ..config import Config
 from ..helpers import *
 from ..utils import *
 from telethon import version
 
-START_TIME = datetime.datetime.now()
+
 from userbot import *
 from userbot.config import Config
 from userbot.helpers import *
@@ -13,7 +13,7 @@ from userbot.utils import *
 from userbot.random_strings import *
 from telethon import version
 
-uptime = f"{str(datetime.datetime.now() - START_TIME).split('.')[0]}"
+uptime = await get_readable_time((time.time() - StartTime))
 
 Eiva_USER = Andencento.me.first_name
 ForGo10God = Andencento.uid
