@@ -23,7 +23,7 @@ async def restart(event):
         try:
             Heroku
         except BaseException:
-            return await eor(
+            return await tgbot.send_message(
                 event, "`HEROKU_API_KEY` is wrong. Re-Check in config vars."
             )
         await tgbot.send_message(event, f"✅ **Restarted Dynos** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
@@ -43,7 +43,7 @@ async def re(user):
             await tgbot.send_message(
               event.chat_id,
               "restarting dyno"
-              if HEROKU_API_KEY:
-        await restart(event)
-    else:
-        await tgbot.send_message("Please Set Your `HEROKU_API_KEY` to restart ᴀɴᴅᴇɴᴄᴇɴᴛᴏ")
+                if HEROKU_API_KEY:
+                await restart(event)
+           else:
+                await tgbot.send_message("Please Set Your `HEROKU_API_KEY` to restart ᴀɴᴅᴇɴᴄᴇɴᴛᴏ")
