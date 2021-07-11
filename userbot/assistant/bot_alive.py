@@ -13,7 +13,7 @@ pm_caption += "➥ **Current Branch** : `master`\n"
 pm_caption += f"➥ **Version** : `2.0`\n"
 pm_caption += f"➥ **My Boss** : {DEFAULTUSER} \n"
 pm_caption += "➥ **Heroku Database** : `AWS - Working Properly`\n\n"
-pm_caption += "➥ **License** : [GNU General Public License v3.0](github.com/DARK-COBRA/DARKCOBRA/blob/master/LICENSE)\n"
+pm_caption += "➥ **License** : [GNU Affero General Public License v3.0](https://github.com/Noob-Stranger/andencento/blob/master/LICENSE)\n"
 pm_caption += (
     "➥ **Copyright** : By [Andencento](https://github.com/Noob-Stranger/andencento)\n"
 )
