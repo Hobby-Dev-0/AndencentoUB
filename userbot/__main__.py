@@ -10,7 +10,7 @@ from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRe
 from . import LOGS
 from . import Andencento
 from config import Config
-from .utils import load_module
+from .utils import *
 
 
 # let's get the bot ready
