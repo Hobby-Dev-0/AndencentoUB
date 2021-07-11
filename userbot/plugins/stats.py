@@ -80,7 +80,7 @@ async def stats(
     response += f"🔱 **Unread Mentions:** {unread_mentions} \n\n"
     response += f"☣️   __It Took:__ {stop_time:.02f}s \n"
     response += (
-        f"📌 **From The DataBase Of** :- {user_channel}"
+        f"📌 **From The DataBase Of** :- ANDENCENTO SERVER"
     )
     await user.edit(response)
 
