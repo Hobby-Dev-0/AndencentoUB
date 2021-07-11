@@ -34,9 +34,6 @@ def start_assistant(shortname):
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
-        print("Starting Your Assistant Bot.")
-        print("Assistant Sucessfully imported " + shortname)
-        print("Assistant Started.") 
     else:
         import importlib
         import sys
@@ -49,6 +46,3 @@ def start_assistant(shortname):
         mod.tgbot = Andencento.tgbot
         spec.loader.exec_module(mod)
         sys.modules["assistant" + shortname] = mod
-        print("Starting Your Assistant Bot.")
-        print("Assistant Has imported " + shortname)
-        print("Assistant Started.") 
