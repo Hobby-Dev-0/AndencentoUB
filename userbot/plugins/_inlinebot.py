@@ -385,7 +385,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © ΣIVΛBθƬ ™",
+                "Get Your own Andencento UB © @AndencentoSupport ™",
                 cache_time=0,
                 alert=True,
             )
@@ -426,7 +426,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
             )
         else:
             return await event.answer(
-                "Hoo gya aapka. Kabse tapar tapar dabae jaa rhe h. Khudka bna lo na agr chaiye to. © ΣIVΛBθƬ ™",
+                "Get Your own Andencento UB © @AndencentoSupport ™",
                 cache_time=0,
                 alert=True,
             )
