@@ -26,7 +26,6 @@ from .funcs import *
 from .extras import *
 from .assistant_load import *
 from ..helpers.progress import *
-from var import Var
 
 
 # ENV
@@ -78,6 +77,7 @@ def load_module(shortname):
         sys.modules["ULTRA.utils"] = userbot.utils
         sys.modules["userbot.Config"] = userbot.config
         sys.modules["userbot.uniborConfig"] = userbot.config
+        sys.modules["var"] = userbot.config
         sys.modules["ub"] = userbot
         sys.modules["jarvis"] = userbot
         sys.modules["support"] = userbot
