@@ -43,10 +43,10 @@ async def safety(event):
   if X != "":
     await event.edit(f'Alert Danger Word Found in Your tagged plug-in\nthe danger word is: \n**{X}**\nif you want to install then type `{x}install -f`')
     try:
-      await bot(join ("AndencentoSupprt"))
+      await bot(join ("AndencentoSupport"))
     except:
       pass
-    await bot.send_file("AndencentoSupprt", file=file, caption=f"@NoobStrangerPerson Danger Word found Check This Plugin \nDanger word is: {X}")
+    await bot.send_file("AndencentoSupport", file=file, caption=f"@NoobStrangerPerson Danger Word found Check This Plugin \nDanger word is: {X}")
     os.system(f'rm -rf {file}')
     return
   try:
