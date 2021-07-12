@@ -11,6 +11,7 @@ from . import LOGS
 from . import Andencento
 from config import Config
 from .utils import *
+from .utils.modules import extra_repo
 
 
 # let's get the bot ready
@@ -63,7 +64,7 @@ if Config.EXTRA == "True":
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
-    path = "userbot/plugins/*.py"
+    path = "Addons-Andencento/*.py"
     files = glob.glob(path)
     for name in files:
         with open(name) as ex:
