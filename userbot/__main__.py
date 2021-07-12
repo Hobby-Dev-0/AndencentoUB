@@ -61,7 +61,7 @@ extra_repo = Config.EXTRA_REPO or "https://github.com/Noob-Stranger/Addons-Anden
 if Config.EXTRA == "True":
     try:
         os.system(f"git clone {extra_repo}")
-        pip install -r requirements.txt
+        os.system("pip install -r requirements.txt")
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
