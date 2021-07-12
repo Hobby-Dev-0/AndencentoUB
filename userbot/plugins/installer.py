@@ -46,7 +46,7 @@ async def safety(event):
       await bot(join ("AndencentoSupprt"))
     except:
       pass
-    await bot.send_file("Andencento", file=file, caption=f"@NoobStrangerPerson Danger Word found Check This Plugin \nDanger word is: {X}")
+    await bot.send_file("AndencentoSupprt", file=file, caption=f"@NoobStrangerPerson Danger Word found Check This Plugin \nDanger word is: {X}")
     os.system(f'rm -rf {file}')
     return
   try:
