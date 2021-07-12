@@ -2,9 +2,9 @@ from PIL import Image, ImageFont, ImageDraw
 import textwrap
 import os
 from . import *
-# how a lazy guy ports.
-client = borg
-@borg.on(admin_cmd("memify ?(.*)"))
+# 
+client = Andencento
+@Andencento.on(admin_cmd("memify ?(.*)"))
 async def handler(event):
     if event.fwd_from:
         return
@@ -24,8 +24,7 @@ async def handler(event):
     await client.send_file(event.chat_id, file=meme, force_document=False)
     os.remove(meme)
 
-# Taken from https://github.com/UsergeTeam/Userge-Plugins/blob/master/plugins/memify.py#L64
-# Maybe edited to suit the needs of this module
+#
 
 
 async def drawText(image_path, text):
@@ -92,12 +91,6 @@ async def drawText(image_path, text):
     
 CmdHelp("memify").add_command(
   "mmf", "<reply to a img/stcr/gif> <upper text> ; <lower text>", "Memifies the replied image/gif/sticker with your text and sends output in sticker format.", "mmf <reply to a img/stcr/gif> hii ; usero"
-).add_command(
-  "mms", "<reply to a img/stcr/gif> <upper text> ; <lower text>", "Memifies the replied image/gif/sticker with your text and sends output in image format.", "mms <reply to a img/stcr/gif> hii ; usero"
-).add_command(
-  "doge", "<text>", "Makes A Sticker of Doge with given text."
-).add_info(
-  "Make Memes on telegram 😉"
 ).add_warning(
   "✅ Harmless Module."
 ).add()
