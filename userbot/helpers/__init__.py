@@ -4,6 +4,7 @@ from .google_image import *
 from .image import *
 from .jwatch import *
 from .pranks import *
+from .devs import *
 from .progress import *
 from .runner import *
 from .tools import *
