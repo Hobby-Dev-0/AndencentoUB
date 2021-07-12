@@ -13,15 +13,7 @@ from telethon.sessions import StringSession
 
 from config import Config
 from var import Var
-
-    BOTLOG_CHATID = os.environ.get("BOTLOG_CHATID", None)
-    try:
-        BOTLOG_CHATID = int(BOTLOG_CHATID)
-    except:
-        pass
-
 ALIVE_NAME = Config.YOUR_NAME
-
 StartTime = time.time()
 
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
@@ -35,8 +27,6 @@ else:
 
 noob = TelegramClient(None, Var.APP_ID, Var.API_HASH)
 
-BOTLOG = os.environ.get("BOTLOG", "False")
-LOGSPAMMER = os.environ.get("LOGSPAMMER", "False")
 
 if CONSOLE_LOGGER_VERBOSE:
     basicConfig(
