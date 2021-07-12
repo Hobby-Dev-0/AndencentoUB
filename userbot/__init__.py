@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
-
+ENV = os.environ.get("ENV", False)
 
 from config import Config
 from var import Var
