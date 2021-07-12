@@ -15,7 +15,7 @@ YOUR_NAME = os.environ.get("YOUR_NAME")
 from telethon.tl.types import ChannelParticipantsAdmins
 
 
-DEFAULTUSER = str(YOUR_NAME) if YOUR_NAME else "No name set yet nibba"
+DEFAULTUSER = str(YOUR_NAME) if YOUR_NAME else "ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴜꜱᴇʀ"
 """ =======================CONSTANTS====================== """
 EXTREMEPRO_PIC = os.environ.get("ALIVE_PIC", None) or "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg"
 EXTREMEPRO = f"**`Owner`: {DEFAULTUSER}`**\n\n"
