@@ -280,26 +280,30 @@ async def nekobot(borg):
     await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
     await borg.delete()
     
-CMD_HELP.update({
-"tweet":
-"Tweet\
-\n\n`.tweet` (text)\
-     \nUsage : Tweet with modi\
-\n\n`.modi` (text)\
-     \nUsage : Tweet with modi\
-\n\n`.trump` (text)\
-     \nUsage : Tweet with trump\
-\n\n`.mia` (text)\
-     \nUsage : Tweet with mia\
-\n\n`.pappu` (text)\
-     \nUsage : Tweet with Rahul Gandhi\
-\n\n`.gandhi` (text)\
-     \nUsage : Tweet with Baapu🥺\n(No offence. Fun purpose only)\
-\n\n`.sunny` (text)\
-     \nUsage : Tweet with sunny leone\
-\n\n`.johhny` (text)\
-     \nUsage : Tweet with johhny sins\
-\n\n`.cmm` (text)\
-     \nUsage : Get a banner\
-\n\n`.kanna` (text)\
-     \nUsage : Kanna write for you"})
+CmdHelp("tweets").add_command(
+  "kanna", "<text>/<reply to text>", "Kanna writes for you"
+).add_command(
+  "cmm", "<text>/<reply>", "Get a banner of Change My Mind"
+).add_command(
+  "johhny", "<text>/<reply>", "Tweet with Johhny Sins"
+).add_command(
+  "sunny", "<text>/<reply>", "Tweet with Sunny Leone"
+).add_command(
+  "gandhi", "<text>/<reply>", "Tweet with Mahatma Gandhi"
+).add_command(
+  "pappu", "<text>/<reply>", "Tweet with pappu A.K.A Rahul Gandhi"
+).add_command(
+  "mia", "<text>/<reply>", "Tweet with Mia Khalifa 😍"
+).add_command(
+  "trump", "<text>/<reply>", "Tweet with Mr. DooLand Trump"
+).add_command(
+  "modi", "<text>/<reply>", "Tweet with Sir Narendra Modi"
+).add_command(
+  "tweet", "<text>/<reply>", "Tweets in your name"
+).add_command(
+  "dani", "<text>/<reply>", "Tweet with Dani Daniels 😍🥰"
+).add_info(
+  "Lets Tweet."
+).add_warning(
+  "✅ Harmless Module."
+).add()
