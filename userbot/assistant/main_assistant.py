@@ -15,7 +15,7 @@ from ..sql.blacklist_ass import (
     removenibba,
 )
 
-from ..sql.bot_users_sql import add_me_in_db, his_userid
+from ..sql.botusers_sql import add_me_in_db, his_userid
 from ..sql.idadder_sql import (
     add_usersid_in_db,
     already_added,
