@@ -10,6 +10,7 @@ from . import *
 DEFAULTUSERBIO = Config.BIO_MSG
 DEL_TIME_OUT = 60
 
+BIO_MSG = Config.BIO_MSG
 
 import asyncio
 import time
