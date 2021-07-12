@@ -63,7 +63,7 @@ def load_module(shortname):
         mod.delete_hell = delete
         mod.eod = delete
         mod.admin_cmd = admin_cmd
-        mod.Var = Var
+        mod.Var = Config
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         mod.extremepro_cmd = admin_cmd
