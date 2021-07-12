@@ -70,7 +70,7 @@ if Config.EXTRA == "True":
         with open(name) as ex:
             path2 = Path(ex.name)
             shortname = path2.stem
-            load_module(shortname.replace(".py", ""))
+            extra_repo(shortname.replace(".py", ""))
 
 
 
