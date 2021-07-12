@@ -11,7 +11,7 @@ from . import LOGS
 from . import Andencento
 from config import Config
 from .utils import *
-from .utils.modules import extra_repo
+from .utils.modules import extra
 
 
 # let's get the bot ready
