@@ -21,7 +21,7 @@ from .. import *
 
 from ..helpers import CancelProcess
 
-from .config import Config # Main Imports from here
+from ..config import Config # Main Imports from here
 
 def load_module(shortname):
     if shortname.startswith("__"):
