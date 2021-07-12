@@ -3,7 +3,6 @@ import sys
 import time
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
-from .plugins import CmdHelp
 import heroku3
 from dotenv import load_dotenv
 from requests import get
