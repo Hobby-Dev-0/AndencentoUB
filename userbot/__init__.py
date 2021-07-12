@@ -29,6 +29,8 @@ else:
 
 noob = TelegramClient(None, Var.APP_ID, Var.API_HASH)
 
+    BOTLOG = sb(os.environ.get("BOTLOG", "False"))
+    LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
 
 if CONSOLE_LOGGER_VERBOSE:
     basicConfig(
