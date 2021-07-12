@@ -66,6 +66,8 @@ def load_module(shortname):
         mod.Var = Var
         mod.command = command
         mod.logger = logging.getLogger(shortname)
+        mod.extremepro_cmd = admin_cmd
+        mod.amanpandey_cmd = sudo_cmd
         mod.LOGS = LOGS
         mod.tgbot = Andencento.tgbot
         mod.sudo_cmd = sudo_cmd
