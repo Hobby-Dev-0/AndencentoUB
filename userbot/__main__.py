@@ -64,14 +64,13 @@ if Config.EXTRA == "True":
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
-    path = "Addons-Andencento/*.py"
+    path = "userbot/plugins/*.py"
     files = glob.glob(path)
     for name in files:
         with open(name) as ex:
             path2 = Path(ex.name)
             shortname = path2.stem
             extra_repo(shortname.replace(".py", ""))
-
 
 
 # imports plugins...
