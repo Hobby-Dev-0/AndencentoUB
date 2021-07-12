@@ -279,7 +279,7 @@ async def get_user_from_id(user, event):
         await event.edit(str(err))
         return None
     return user_obj
-@Ancendento.on(admin_cmd(pattern="gpromote ?(.*)"))
+@Andencento.on(admin_cmd(pattern="gpromote ?(.*)"))
 async def gben(userbot):
     dc = dark = userbot
     i = 0
