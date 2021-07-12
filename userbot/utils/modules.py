@@ -26,7 +26,7 @@ from .funcs import *
 from .extras import *
 from .assistant_load import *
 from ..helpers.progress import *
-
+from var import Var
 
 # ENV
 ENV = bool(os.environ.get("ENV", False))
@@ -62,7 +62,7 @@ def load_module(shortname):
         mod.delete_hell = delete
         mod.eod = delete
         mod.admin_cmd = admin_cmd
-        mod.Var = Config
+        mod.Var = Var
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         mod.extremepro_cmd = admin_cmd
@@ -77,7 +77,6 @@ def load_module(shortname):
         sys.modules["ULTRA.utils"] = userbot.utils
         sys.modules["userbot.Config"] = userbot.config
         sys.modules["userbot.uniborConfig"] = userbot.config
-        sys.modules["var"] = userbot.config
         sys.modules["ub"] = userbot
         sys.modules["jarvis"] = userbot
         sys.modules["support"] = userbot
@@ -133,7 +132,7 @@ def extra(shortname):
         mod.delete_hell = delete
         mod.eod = delete
         mod.admin_cmd = admin_cmd
-        mod.Var = Config
+        mod.Var = Var
         mod.command = command
         mod.logger = logging.getLogger(shortname)
         mod.extremepro_cmd = admin_cmd
@@ -148,7 +147,6 @@ def extra(shortname):
         sys.modules["ULTRA.utils"] = userbot.utils
         sys.modules["userbot.Config"] = userbot.config
         sys.modules["userbot.uniborConfig"] = userbot.config
-        sys.modules["var"] = userbot.config
         sys.modules["ub"] = userbot
         sys.modules["jarvis"] = userbot
         sys.modules["support"] = userbot
