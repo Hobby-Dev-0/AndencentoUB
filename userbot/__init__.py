@@ -11,7 +11,7 @@ from telethon.sessions import StringSession
 ENV = os.environ.get("ENV", False)
 
 from config import Config
-from var import Var
+from config import Config as Var
 ALIVE_NAME = Config.YOUR_NAME
 StartTime = time.time()
 
