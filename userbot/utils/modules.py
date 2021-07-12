@@ -22,7 +22,7 @@ from ..config import *
 from . import *
 from .decorators import *
 from .errors import *
-from .functions import *
+from .funcs import *
 from .extras import *
 from .assistant_load import *
 from ..helpers.progress import *
