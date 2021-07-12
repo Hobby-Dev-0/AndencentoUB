@@ -62,6 +62,7 @@ def load_module(shortname):
         # support for paperplaneextended
         sys.modules["userbot.mainfiles.events"] = userbot.utils
         spec.loader.exec_module(mod)
+        sys.modules["userbot.plugins." + shortname] = mod
         # for imports
 
 def remove_plugin(shortname):
