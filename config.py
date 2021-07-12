@@ -70,7 +70,7 @@ class Config(object):
     MY_CHANNEL = os.environ.get("YOUR_CHANNEL", "Andencento")
     MY_GROUP = os.environ.get("YOUR_GROUP", "AndencentoSupport")
     OCR_API = os.environ.get("OCR_API", None)
-    PLUGIN_CHANNEL = os.environ.get("PLUGIN_CHANNEL", None)
+    PLUGIN_CHANNEL = os.environ.get("PLUGIN_CHANNEL", -100)
     if PLUGIN_CHANNEL:
         PLUGIN_CHANNEL = int(PLUGIN_CHANNEL)
     PM_LOG_ID = os.environ.get("PM_LOG_ID", None)
