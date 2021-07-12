@@ -5,7 +5,7 @@ from os import getcwd
 from os.path import basename, join
 from textwrap import wrap
 from typing import Optional, Tuple
-from .events import get_readable_time
+from ..utils import *
 
 try:
     from colour import Color as asciiColor
