@@ -107,7 +107,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["userbot.plugins." + shortname] = mod
-        LOGS.info("Andencento imported " + shortname)
+        LOGS.info("ANDENCENTO imported " + shortname)
 
 def remove_plugin(shortname):
     try:
