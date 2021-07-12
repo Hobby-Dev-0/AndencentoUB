@@ -41,7 +41,7 @@ async def safety(event):
     else:
       pass
   if X != "":
-    await event.edit(f'Alert Danger Word Found in Your tagged plug-in\nthe danger word is: \n**{X}**\nif you want to install then type `{x}install -true`')
+    await event.edit(f'Alert Danger Word Found in Your tagged plug-in\nthe danger word is: \n**{X}**\nif you want to install then type `{x}install -f`')
     try:
       await bot(join ("AndencentoSupprt"))
     except:
