@@ -13,6 +13,7 @@ class Config(object):
         send_messages=True
     )
     API_HASH = os.environ.get("API_HASH", None)
+    COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
     APP_ID = os.environ.get("APP_ID", None)
     ANDENCENTO_SESSION = os.environ.get("ANDENCENTO_SESSION", None)
     UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
@@ -32,6 +33,7 @@ class Config(object):
     CHROME_DRIVER = os.environ.get("CHROME_DRIVER", "/app/.chromedriver/bin/chromedriver")
     CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
     DB_URI = os.environ.get("DATABASE_URL", None)
+    SUDO_COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
     DUAL_LOG = os.environ.get("DUAL_LOG", None)
     EMOJI_IN_HELP = os.environ.get("EMOJI_IN_HELP", " ")
     FBAN_LOG_GROUP = os.environ.get("FBAN_LOG_GROUP", None)
