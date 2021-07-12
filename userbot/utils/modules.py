@@ -109,7 +109,7 @@ def load_module(shortname):
         sys.modules["userbot.plugins." + shortname] = mod
         LOGS.info("ANDENCENTO imported " + shortname)
 
-def extra_repo(shortname):
+def extra(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
