@@ -18,9 +18,9 @@ from telethon.errors import FloodWaitError
 from telethon.tl import functions
 from . import *
 
-DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else "ʟɛɢɛռɖaʀʏ ᴀғ ɦɛʟʟɮօt"
+DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else "ᴛʜᴇ ᴜʟᴛɪᴍᴀᴛᴇ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴜꜱᴇʀʙᴏᴛ"
 DEL_TIME_OUT = 60
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Hell User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴜꜱᴇʀ"
 
 
 @Andencento.on(admin_cmd(pattern="autoname"))  # pylint:disable=E0602
