@@ -1,5 +1,10 @@
-# Andencento
-UserAndencento based on ..
+
+# A STABLE USERBOT BASED ON TELETHON
+# DEVS
+#### Aman Pandey
+#### Noob Stranger
+#### GODBOYX
+#### MAYANK RAJPUT 
 
 ## SOME INFO
 [![Stars](https://img.shields.io/github/stars/Noob-Stranger/andencento?style=flat-square&color=yellow)](https://github.com/Noob-Stranger/andencento/stargazers)
