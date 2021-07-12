@@ -55,6 +55,24 @@ for name in files:
         start_assistant(shortname.replace(".py", ""))   
 
 
+# Extra Modules...
+extra_repo = Config.EXTRA_REPO or "https://github.com/TeamExtremePro/MODULES"
+if Config.EXTRA == "True":
+    try:
+        os.system(f"git clone {extra_repo}")
+    except BaseException:
+        pass
+    LOGS.info("Installing Extra Plugins")
+    path = "userbot/plugins/*.py"
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as ex:
+            path2 = Path(ex.name)
+            shortname = path2.stem
+            load_module(shortname.replace(".py", ""))
+
+
+
 # imports plugins...
 path = "userbot/plugins/*.py"
 files = glob.glob(path)
