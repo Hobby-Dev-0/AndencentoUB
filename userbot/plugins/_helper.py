@@ -8,7 +8,7 @@ from . import *
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
-@command(pattern="^.info ?(.*)")
+@command(pattern="^.pinfo ?(.*)")
 async def cmd_list(event):
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "@", "!"):
         tgbotusername = Config.BOT_USERNAME
