@@ -3,11 +3,10 @@ import re
 
 from telethon import events
 
-from .. import Andencento
-from ..config import Config
+from userbot import bot
+from userbot.config import Config
 
 
-# forward check
 def forwards():
     def decorator(func):
         @functools.wraps(func)
@@ -22,20 +21,19 @@ def forwards():
     return decorator
 
 
-# am i admin?
 def iadmin():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
-            myid = await Andencento.get_me()
-            myperm = await Andencento.get_permissions(event.chat_id, myid)
+            myid = await bot.get_me()
+            myperm = await bot.get_permissions(event.chat_id, myid)
             if myperm.is_admin:
                 await func(event)
             if myperm.is_creator:
                 await func(event)
             else:
                 await event.edit(
-                    "I'm not admin.."
+                    "I'm not admin. Chutíya sala."
                 )
 
         return wrapper
@@ -43,14 +41,13 @@ def iadmin():
     return decorator
 
 
-# user you replied is a Andencento?
-def if_Andencento():
+def if_bot():
     def decorator(func):
         @functools.wraps(func)
         async def wrapper(event):
             reply_msg = await event.get_reply_message()
             reply_msg.sender
-            if not reply_msg.sender.Andencento:
+            if not reply_msg.sender.bot:
                 await func(event)
             else:
                 await event.edit("That's a Bot I Guess. Please reply to actual users..")
@@ -60,7 +57,6 @@ def if_Andencento():
     return decorator
 
 
-# set the pm limit
 def pm_limit():
     def decorator(func):
         @functools.wraps(func)
@@ -75,7 +71,6 @@ def pm_limit():
     return decorator
 
 
-# checks for groups
 def no_grp():
     def decorator(func):
         @functools.wraps(func)
