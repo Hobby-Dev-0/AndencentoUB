@@ -84,12 +84,10 @@ for name in files:
 
 async def op():
     await Andencento(JoinChannelRequest("Andencento"))
-    
- async def noob():
     await Andencento(JoinChannelRequest("AndencentoSupport"))
         
 Andencento.loop.create_task(op())
-Andencento.loop.create_task(noob())
+
 print("Andencento Deployed And Working Fine")
 
 if len(sys.argv) not in (1, 3, 4):
