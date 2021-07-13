@@ -1,7 +1,8 @@
 from sqlalchemy import Column, LargeBinary, Numeric, String, UnicodeText
 
-from . import BASE, SESSION
-Filters.__table__.create(checkfirst=True)
+from userbot.plugins.sql_helper import BASE, SESSION
+
+
 class Filters(BASE):
     __tablename__ = "filters"
     chat_id = Column(String(14), primary_key=True)
