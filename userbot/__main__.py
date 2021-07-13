@@ -11,7 +11,8 @@ from config import Config
 from . import *
 from .utils import *
 from .utils.modules import extra
-
+hl = Config.HANDLER
+PIC = Config.ALIVE_PIC or "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg"
 
 # let's get the bot ready
 async def Andencento_bot(bot_token):
@@ -94,14 +95,15 @@ async def Andencentoiosop():
         if Config.LOGGER_ID != 0:
             await bot.send_file(
                 Config.LOGGER_ID,
-                Eiva_PIC,
+                PIC,
                 caption=f"#START \n\nDeployed Andencento Successfully\n\n**Andencento - {ver}**\n\nType `{hl}ping` or `{hl}alive` to check! \n\nJoin [Andencneto Channel](t.me/Andencento) for Updates & [Andencento Chat](t.me/AndencentoSupport) for any query regarding Team Andencento",
             )
     except Exception as e:
         LOGS.info(str(e))
 
-print("Andencento Deployed And Working Fine")
 Andencento.loop.create_task(Andencentoiosop())
+print("Andencento Deployed And Working Fine")
+
 if len(sys.argv) not in (1, 3, 4):
     Andencento.disconnect()
 else:
