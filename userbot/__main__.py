@@ -65,7 +65,7 @@ if Config.EXTRA == "True":
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
-    path = "Addons-Andencento/*.py"
+    path = "kk/*.py"
     files = glob.glob(path)
     for name in files:
         with open(name) as ex:
