@@ -16,6 +16,7 @@ class Config(object):
     COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
     APP_ID = os.environ.get("APP_ID", None)
     ANDENCENTO_SESSION = os.environ.get("ANDENCENTO_SESSION", None)
+    I_AM_DEVELOPER = os.environ.get(I_AM_DEVELOPER, None)
     UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
     AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
     if AUTH_TOKEN_DATA != None:
