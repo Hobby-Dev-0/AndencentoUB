@@ -1,4 +1,7 @@
-from . import BASE, SESSION
+try:
+    from userbot.plugins.sql_helper import BASE, SESSION
+except ImportError:
+    raise Exception("Hello!")
 
 from sqlalchemy import Column, String
 
