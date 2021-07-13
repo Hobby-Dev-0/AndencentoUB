@@ -57,7 +57,7 @@ for name in files:
 
 
 # Extra Modules...
-extra_repo = Config.EXTRA_REPO or "https://github.com/Noob-Stranger/Addons-Andencento"
+extra_repo = Config.EXTRA_REPO or "https://github.com/TeamExtremePro/MODULES"
 if Config.EXTRA == "True":
     try:
         os.system(f"git clone {extra_repo}")
