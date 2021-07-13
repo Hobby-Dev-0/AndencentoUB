@@ -87,7 +87,7 @@ if Config.EXTRA_PLUGS == "True":
         with open(name) as ex:
             path2 = Path(ex.name)
             shortname = path2.stem
-            extra(shortname.replace(".py", ""))
+            extra_util(shortname.replace(".py", ""))
 
 
 # imports plugins...
