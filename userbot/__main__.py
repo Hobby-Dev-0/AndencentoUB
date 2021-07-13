@@ -74,9 +74,10 @@ if Config.EXTRA == "True":
             extra(shortname.replace(".py", ""))
 
 useraddons_repo = Config.EXTRA_REPO
+cdrepo = Config.REPO_CD
 if Config.EXTRA == "True":
     try:
-        os.system(f"git clone {useraddons_repo}")
+        os.system(f"git clone {useraddons_repo} && cd {cdrepo}")
         os.system("pip install -r requirements.txt")
     except BaseException:
         pass
