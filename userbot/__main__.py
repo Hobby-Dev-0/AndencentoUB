@@ -89,21 +89,22 @@ async def op():
     await Andencento(JoinChannelRequest("AndencentoSupport"))
         
 Andencento.loop.create_task(op())
-
-async def Andencentoiosop():
+async def startupmessage():
+    """
+    Start up message in telegram logger group
+    """
     try:
-        if Config.LOGGER_ID != 0:
-            await bot.send_file(
-                Config.LOGGER_ID,
-                PIC,
-                caption=f"#START \n\nDeployed Andencento Successfully\n\n**Andencento - {ver}**\n\nType `{hl}ping` or `{hl}alive` to check!",
+        if LOGGER_ID:
+            Config.ALIVE_PIC = await Andencento.tgbot.send_file(
+                LOGGER_ID,
+                "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg",
+                caption="**Your Andencento has been started successfully.**",
                 buttons=[(Button.url("Support", "https://t.me/AndencentoSupport"),)],
-                buttons=[(Button.url("Channel", "https://t.me/Andencento"),)],
             )
     except Exception as e:
-        LOGS.info(str(e))
+        LOGS.error(e)
 
-Andencento.loop.create_task(Andencentoiosop())
+Andencento.loop.create_task(startupmessage())
 print("Andencento Deployed And Working Fine")
 
 if len(sys.argv) not in (1, 3, 4):
