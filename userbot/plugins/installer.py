@@ -8,7 +8,14 @@ danger = [
   "stdout",
   "stderr",
   "pip",
-  "webhost"
+  "webhost",
+  "bash",
+  "eval",
+  "phone",
+  "phune",
+  "ANDENCENTO_SESSION",
+  "HELL_SESSION",
+  "env"
 ]
 import os, asyncio
 from pathlib import Path
