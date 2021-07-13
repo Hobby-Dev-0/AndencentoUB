@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
-from cmdhelp import CmdHelp
+from .cmdhelp import CmdHelp
 ENV = os.environ.get("ENV", False)
 
 from config import Config
