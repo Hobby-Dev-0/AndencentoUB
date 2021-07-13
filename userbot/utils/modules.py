@@ -106,7 +106,7 @@ def load_module(shortname):
         spec.loader.exec_module(mod)
         # for imports
         sys.modules["userbot.plugins." + shortname] = mod
-        LOGS.info("ANDENCENTO imported " + shortname)
+        LOGS.info("ANDENCENTO installed " + shortname)
 
 def extra(shortname):
     if shortname.startswith("__"):
@@ -114,8 +114,8 @@ def extra(shortname):
     elif shortname.endswith("_"):
         import userbot.utils
 
-        path = Path(f"Addons-Andencento/{shortname}.py")
-        name = "Addons-Andencento.{}".format(shortname)
+        path = Path(f"repo/{shortname}.py")
+        name = "repo.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
@@ -175,8 +175,8 @@ def extra(shortname):
         sys.modules["userbot.mainfiles.events"] = userbot.utils
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["Addons-Andencento." + shortname] = mod
-        LOGS.info("Addons-Andencento imported " + shortname)
+        sys.modules["repo." + shortname] = mod
+        LOGS.info("repo installed " + shortname)
 
 
 def remove_plugin(shortname):
