@@ -40,7 +40,6 @@ Pillow
 prettytable
 programmingquotes
 psutil
-psycopg2
 PyDictionary
 pyfiglet
 PyGithub
