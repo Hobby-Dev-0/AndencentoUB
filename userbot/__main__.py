@@ -75,7 +75,7 @@ if Config.EXTRA == "True":
 
 useraddons_repo = Config.EXTRA_REPO
 cdrepo = Config.REPO_CD
-if Config.EXTRA == "True":
+if Config.EXTRA_PLUGS == "True":
     try:
         os.system(f"git clone {useraddons_repo} && cd {cdrepo}")
         os.system("pip install -r requirements.txt")
