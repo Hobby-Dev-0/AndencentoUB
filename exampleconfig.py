@@ -1,4 +1,4 @@
-from config import Config
+from userbot.config import Config
 
 
 class Development(Config):
