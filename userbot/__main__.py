@@ -94,7 +94,7 @@ async def startupmessage():
     Start up message in telegram logger group
     """
     try:
-        if LOGGER_ID:
+        if Config.LOGGER_ID:
             Config.ALIVE_PIC = await Andencento.tgbot.send_file(
                 LOGGER_ID,
                 "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg",
