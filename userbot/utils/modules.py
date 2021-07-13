@@ -196,7 +196,7 @@ def extra_util(shortname):
         import userbot.utils
 
         path = Path(f"{cdrepo}/{shortname}.py")
-        name = f"{cdrepo}.plugins.{}".format(shortname)
+        name = "{cdrepo}.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.Andencento = Andencento
