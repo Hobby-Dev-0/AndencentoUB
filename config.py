@@ -319,32 +319,32 @@ if ENV:
         # send .get_id in any channel to forward all your NEW PMs to this group
         PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
         if PRIVATE_GROUP_BOT_API_ID:
-            PRIVATE_GROUP_BOT_API_ID = int(PRIVATE_GROUP_BOT_API_ID)
+            PRIVATE_GROUP_BOT_API_ID = (PRIVATE_GROUP_BOT_API_ID)
         # send .get_id in your private channel to forward all your Private messages
 
         TAG_LOGGER = os.environ.get("TAG_LOGGER", None)
-        if TAG_LOGGER: TAG_LOGGER = int(TAG_LOGGER)
+        if TAG_LOGGER: TAG_LOGGER = (TAG_LOGGER)
 
         #Tag LOGGER
 
         PM_LOGGR_BOT_API_ID = os.environ.get("PM_LOGGR_BOT_API_ID", None)
-        if PM_LOGGR_BOT_API_ID: PM_LOGGR_BOT_API_ID = int(PM_LOGGR_BOT_API_ID)
+        if PM_LOGGR_BOT_API_ID: PM_LOGGR_BOT_API_ID = (PM_LOGGR_BOT_API_ID)
         # For Databases
         # can be None in which case plugins requiring
         # DataBase would not work
         DB_URI = os.environ.get("DATABASE_URL", None)
         # number of rows of buttons to be displayed in .helpme command
-        BUTTONS_IN_HELP = int(os.environ.get("BUTTONS_IN_HELP", 7))
+        BUTTONS_IN_HELP = (os.environ.get("BUTTONS_IN_HELP", 7))
         #open load
         OPEN_LOAD_LOGIN = os.environ.get("OPEN_LOAD_LOGIN", None)
         OPEN_LOAD_KEY = os.environ.get("OPEN_LOAD_KEY", None)
         # number of colums of buttons to be displayed in .help command
-        NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD", 3))
+        NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD = (os.environ.get("NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD", 3))
         # emoji to be displayed  in help .help
         EMOJI_IN_HELP = os.environ.get("EMOJI_IN_HELP", "❦")
         # specify command handler that should be used for the plugins
         # this should be a valid "regex" pattern
-        COMMAND_HAND_LER = os.environ.get("COMMAND_HAND_LER", r"\.")
+        COMMAND_HAND_LER = os.environ.get("HANDLER", r"\.")
         # specify list of users allowed to use bot
         # WARNING: be careful who you grant access to your bot.
         # malicious users could do ".exec rm -rf /*"
@@ -383,7 +383,7 @@ if ENV:
         BIO_MSG = os.environ.get("BIO_MSG", None)
         #Lydia API
         LYDIA_API = os.environ.get("LYDIA_API",None)
-        PLUGIN_CHANNEL = int(os.environ.get("PLUGIN_CHANNEL", None))
+        PLUGIN_CHANNEL = (os.environ.get("PLUGIN_CHANNEL", None))
         BOT_MODE = os.environ.get("BOT_MODE", "ON")
         BOT_TRIGGER = os.environ.get("BOT_TRIGGER", "^/")
         BOTMODE_LOG = int(os.environ.get("BOTMODE_LOG", False))
