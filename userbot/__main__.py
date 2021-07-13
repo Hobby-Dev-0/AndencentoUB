@@ -57,14 +57,14 @@ for name in files:
 
 
 # Extra Modules...
-extra_repo = Config.EXTRA_REPO or "https://github.com/amanpandey7647/kk"
+extra_repo = Config.EXTRA_REPO or "https://github.com/Noob-Stranger/Addons-Andencento"
 if Config.EXTRA == "True":
     try:
         os.system(f"git clone {extra_repo}")
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
-    path = "/userbot/plugins/*.py"
+    path = "Andencento-Addons/*.py"
     files = glob.glob(path)
     for name in files:
         with open(name) as ex:
