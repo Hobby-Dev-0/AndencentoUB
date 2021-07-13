@@ -9,7 +9,7 @@ import sys, asyncio, traceback, os, importlib
 
 
 @Andencento.on(sudo_cmd(pattern=".install", allow_sudo=True)
-async def msg(event):
+async def eor(event):
                await event.eor("Sun Bro Yeh Sudo Restricted Command Hai Ap isse use nhi kr skte ho")
                return
 @register(pattern="^.install -f", outgoing=True)
