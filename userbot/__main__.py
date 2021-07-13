@@ -8,6 +8,7 @@ import telethon.utils
 from telethon import TelegramClient
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 from config import Config
+from . import *
 from .utils import *
 from .utils.modules import extra
 
