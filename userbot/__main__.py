@@ -41,7 +41,7 @@ else:
             Andencento.loop.run_until_complete(Andencento_bot(Config.BOT_USERNAME))
             LOGS.info(" Andencento Startup Completed")
         else:
-            Andencento.star t()
+            Andencento.start()
     except Exception as e:
         LOGS.error(f"BOT_TOKEN - {str(e)}")
         sys.exit()
