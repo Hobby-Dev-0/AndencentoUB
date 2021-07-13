@@ -16,7 +16,8 @@ from config import Config
 from config import Config as Var
 ALIVE_NAME = Config.YOUR_NAME
 StartTime = time.time()
-
+versionop = "0.0.1"
+W2Hversion = versionop
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
 if Var.ANDENCENTO_SESSION:
