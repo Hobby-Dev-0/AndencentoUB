@@ -103,6 +103,7 @@ async def startupmessage():
             )
     except Exception as e:
         LOGS.error(e)
+        return None
 
 Andencento.loop.create_task(startupmessage())
 print("Andencento Deployed And Working Fine")
