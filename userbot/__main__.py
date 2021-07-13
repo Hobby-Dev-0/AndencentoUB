@@ -97,8 +97,8 @@ async def Andencentoiosop():
                 Config.LOGGER_ID,
                 PIC,
                 caption=f"#START \n\nDeployed Andencento Successfully\n\n**Andencento - {ver}**\n\nType `{hl}ping` or `{hl}alive` to check!",
-                buttons=[(Button.url("Support", "https://t.me/AndencentoSupport"),)]
-                buttons=[(Button.url("Channel", "https://t.me/Andencento"),)]
+                buttons=[(Button.url("Support", "https://t.me/AndencentoSupport"),)],
+                buttons=[(Button.url("Channel", "https://t.me/Andencento"),)],
             )
     except Exception as e:
         LOGS.info(str(e))
