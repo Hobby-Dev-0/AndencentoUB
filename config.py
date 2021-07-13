@@ -38,8 +38,6 @@ class Config(object):
     EMOJI_IN_HELP = os.environ.get("EMOJI_IN_HELP", " ")
     FBAN_LOG_GROUP = os.environ.get("FBAN_LOG_GROUP", None)
     EXTRA = os.environ.get("EXTRA", None)
-    EXTRA_PLUGS = os.environ.get("EXTRA_PLUGS", None)
-    REPO_CD = os.environ.get("REPO_CD", None)
     EXTRA_REPO = os.environ.get("EXTRA_REPO", None)
     if FBAN_LOG_GROUP:
         FBAN_LOG_GROUP = int(FBAN_LOG_GROUP)
