@@ -164,4 +164,4 @@ else:
     Andencento.run_until_disconnected()
     
 if __name__=="__main__":
-    noob.run_until_disconnected
+    noob.run_until_disconnected()
