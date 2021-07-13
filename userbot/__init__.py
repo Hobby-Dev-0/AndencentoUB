@@ -24,7 +24,7 @@ else:
     session_name = "startup"
     Andencento = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
 
-noob = TelegramClient(None, Var.APP_ID, Var.API_HASH)
+noob = TelegramClient("noob", Var.APP_ID, Var.API_HASH)
 
 
 if CONSOLE_LOGGER_VERBOSE:
