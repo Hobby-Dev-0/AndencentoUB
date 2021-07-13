@@ -57,15 +57,31 @@ for name in files:
 
 
 # Extra Modules...
-extra_repo = Config.EXTRA_REPO or "https://github.com/Noob-Stranger/Addons-Andencento"
+extra_repo = "https://github.com/Noob-Stranger/Addons-Andencento"
 if Config.EXTRA == "True":
     try:
-        os.system(f"git clone {extra_repo}")
+        os.system(f"git clone {extra_repo} && cd Addons-Andencento")
         os.system("pip install -r requirements.txt")
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
     path = "Addons-Andencento/*.py"
+    files = glob.glob(path)
+    for name in files:
+        with open(name) as ex:
+            path2 = Path(ex.name)
+            shortname = path2.stem
+            extra(shortname.replace(".py", ""))
+
+useraddons_repo = Config.EXTRA_REPO
+if Config.EXTRA == "True":
+    try:
+        os.system(f"git clone {useraddons_repo}")
+        os.system("pip install -r requirements.txt")
+    except BaseException:
+        pass
+    LOGS.info("Installing Extra Plugins")
+    path = f"{useraddons_repo}/*.py"
     files = glob.glob(path)
     for name in files:
         with open(name) as ex:
