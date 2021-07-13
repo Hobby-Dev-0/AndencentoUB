@@ -104,8 +104,6 @@ async def Andencentoiosop():
 
 
 
-bot.loop.run_until_complete(setgrp())
-
 Andencento.loop.create_task(Andencentoiosop())
 print("Andencento Deployed And Working Fine")
 
