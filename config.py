@@ -74,6 +74,7 @@ class Config(object):
     if PLUGIN_CHANNEL:
         PLUGIN_CHANNEL = int(PLUGIN_CHANNEL)
     PM_LOG_ID = os.environ.get("PM_LOG_ID", None)
+    PRIVATE_GROUP_BOT_API_ID = os.environ.get("PM_LOG_ID", None)
     if PM_LOG_ID:
         PM_LOG_ID = int(PM_LOG_ID)
     PM_PERMIT = os.environ.get("PM_PERMIT", "ENABLE")
