@@ -11,6 +11,11 @@ lg_id = Config.LOGGER_ID
 
 @Andencento.on(admin_cmd(pattern="exec(?: |$|\n)(.*)", command="exec"))
 async def _(event):
+    if Config.I_AM_DEVELOPER != "True":
+        await eor(
+            event,
+            f"Developer Restricted!\nIf you know what this does, and want to proceed\n\n {HANDLER}set var I_AM_DEVELOPER True\n\nThis Might Be Dangerous.",
+        )
     if event.fwd_from:
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
@@ -98,6 +103,11 @@ async def aexec(code, smessatatus):
 
 @Andencento.on(admin_cmd(pattern="bash ?(.*)", outgoing=True))
 async def _(event):
+    if Config.I_AM_DEVELOPER != "True":
+        await eor(
+            event,
+            f"Developer Restricted!\nIf you know what this does, and want to proceed\n\n {HANDLER}set var I_AM_DEVELOPER True\n\nThis Might Be Dangerous.",
+        )
     if event.fwd_from:
         return
     PROCESS_RUN_TIME = 100
