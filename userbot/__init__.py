@@ -123,11 +123,10 @@ for name in files:
 
 
 # Extra Modules...
-extra_repo = Config.EXTRA_REPO or "https://github.com/amanpandey7647/repo"
+extra_repo = Config.EXTRA_REPO or "https://github.com/Noob-Stranger/Addons-Andencento"
 if Config.EXTRA == "True":
     try:
         os.system(f"git clone {extra_repo}")
-        os.system("pip install -r requirements.txt")
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
@@ -138,6 +137,7 @@ if Config.EXTRA == "True":
             path2 = Path(ex.name)
             shortname = path2.stem
             extra(shortname.replace(".py", ""))
+
 
 
 # imports plugins...
