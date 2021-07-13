@@ -41,20 +41,19 @@ else:
             Andencento.loop.run_until_complete(Andencento_bot(Config.BOT_USERNAME))
             LOGS.info(" Andencento Startup Completed")
         else:
-            Andencento.start()
+            Andencento.star t()
     except Exception as e:
         LOGS.error(f"BOT_TOKEN - {str(e)}")
         sys.exit()
         
 
 async def setgrp():
-  bot.set(bot_username=(await noob.get_me()).username)
   k = await get_grp()
   if k:
     return print ('Private Group already setted')
   print ("Creating group wait A min")
   mybot = (await noob.get_me()).username
-  r = await bot(ccr(users=[mybot], title='Ultra X Private Group'))
+  r = await bot(ccr(users=[mybot], title='Andencento userbot Private'))
   await add_grp(r.chats[0].id)
   id = r.chats[0].id
   await bot (af(chat_id=id, photo=await bot.upload_file("https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg"))) 
