@@ -10,7 +10,6 @@ from . import *
 lg_id = Config.LOGGER_ID
 
 @Andencento.on(admin_cmd(pattern="exec(?: |$|\n)(.*)", command="exec"))
-@Andencento.on(sudo_cmd(pattern="exec(?: |$|\n)(.*)", command="exec", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -38,11 +37,13 @@ async def _(event):
         lg_id,
         f"#EXEC \n\nTerminal command was executed sucessfully.\n\n**Command :**  `{cmd}`\n**Result :** \n{cresult}",
     )
-
+dev = os.environ.get(I_AM_DEVELOPER, None)
 
 @Andencento.on(admin_cmd(pattern="eval(?: |$|\n)(.*)", command="eval"))
-@Andencento.on(sudo_cmd(pattern="eval(?: |$|\n)(.*)", command="eval", allow_sudo=True))
 async def _(event):
+    if dev = False or None:
+        await eor("This is Developer Restricted Cmd. If You know about programming then do 'I_AM_DEVELOPER True' ")
+        return
     if event.fwd_from:
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
@@ -93,7 +94,6 @@ async def aexec(code, smessatatus):
 
 
 @Andencento.on(admin_cmd(pattern="bash ?(.*)", outgoing=True))
-@Andencento.on(sudo_cmd(pattern="bash ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
