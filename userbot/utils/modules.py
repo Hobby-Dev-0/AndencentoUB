@@ -87,6 +87,7 @@ def load_module(shortname):
         sys.modules["uniborg.util"] = userbot.utils
         sys.modules["telebot.utils"] = userbot.utils
         sys.modules["userbot.utils"] = userbot.utils
+        sys.modules["userbot.plugins.sql_helper"] = userbot.sql
         sys.modules["userbot.events"] = userbot.utils
         sys.modules["jarvis.jconfig"] = userbot.config
         sys.modules["userbot.config"] = userbot.config
@@ -161,6 +162,7 @@ def extra(shortname):
         sys.modules["jarvis.jconfig"] = userbot.config
         sys.modules["userbot.config"] = userbot.config
         sys.modules["fridaybot.utils"] = userbot.utils
+        sys.modules["userbot.plugins.sql_helper"] = userbot.sql
         sys.modules["fridaybot.Config"] = userbot.config
         sys.modules["userbot.uniborgConfig"] = userbot.config
         mod.edit_or_reply = edit_or_reply
