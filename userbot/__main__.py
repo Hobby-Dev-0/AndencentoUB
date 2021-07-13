@@ -78,7 +78,6 @@ cdrepo = Config.REPO_CD
 if Config.EXTRA_PLUGS == "True":
     try:
         os.system(f"git clone {useraddons_repo} && cd {cdrepo}")
-        os.system("pip install -r requirements.txt")
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
