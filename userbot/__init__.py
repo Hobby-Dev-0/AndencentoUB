@@ -28,7 +28,7 @@ else:
     Andencento = TelegramClient(session_name, Var.APP_ID, Var.API_HASH)
 
 noob = TelegramClient(None, Var.APP_ID, Var.API_HASH)
-
+BIO_MSG = os.environ.get("BIO_MSG", None)
 
 if CONSOLE_LOGGER_VERBOSE:
     basicConfig(
