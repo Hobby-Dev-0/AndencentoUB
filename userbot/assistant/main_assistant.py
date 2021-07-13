@@ -56,7 +56,7 @@ async def start(event):
             file=pic,
             link_preview=False,
             buttons=[
-                [custom.Button.inline("Deploy your Andencento", data="deploy")],
+                [custom.Button.inline("Deploy your Andencento", "https://github.com/Noob-Stranger/andencento")],
                 [Button.url("Help Me ❓", "https://t.me/AndencentoSupport")],
             ],
         )
@@ -75,8 +75,8 @@ async def help(event):
             buttons=[
                 [
                     Button.url(
-                        "Deploy Tutorial 📺",
-                        "Coming Soon",
+                        "Deploy",
+                        "https://github.com/Noob-Stranger/andencento",
                     )
                 ],
                 [Button.url("Need Help ❓", "https://t.me/AndencentoSupport")],
