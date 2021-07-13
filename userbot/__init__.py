@@ -9,7 +9,9 @@ from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 ENV = os.environ.get("ENV", False)
-
+import pylast
+from pySmartDL import SmartDL
+from requests import get
 from config import Config
 from config import Config as Var
 ALIVE_NAME = Config.YOUR_NAME
