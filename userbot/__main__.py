@@ -61,11 +61,10 @@ extra_repo = Config.EXTRA_REPO or "https://github.com/amanpandey7647/kk"
 if Config.EXTRA == "True":
     try:
         os.system(f"git clone {extra_repo}")
-        os.system("pip install -r requirements.txt")
     except BaseException:
         pass
     LOGS.info("Installing Extra Plugins")
-    path = "kk/*.py"
+    path = "kk/userbot/plugins/*.py"
     files = glob.glob(path)
     for name in files:
         with open(name) as ex:
