@@ -41,7 +41,7 @@ dev = os.environ.get(I_AM_DEVELOPER, None)
 
 @Andencento.on(admin_cmd(pattern="eval(?: |$|\n)(.*)", command="eval"))
 async def _(event):
-    if dev = False or None:
+    if {dev} = False or None:
         await eor("This is Developer Restricted Cmd. If You know about programming then do 'I_AM_DEVELOPER True' ")
         return
     if event.fwd_from:
