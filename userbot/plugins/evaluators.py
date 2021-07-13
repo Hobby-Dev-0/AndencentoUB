@@ -37,12 +37,15 @@ async def _(event):
         lg_id,
         f"#EXEC \n\nTerminal command was executed sucessfully.\n\n**Command :**  `{cmd}`\n**Result :** \n{cresult}",
     )
-dev = os.environ.get(I_AM_DEVELOPER, None)
+
 
 @Andencento.on(admin_cmd(pattern="eval(?: |$|\n)(.*)", command="eval"))
 async def _(event):
-    if {dev} = False or None:
-        await eor("This is Developer Restricted Cmd. If You know about programming then do 'I_AM_DEVELOPER True' ")
+    if Config.I_AM_DEVELOPER != "True":
+        await eor(
+            event,
+            f"Developer Restricted!\nIf you know what this does, and want to proceed\n\n {HANDLER}set var I_AM_DEVELOPER True\n\nThis Might Be Dangerous.",
+        )
         return
     if event.fwd_from:
         return
