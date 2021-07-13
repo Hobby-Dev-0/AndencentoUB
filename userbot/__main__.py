@@ -96,7 +96,7 @@ async def startupmessage():
     try:
         if Config.LOGGER_ID:
             Config.ALIVE_PIC = await Andencento.send_file(
-                LOGGER_ID,
+                Config.LOGGER_ID,
                 "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg",
                 caption="**Your Andencento has been started successfully.**",
                 buttons=[(Button.url("Support", "https://t.me/AndencentoSupport"),)],
