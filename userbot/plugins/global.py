@@ -55,7 +55,7 @@ async def _(event):
     gmsg = f"🥴 [{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Agli bar se backchodi nahi betichod**\n\n📍 Also Added to Gban Watch!!**!\n**🔰 Total Chats :**  `{chats}`"
     if reason != "":
         gmsg += f"\n**🔰 Reason :**  `{reason}`"
-    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Agli bar se backchodi nahi betichod**\n\n**📍 Also Added to Gban Watch!!**!\n**🔰 Total Chats :**  `{chats}`""
+    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Agli bar se backchodi nahi betichod**\n\n**📍 Also Added to Gban Watch!!**!\n**🔰 Total Chats :**  `{chats}`"
     if reason != "":
         ogmsg += f"\n**🔰 Reason :**  `{reason}`"
     if Config.ABUSE == "ON":
