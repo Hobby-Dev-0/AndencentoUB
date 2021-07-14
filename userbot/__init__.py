@@ -330,7 +330,7 @@ if bool(ENV):
     else:
         basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
                     level=INFO)
-    LOGS = getLogger(__name__)
+    LOGS = getLogger("ANDENCENTO")
 
     # Check if the config was edited by using the already used variable.
     # Basically, its the 'virginity check' for the config file ;)
