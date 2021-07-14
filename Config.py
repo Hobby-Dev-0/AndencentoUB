@@ -102,8 +102,7 @@ if ENV:
         IBM_WATSON_CRED_PASSWORD = os.environ.get("IBM_WATSON_CRED_PASSWORD", None)
         # This is required for the hash to torrent file functionality to work.
         HASH_TO_TORRENT_API = os.environ.get("HASH_TO_TORRENT_API", "https://example.com/torrent/{}");
-                LOGGER = True
-        # Get this value from my.telegram.org! Please do not steal
+     # Get this value from my.telegram.org! Please do not steal
         LOCATION = os.environ.get("LOCATION", None)
         OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
         # Get your own ACCESS_KEY from http://api.screenshotlayer.com/api/capture
