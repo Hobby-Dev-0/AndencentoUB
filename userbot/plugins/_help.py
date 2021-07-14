@@ -22,7 +22,7 @@ botname = Config.BOT_USERNAME
 async def repo(event):
     try:
         Eiva = await bot.inline_query(botname, "repo")
-        await Eiva[0].click(event.chat_id)
+        await Eiva.click(event.chat_id)
         if event.sender_id == ForGo10God:
             await event.delete()
     except (noin, dedbot):
@@ -44,7 +44,7 @@ async def yardim(event):
         pass
     if tgbotusername is not None:
         results = await event.client.inline_query(tgbotusername, "Eivabot_help")
-        await results[0].click(
+        await results.click(
             event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
         )
         await event.delete()
