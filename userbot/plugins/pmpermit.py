@@ -196,7 +196,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 return
             except:
                 return
-        r = await event.client.send_message(
+        r = await borg.send_message(
             event.chat_id, caption=USER_BOT_NO_WARN
         )
         PM_WARNS[chat_ids] += 1
