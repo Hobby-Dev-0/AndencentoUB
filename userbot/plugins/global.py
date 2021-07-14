@@ -10,7 +10,7 @@ from . import *
 @Andencento.on(admin_cmd(pattern=r"gban ?(.*)"))
 @Andencento.on(sudo_cmd(pattern=r"gban ?(.*)", allow_sudo=True))
 async def _(event):
-    user = await eor(event, "`Gbanning...`")
+    user = await eor(event, "`Gbanning this retard`")
     reason = ""
     if event.reply_to_msg_id:
         userid = (await event.get_reply_message()).sender_id
@@ -38,7 +38,7 @@ async def _(event):
     if userid == ForGo10God:
         return await eod(user, "🥴 **Nashe me hai kya lawde ‽**")
     if str(userid) in DEVLIST:
-        return await eod(user, "😑 **GBan my creator ?¿ Really‽**")
+        return await eod(user, "😑 **Nashe me hai kya lawde. GBan my creator ?¿ Really‽**")
     if is_gbanned(userid):
         return await eod(
             user,
@@ -55,11 +55,11 @@ async def _(event):
     gmsg = f"🥴 [{name}](tg://user?id={userid}) **beta majdur ko khodna 😪 aur** {user_mention} **ko chodna... Kabhi sikhana nhi!! 😏**\n\n📍 Added to Gban Watch!!\n**🔰 Total Chats :**  `{chats}`"
     if reason != "":
         gmsg += f"\n**🔰 Reason :**  `{reason}`"
-    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Chats!! 😏**\n\n**📍 Also Added to Gban Watch!!**"
+    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Agli bar se backchodi nahi betichod**\n\n**📍 Also Added to Gban Watch!!**"
     if reason != "":
         ogmsg += f"\n**🔰 Reason :**  `{reason}`"
     if Config.ABUSE == "ON":
-        await bot.send_file(event.chat_id, cjb, caption=gmsg)
+        await bot.send_file(event.chat_id, caption=gmsg)
     else:
         await user.edit(ogmsg)
 
