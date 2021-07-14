@@ -196,8 +196,8 @@ if Var.PRIVATE_GROUP_ID is not None:
                 return
             except:
                 return
-        r = await event.Andencento.send_file(
-            event.chat_id, WARN_PIC, caption=USER_BOT_NO_WARN
+        r = await event.client.send_message(
+            event.chat_id caption=USER_BOT_NO_WARN
         )
         PM_WARNS[chat_ids] += 1
         if chat_ids in PREV_REPLY_MESSAGE:
