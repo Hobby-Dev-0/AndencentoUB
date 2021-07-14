@@ -163,9 +163,9 @@ if Var.PRIVATE_GROUP_ID is not None:
         if any([x in event.raw_text for x in ("/start", "1", "2", "3", "4", "5")]):
             return
 
-        if not pmpermit_sql.is_approved(chat_id):
+        if not pmpermit_sql.is_approved(chat_ids):
             # pm permit
-            await do_pm_permit_action(chat_id, event)
+            await do_pm_permit_action(chat_ids, event)
 
     async def do_pm_permit_action(chat_ids, event):
         if chat_ids not in PM_WARNS:
