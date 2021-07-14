@@ -2,7 +2,7 @@ import os
 import sys
 import time
 from distutils.util import strtobool as sb
-os.system("pip install -r requirements")
+os.system("pip install -r requirements.txt")
 def clear(): os.system('cls') #on Windows System
 clear()
 from logging import DEBUG, INFO, basicConfig, getLogger
