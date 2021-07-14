@@ -6,7 +6,7 @@ op = os.environ.get("REQ", None)
 if {op} == "False" or None:
     try:
         os.system("pip install -r requirements.txt")
-     except BaseException:
+    except BaseException:
         pass
 from logging import DEBUG, INFO, basicConfig, getLogger
 import heroku3
