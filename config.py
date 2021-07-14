@@ -169,6 +169,7 @@ class Var(object):
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
     BUTTONS_IN_HELP = int(os.environ.get("BUTTONS_IN_HELP", 7))
     CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
+    COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
     CHROME_BIN = os.environ.get("CHROME_BIN", "/app/.apt/usr/bin/google-chrome")
     CHROME_DRIVER = os.environ.get("CHROME_DRIVER", "/app/.chromedriver/bin/chromedriver")
     CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
