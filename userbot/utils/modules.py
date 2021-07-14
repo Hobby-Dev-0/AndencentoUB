@@ -81,6 +81,7 @@ def load_module(shortname):
         sys.modules["jarvis"] = userbot
         sys.modules["support"] = userbot
         sys.modules["userbot"] = userbot
+        sys.modules["sql_helper"] = userbot.sql
         sys.modules["telebot"] = userbot
         sys.modules["fridaybot"] = userbot
         sys.modules["jarvis.utils"] = userbot.utils
@@ -152,6 +153,7 @@ def extra(shortname):
         sys.modules["jarvis"] = userbot
         sys.modules["support"] = userbot
         sys.modules["userbot"] = userbot
+        sys.modules["sql_helper"] = userbot.sql
         sys.modules["telebot"] = userbot
         sys.modules["fridaybot"] = userbot
         sys.modules["jarvis.utils"] = userbot.utils
