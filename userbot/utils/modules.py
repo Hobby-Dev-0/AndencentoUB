@@ -78,7 +78,6 @@ def load_module(shortname):
         sys.modules["userbot.Config"] = userbot.config
         sys.modules["userbot.uniborConfig"] = userbot.config
         sys.modules["ub"] = userbot
-        sys.modules["plugins"] = userbot.pugins
         sys.modules["jarvis"] = userbot
         sys.modules["support"] = userbot
         sys.modules["userbot"] = userbot
@@ -161,7 +160,6 @@ def extra(shortname):
         sys.modules["uniborg.util"] = userbot.utils
         sys.modules["telebot.utils"] = userbot.utils
         sys.modules["userbot.utils"] = userbot.utils
-        sys.modules["plugins"] = userbot.pugins
         sys.modules["userbot.events"] = userbot.utils
         sys.modules["jarvis.jconfig"] = userbot.config
         sys.modules["userbot.config"] = userbot.config
