@@ -25,7 +25,7 @@ from telethon.tl.functions.messages import ExportChatInviteRequest
 Eiva_mention = f"[{Eiva_USER}](tg://user?id={ForGo10God})"
 
 Eiva_row = Config.BUTTONS_IN_HELP
-Eiva_emoji = Config.EMOJI_IN_HELP
+Eiva_emoji = Config.EMOJI_IN_HELP or "  "
 Eiva_pic = Config.PMPERMIT_PIC or "None"
 cstm_pmp = Config.CUSTOM_PMPERMIT
 ALV_PIC = Config.ALIVE_PIC
