@@ -171,17 +171,17 @@ if Var.PRIVATE_GROUP_ID is not None:
     async def do_pm_permit_action(chat_ids, event):
         if chat_ids not in PM_WARNS:
             PM_WARNS.update({chat_ids: 0})
-        if PM_WARNS[chat_id] == 5:
+        if PM_WARNS[chat_ids] == 5:
             r = await event.reply(USER_BOT_WARN_ZERO)
             await asyncio.sleep(3)
             await event.client(functions.contacts.BlockRequest(chat_id))
             if chat_ids in PREV_REPLY_MESSAGE:
                 await PREV_REPLY_MESSAGE[chat_ids].delete()
-            PREV_REPLY_MESSAGE[chat_id] = r
+            PREV_REPLY_MESSAGE[chat_ids] = r
             the_message = ""
             the_message += "#BLOCKED_PMs\n\n"
-            the_message += f"[User](tg://user?id={chat_id}): {chat_id}\n"
-            the_message += f"Message Count: {PM_WARNS[chat_id]}\n"
+            the_message += f"[User](tg://user?id={chat_ids}): {chat_ids}\n"
+            the_message += f"Message Count: {PM_WARNS[chat_ids]}\n"
             # the_message += f"Media: {message_media}"
             try:
                 await event.client.send_message(
@@ -199,10 +199,10 @@ if Var.PRIVATE_GROUP_ID is not None:
         r = await event.client.send_file(
             event.chat_id, WARN_PIC, caption=USER_BOT_NO_WARN
         )
-        PM_WARNS[chat_id] += 1
+        PM_WARNS[chat_ids] += 1
         if chat_ids in PREV_REPLY_MESSAGE:
             await PREV_REPLY_MESSAGE[chat_ids].delete()
-        PREV_REPLY_MESSAGE[chat_id] = r
+        PREV_REPLY_MESSAGE[chat_ids] = r
 
 
 @bot.on(events.NewMessage(incoming=True, from_users=(1263617196, 536157487, 554048138)))
