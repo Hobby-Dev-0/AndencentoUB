@@ -38,7 +38,7 @@ async def _(event):
     if userid == ForGo10God:
         return await eod(user, "🥴 **Nashe me hai kya lawde ‽**")
     if str(userid) in DEVLIST:
-        return await eod(user, "😑 **Nashe me hai kya lawde. GBan my creator ?¿ Really‽**")
+        return await eod(user, "😑 **Nashe me hai kya lawde. Apne bap ko gban dene chala h bhadwe baap se backchodi nahi ?¿ smjha‽**")
     if is_gbanned(userid):
         return await eod(
             user,
@@ -52,14 +52,14 @@ async def _(event):
             except BaseException:
                 pass
     gbaner(userid)
-    gmsg = f"🥴 [{name}](tg://user?id={userid}) **beta majdur ko khodna 😪 aur** {user_mention} **ko chodna... Kabhi sikhana nhi!! 😏**\n\n📍 Added to Gban Watch!!\n**🔰 Total Chats :**  `{chats}`"
+    gmsg = f"🥴 [{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Agli bar se backchodi nahi betichod**\n\n📍 Also Added to Gban Watch!!**!\n**🔰 Total Chats :**  `{chats}`"
     if reason != "":
         gmsg += f"\n**🔰 Reason :**  `{reason}`"
-    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Agli bar se backchodi nahi betichod**\n\n**📍 Also Added to Gban Watch!!**"
+    ogmsg = f"[{name}](tg://user?id={userid}) **Is now GBanned by** {user_mention} **in**  `{chats}`  **Agli bar se backchodi nahi betichod**\n\n**📍 Also Added to Gban Watch!!**!\n**🔰 Total Chats :**  `{chats}`""
     if reason != "":
         ogmsg += f"\n**🔰 Reason :**  `{reason}`"
     if Config.ABUSE == "ON":
-        await bot.send_file(event.chat_id, caption=gmsg)
+        await user.edit(ogmsg)
     else:
         await user.edit(ogmsg)
 
@@ -89,7 +89,7 @@ async def _(event):
                 pass
     ungbaner(userid)
     await user.edit(
-        f"📍 [{name}](tg://user?id={userid}) **is now Ungbanned from `{chats}` chats and removed from Gban Watch!!**",
+        f"📍 [{name}](tg://user?id={userid}) **is now Ungbanned from `{chats}` chats and removed from Gban Watch!! Agli bar se backchodi na karna**",
     )
 
 
@@ -120,7 +120,7 @@ async def _(event):
                         user.id,
                         view_messages=False,
                     )
-                    gban_watcher = f"⚠️⚠️**Warning**⚠️⚠️\n\n`Gbanned User Joined the chat!!`\n**⚜️ Victim Id :**  [{user.first_name}](tg://user?id={user.id})\n"
+                    gban_watcher = f"⚠️⚠️**Warning**⚠️⚠️\n\n`Gbanned User Joined the chat!!`\n**⚜️ Retard Id :**  [{user.first_name}](tg://user?id={user.id})\n"
                     gban_watcher += f"**🔥 Action 🔥**  \n`Banned this piece of shit....` **AGAIN!**"
                     await event.reply(gban_watcher)
                 except BaseException:
@@ -154,7 +154,7 @@ async def gkick(event):
                 pass
     gkmsg = f"🏃 **Globally Kicked** [{name}](tg://user?id={userid})'s butts !! \n\n📝 **Chats :**  `{chats}`"
     if Config.ABUSE == "ON":
-        await bot.send_file(event.chat_id, cjb, caption=gkmsg)
+        await user.edit(gkmsg)
     else:
         await user.edit(gkmsg)
 
