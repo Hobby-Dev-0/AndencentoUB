@@ -29,8 +29,8 @@ async def repo(event):
         await eor(event, msg)
 
 
-@Andencento.on(admin_cmd(pattern="help ?(.*)", outgoing=True))
-@Andencento.on(sudo_cmd(pattern="help ?(.*)", allow_sudo=True))
+@Andencento.on(admin_cmd(pattern="shelp ?(.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern="shelp ?(.*)", allow_sudo=True))
 async def yardim(event):
     if event.fwd_from:
         return
