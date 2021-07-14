@@ -112,11 +112,6 @@ except Exception:
     CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
     CUSTOM_AFK = os.environ.get("CUSTOM_AFK", None)
 
-    # Upstream Repo
-    UPSTREAM_REPO_URL = os.environ.get(
-    "UPSTREAM_REPO_URL",
-    "https://github.com/W2HGalaxy-OP/userbot.git")
-
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
     BIO_MSG = os.environ.get("BIO_MSG", None)
