@@ -12,7 +12,6 @@ from ..sql import pmpermit_sql as pm_sql
 # I Have Taken Permisson To Import Pmpermit, Inline, Help from Eiva Userbot To Andencento. from Owner Shivansh Proof - https://telegra.ph/file/692c46d42e8021ddb61fc.png
 
 DEVLIST = [
-    "1725374070"
     "1320929227"
 ]
 
