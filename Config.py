@@ -254,7 +254,7 @@ if ENV:
                 # number of rows of buttons to be displayed in .helpme command
         NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD = int(os.environ.get("NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD", 7))
         #
-        NO_SONGS = os.environ.get("NO_SONGS", False))
+        NO_SONGS = os.environ.get("NO_SONGS", False)
         #
         # DO NOT EDIT BELOW THIS LINE IF YOU DO NOT KNOW WHAT YOU ARE DOING
         # TG API limit. A message can have maximum 4096 characters!
