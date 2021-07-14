@@ -17,6 +17,7 @@ class Config(object):
     APP_ID = os.environ.get("APP_ID", None)
     ANDENCENTO_SESSION = os.environ.get("ANDENCENTO_SESSION", None)
     I_AM_DEVELOPER = os.environ.get("I_AM_DEVELOPER", None)
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY, ./userbot/cache")
     UB_BLACK_LIST_CHAT = set(int(x) for x in os.environ.get("UB_BLACK_LIST_CHAT", "").split())
     AUTH_TOKEN_DATA = os.environ.get("AUTH_TOKEN_DATA", None)
     if AUTH_TOKEN_DATA != None:
@@ -168,6 +169,7 @@ class Var(object):
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
     BUTTONS_IN_HELP = int(os.environ.get("BUTTONS_IN_HELP", 7))
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY, ./userbot/cache")
     CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
     COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
     CHROME_BIN = os.environ.get("CHROME_BIN", "/app/.apt/usr/bin/google-chrome")
