@@ -26,18 +26,20 @@ async def spammer(e):
 
 @Andencento.on(admin_cmd(pattern="bigspam"))
 @Andencento.on(sudo_cmd(pattern="bigspam", allow_sudo=True))
-async def bigspam(user):
-    if not user.text[0].isalpha() and user.text[0] not in ("/", "#", "@", "!"):
-        user_msg = user.text
-        userbot_count = int(user_msg[9:13])
-        user_spam = str(user.text[13:])
-        for i in range(1, userbot_count):
-            await user.respond(user_spam)
-        await user.delete()
-        await user.client.send_message(
-                lg_id, f"#BIGSPAM \n\nBigspammed  `{user_count}`  messages !!"
-        )
-
+async def bigspam(e):
+    if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
+        message = e.text
+        counter = int(message[9:13])
+        spam_message = str(e.text[13:])
+        for i in range(1, counter):
+            await e.respond(spam_message)
+        await e.delete()
+        if LOGGER:
+            await e.client.send_message(
+                LOGGER_GROUP,
+                "#BIGSPAM \n\n"
+                "Bigspam was executed successfully"
+                )
 
 @Andencento.on(admin_cmd("dspam (.*)"))
 @Andencento.on(sudo_cmd(pattern="dspam (.*)", allow_sudo=True))
