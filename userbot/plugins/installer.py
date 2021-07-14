@@ -18,6 +18,7 @@ danger = [
   "phune",
   "ANDENCENTO_SESSION",
   "HELL_SESSION",
+  "venv"
   "env"
 ]
 import os, asyncio
