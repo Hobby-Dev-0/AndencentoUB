@@ -77,6 +77,7 @@ class Config(object):
         PLUGIN_CHANNEL = int(PLUGIN_CHANNEL)
     PM_LOG_ID = os.environ.get("PM_LOG_ID", None)
     PRIVATE_GROUP_BOT_API_ID = os.environ.get("PM_LOG_ID", None)
+    PRIVATE_GROUP_ID = os.environ.get("PM_LOG_ID", None)
     if PM_LOG_ID:
         PM_LOG_ID = int(PM_LOG_ID)
     PM_PERMIT = os.environ.get("PM_PERMIT", "ENABLE")
@@ -168,6 +169,7 @@ class Var(object):
     BL_CHAT = set(int(x) for x in os.environ.get("BL_CHAT", "").split())
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
+    PRIVATE_GROUP_ID = os.environ.get("PM_LOG_ID", None)
     BUTTONS_IN_HELP = int(os.environ.get("BUTTONS_IN_HELP", 7))
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY, ./userbot/cache")
     CHATS_TO_MONITOR_FOR_ANTI_FLOOD = []
