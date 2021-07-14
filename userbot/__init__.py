@@ -2,9 +2,12 @@ import os
 import sys
 import time
 from distutils.util import strtobool as sb
-os.system("pip install -r requirements.txt")
-def clear(): os.system('cls') #on Windows System
-clear()
+op = os.environ.get("REQ", None)
+if {op} == "False" or None:
+    try:
+        os.system("pip install -r requirements.txt")
+     except BaseException:
+        pass
 from logging import DEBUG, INFO, basicConfig, getLogger
 import heroku3
 from dotenv import load_dotenv
@@ -22,6 +25,7 @@ StartTime = time.time()
 from Config import Config
 versionop = "0.0.1"
 W2Hversion = versionop
+botversion = versionop
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
 if Var.ANDENCENTO_SESSION:
