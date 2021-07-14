@@ -134,6 +134,7 @@ if Var.PRIVATE_GROUP_ID is not None:
 
         message_text = event.message.message
         chat_id = event.from_id
+        chat_ids = event.sender_id
 
         message_text.lower()
         if USER_BOT_NO_WARN == message_text:
@@ -163,7 +164,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         if any([x in event.raw_text for x in ("/start", "1", "2", "3", "4", "5")]):
             return
 
-        if not pmpermit_sql.is_approved(chat_id):
+        if not pmpermit_sql.is_approved(chat_ids):
             # pm permit
             await do_pm_permit_action(chat_ids, event)
 
