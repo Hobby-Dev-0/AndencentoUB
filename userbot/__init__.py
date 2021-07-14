@@ -2,8 +2,9 @@ import os
 import sys
 import time
 from distutils.util import strtobool as sb
-os.system("pip install -r requiremnts")
-cls()
+os.system("pip install -r requirements")
+def clear(): os.system('cls') #on Windows System
+clear()
 from logging import DEBUG, INFO, basicConfig, getLogger
 import heroku3
 from dotenv import load_dotenv
