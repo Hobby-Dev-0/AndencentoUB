@@ -162,6 +162,21 @@ bot = Andencento
 
 # global variables
 CMD_LIST = {}
+# for later purposes
+CMD_HELP = {}
+CMD_HELP_BOT = {}
+BRAIN_CHECKER = []
+INT_PLUG = ""
+LOAD_PLUG = {}
+COUNT_MSG = 0
+USERS = {}
+COUNT_PM = {}
+LASTMSG = {}
+CMD_HELP = {}
+ISAFK = False
+AFKREASON = None
+SUDO_LIST = {}
+CMD_LIST = {}
 CMD_HELP = {}
 CMD_HELP_BOT = {}
 BRAIN_CHECKER = []
