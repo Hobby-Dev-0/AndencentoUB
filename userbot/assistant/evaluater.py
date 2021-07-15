@@ -4,13 +4,14 @@ import os
 import sys
 import traceback
 from .. import *
+from ..config import Config
 from telethon import events
 
-
+I_AM_DEVELOPER = os.environ.get("I_AM_DEVELOPER", None)
 
 @tgbot.on(events.NewMessage(pattern="/eval ?(.*)"))
 async def _(event):
-  if Config.I_AM_DEVELOPER != "True":
+  if I_AM_DEVELOPER != "True":
     await tgbot.send_message(
       event,
       f"Developer Restricted!\nIf you know what this does, and want to proceed\n\n {HANDLER}set var I_AM_DEVELOPER True\n\nThis Might Be Dangerous.",
@@ -69,7 +70,7 @@ async def aexec(code, smessatatus):
 
 @tgbot.on(events.NewMessage(pattern="/exec ?(.*)"))
 async def _(event):
-  if Config.I_AM_DEVELOPER != "True":
+  if I_AM_DEVELOPER != "True":
     await tgbot.send_message(
       event,
       f"Developer Restricted!\nIf you know what this does, and want to proceed\n\n {HANDLER}set var I_AM_DEVELOPER True\n\nThis Might Be Dangerous.",
