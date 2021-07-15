@@ -1,5 +1,5 @@
 try:
-    from userbot.plugins.sql_helper import BASE, SESSION
+    from userbot.sql import BASE, SESSION
 except ImportError:
     raise AttributeError
 from sqlalchemy import Column, String, UnicodeText
