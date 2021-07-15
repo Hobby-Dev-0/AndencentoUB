@@ -99,7 +99,7 @@ async def Andencentoiosop():
             await bot.tgbot.send_file(
                 Config.LOGGER_ID,
                 PIC,
-                caption=f"#START \n\nDeployed Andencento Successfully\n\n**Andencento - {ver}**\n\nType `{hl}ping` or `{hl}alive` to check! \n\n**Owner :** {user_mention}\n\n Join [Andencneto Channel](t.me\n\n /Andencento) for Updates & [Andencento Chat](t.me/AndencentoSupport) for any query regarding Team Andencento",
+                caption=f"#START \n\nDeployed Andencento Successfully\n\n**Andencento - {ver}**\n\nType `{hl}ping` or `{hl}alive` to check! \n\nJoin [Andencneto Channel](t.me\n\n /Andencento) for Updates & [Andencento Chat](t.me/AndencentoSupport) for any query regarding Team Andencento",
             )
     except Exception as e:
         LOGS.info(str(e))
