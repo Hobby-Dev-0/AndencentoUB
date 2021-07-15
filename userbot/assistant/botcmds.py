@@ -125,7 +125,7 @@ async def nothanos(event):
         await event.client(EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
         await event.reply("`Unbanned Successfully. Granting another chance.🚶`")
     except BadRequestError:
-        await event.reply("`No Permission 🤭`")
+        await event.reply("`Either You Havnt given me right or he is admin in group.`")
         return
 
 
@@ -174,7 +174,7 @@ async def promote(event):
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
     except BadRequestError:
-        await event.reply("No Permission To Promote 🤭")
+        await event.reply("Either You Havnt given me right or he is admin in group.")
         return
 
 
@@ -222,7 +222,7 @@ async def demote(event):
     # If we catch BadRequestError from Telethon
     # Assume we don't have permission to demote
     except BadRequestError:
-        await event.reply("Me No Permission 🤔")
+        await event.reply("Either You Havnt given me right or he is admin in group. which is promoted by someone else not by me")
         return
     await event.reply("`Demoted this Guy Successfully!`")
 
