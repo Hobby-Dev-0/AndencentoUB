@@ -21,7 +21,7 @@ PREV_REPLY_MESSAGE = {}
 
 
 DEFAULTUSER = (
-    str(ALIVE_NAME) if ALIVE_NAME else "Set ALIVE_NAME in config vars in Heroku"
+    str(ALIVE_NAME) if ALIVE_NAME else "Set YOUR_NAME in config vars in Heroku"
 )
 CUSTOM_MIDDLE_PMP = (
     str(CUSTOM_PMPERMIT) if CUSTOM_PMPERMIT else "Protection By Andencento 🇮🇳"
