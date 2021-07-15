@@ -177,7 +177,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         elif event.query.user_id == bot.uid and query == "repo":
             result = builder.article(
                 title="Repository",
-                text=f"**⚡ ɛɢɛռɖαʀʏ ᴀғ єιναϐοτ ⚡**",
+                text=f"**⚡ ᴜʟᴛɪᴍᴀᴛᴇ ᴜꜱᴇʀʙᴏᴛ ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ⚡**",
                 buttons=[
                     [Button.url("📑 Repo 📑", "https://github.com/Team-Andencento/Andencento")],
                     [Button.url("🚀 Deploy 🚀", "https://github.com/Team-Andencento/Andencento")],
