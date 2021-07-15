@@ -12,6 +12,7 @@ if {op} == "False" or None:
 from logging import DEBUG, INFO, basicConfig, getLogger
 import heroku3
 from dotenv import load_dotenv
+import time
 from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
