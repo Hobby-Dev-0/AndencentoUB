@@ -13,6 +13,9 @@ from .utils import *
 from .utils.modules import extra
 hl = Config.HANDLER
 PIC = Config.ALIVE_PIC or "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg"
+Andencento_USER = bot.me.first_name
+Andencento_mention = f"[{Andencento_USER}](tg://user?id={ForGo10God})"
+user_mention = Andencento_mention
 ver = "0.0.1"
 # let's get the bot ready
 async def Andencento_bot(bot_token):
@@ -97,7 +100,7 @@ async def Andencentoiosop():
             await bot.tgbot.send_file(
                 Config.LOGGER_ID,
                 PIC,
-                caption=f"#START \n\nDeployed Andencento Successfully\n\n**Andencento - {ver}**\n\nType `{hl}ping` or `{hl}alive` to check! \n\nJoin [Andencneto Channel](t.me/Andencento) for Updates & [Andencento Chat](t.me/AndencentoSupport) for any query regarding Team Andencento",
+                caption=f"#START \n\nDeployed Andencento Successfully\n\n**Andencento - {ver}**\n\nType `{hl}ping` or `{hl}alive` to check! \n\n**Owner :** {user_mention}\n\n Join [Andencneto Channel](t.me\n\n /Andencento) for Updates & [Andencento Chat](t.me/AndencentoSupport) for any query regarding Team Andencento",
             )
     except Exception as e:
         LOGS.info(str(e))
