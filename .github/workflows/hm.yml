@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "W2HBOT"
+          find: "from userbot.plugins.sql_helper"
 
-          replace: "userbot"
+          replace: "from userbot.sql"
 
       - name: Create Pull Request
 
