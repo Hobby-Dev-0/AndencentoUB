@@ -16,6 +16,7 @@ async def _(event):
             event,
             f"Developer Restricted!\nIf you know what this does, and want to proceed\n\n {HANDLER}set var I_AM_DEVELOPER True\n\nThis Might Be Dangerous.",
         )
+        return
     if event.fwd_from:
         return
     cmd = "".join(event.text.split(maxsplit=1)[1:])
@@ -108,6 +109,7 @@ async def _(event):
             event,
             f"Developer Restricted!\nIf you know what this does, and want to proceed\n\n {HANDLER}set var I_AM_DEVELOPER True\n\nThis Might Be Dangerous.",
         )
+        return
     if event.fwd_from:
         return
     PROCESS_RUN_TIME = 100
