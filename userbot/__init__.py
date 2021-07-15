@@ -23,6 +23,7 @@ from config import Config
 from config import Config as Var
 ALIVE_NAME = Config.YOUR_NAME
 StartTime = time.time()
+YOUR_NAME = Config.YOUR_NAME
 from Config import Config
 versionop = "0.0.2"
 W2Hversion = versionop
