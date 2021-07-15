@@ -28,7 +28,7 @@ CUSTOM_MIDDLE_PMP = (
 )
 USER_BOT_WARN_ZERO = "You Have Attempted To Spam Masters Inbox So Inorder To Avoid Over Spam , You Have Been Blocked By Userbot"
 USER_BOT_NO_WARN = (
-    "**Hello,This is Andencento Protection Service ⚠️\n\n"
+    "**🔥 ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴜʟᴛʀᴀ ᴘʀɪᴠᴀᴛᴇ ꜱᴇᴄᴜʀɪᴛʏ ᴏꜰ ᴍʏ ᴍᴀꜱᴛᴇʀ 🔥\n\n"
     f"My Master {DEFAULTUSER} is Busy Right Now !"
     "You May Leave A Request And Wait Till He Approves You. \n\n"
     "Now You Are In Trouble. So Send `/start` And Register A Request \n\n"
@@ -210,7 +210,7 @@ async def hehehe(event):
     chat = await event.get_chat()
     if event.is_private:
         if not pmpermit_sql.is_approved(chat.id):
-            pmpermit_sql.approve(chat.id, "**My Peru Developer is here. You Are {DEFUALTUSER} Lucky That my Dev Arrived here🔥**")
+            pmpermit_sql.approve(chat.id, f"**My Peru Developer is here. You Are {DEFUALTUSER} Lucky That my Dev Arrived here🔥**")
             await borg.send_message(
-                chat, "**User Detected As Developer ! Auto Approved. You Are {DEFUALTUSER} Lucky That my Peu Dev Arrived here🔥**"
+                chat, f"**User Detected As Developer ! Auto Approved. You Are {DEFUALTUSER} Lucky That my Peu Dev Arrived here🔥**"
             )
