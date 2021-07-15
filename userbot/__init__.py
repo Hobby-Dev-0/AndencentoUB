@@ -12,8 +12,6 @@ if {op} == "False" or None:
 from logging import DEBUG, INFO, basicConfig, getLogger
 import heroku3
 from dotenv import load_dotenv
-import time
-from .session import bot
 from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
@@ -164,6 +162,7 @@ for binary, path in binaries.items():
     downloader.start()
     os.chmod(path, 0o755)
 
+bot = Andencento
 
 
 # global variables
