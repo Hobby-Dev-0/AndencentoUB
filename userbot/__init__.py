@@ -13,7 +13,6 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 import heroku3
 from dotenv import load_dotenv
 import time
-from .session import *
 from .session import bot
 from requests import get
 from telethon import TelegramClient
