@@ -80,7 +80,7 @@ async def ban(event):
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
-        await event.reply("No Permission Sar 🤭.")
+        await event.reply("Either You Havnt given me right or he is admin in group.")
         return
     # Helps ban group join spammers more easily
     try:
