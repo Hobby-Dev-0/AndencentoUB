@@ -17,7 +17,9 @@
 [![Contributors](https://img.shields.io/github/contributors/Noob-Stranger/andencento?style=flat-square&color=pink)](https://github.com/Noob-Stranger/andencento/graphs/contributors)
 
 
-
+## Inspiration
+### Darkcobra
+### Uniborg
 
 
 
