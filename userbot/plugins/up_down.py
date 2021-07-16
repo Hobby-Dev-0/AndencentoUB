@@ -441,7 +441,7 @@ async def _(event):
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
-        start = datetime.datetime.now()
+        start = datetime.now()
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
@@ -455,13 +455,13 @@ async def _(event):
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
         else:
-            end = datetime.datetime.now()
+            end = datetime.now()
             ms = (end - start).seconds
             await mone.edit(
                 f"**  •  Downloaded in {ms} seconds.**\n**  •  Downloaded to :- ** `{downloaded_file_name}`\n**  •  Downloaded by :-** {user_mention}"
             )
     elif input_str:
-        start = datetime.datetime.now()
+        start = datetime.now()
         url = input_str
         file_name = os.path.basename(url)
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
@@ -499,7 +499,7 @@ async def _(event):
                     display_message = current_message
             except Exception as e:
                 logger.info(str(e))
-        end = datetime.datetime.now()
+        end = datetime.now()
         ms = (end - start).seconds
         if downloader.isSuccessful():
             await mone.edit(
