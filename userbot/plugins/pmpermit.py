@@ -9,6 +9,7 @@ from userbot import (COUNT_PM, CMD_HELP, BOTLOG, BOTLOG_CHATID, PM_AUTO_BAN,
                      LASTMSG, LOGS)
 
 from userbot.utils import register
+from .. import *
 
 # ========================= CONSTANTS ============================
 UNAPPROVED_MSG = (
