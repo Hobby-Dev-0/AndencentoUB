@@ -14,10 +14,6 @@ from telethon.tl.types import DocumentAttributeVideo
 
 from . import *
 
-
-Andencento.fast_upload_file = upload_file
-
-
 @Andencento.on(admin_cmd(pattern=r"webup ?(.*)", outgoing=True))
 @Andencento.on(sudo_cmd(pattern=r"webup ?(.*)", allow_sudo=True))
 async def labstack(event):
@@ -164,181 +160,83 @@ async def uploadir(udir_event):
         await udir_event.edit("404: Directory Not Found")
 
 
-import asyncio
-import io
-import os
-import pathlib
-import subprocess
-import time
-from datetime import datetime
-from pathlib import Path
-
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-from telethon.tl import types
-from telethon.utils import get_attributes
-
-from userbot import Andencento
-
-from ..config import Config
-from ..utils import edit_delete, edit_or_reply
-from ..helpers import progress
-
-
-async def reply_id(event):
-    reply_to_id = None
-    if event.sender_id in Config.SUDO_USERS:
-        reply_to_id = event.id
-    if event.reply_to_msg_id:
-        reply_to_id = event.reply_to_msg_id
-    return reply_to_id
+@Andencento.on(admin_cmd(pattern=r"upload (.*)", outgoing=True))
+@Andencento.on(sudo_cmd(pattern=r"upload (.*)", allow_sudo=True))
+async def upload(u_event):
+    """ For .upload command, allows you to upload a file from the userbot's server """
+    await u_event.edit("Processing ...")
+    input_str = u_event.pattern_match.group(1)
+    cap = "Chala Jaa Bhosdike. Hack hona h kya tujhe"
+    if input_str in ("BOT_TOKEN.session", "config.env"):
+        await bot.send_file(u_event.chat_id, cjb, caption=cap)
+        await u_event.delete()
+        return
+    if os.path.exists(input_str):
+        c_time = time.time()
+        await u_event.client.send_file(
+            u_event.chat_id,
+            input_str,
+            force_document=True,
+            allow_cache=False,
+            reply_to=u_event.message.id,
+            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+                progress(d, t, u_event, c_time, "Uploading...", input_str)
+            ),
+        )
+        await u_event.edit("Uploaded successfully !!")
+    else:
+        await u_event.edit("404: File Not Found")
 
 
-
-PATH = os.path.join("userbot/cache", "temp_vid.mp4")
-thumb_image_path = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
-downloads = pathlib.Path("userbot/cach").absolute()
-NAME = "untitled"
-
-
-class UPLOAD:
-    def __init__(self):
-        self.uploaded = 0
-
-
-UPLOAD_ = UPLOAD()
-
-
-async def catlst_of_files(path):
-    files = []
-    for dirname, dirnames, filenames in os.walk(path):
-        # print path to all filenames.
-        for filename in filenames:
-            files.append(os.path.join(dirname, filename))
-    return files
-
-
-def get_video_thumb(file, output=None, width=320):
-    output = file + ".jpg"
+def get_video_thumb(file, output=None, width=90):
+    """ Get video thumbnail """
     metadata = extractMetadata(createParser(file))
-    cmd = [
-        "ffmpeg",
-        "-i",
-        file,
-        "-ss",
-        str(int((0, metadata.get("duration").seconds)[metadata.has("duration")] / 2)),
-        # '-filter:v', 'scale={}:-1'.format(width),
-        "-vframes",
-        "1",
-        output,
-    ]
-    p = subprocess.Popen(
-        cmd,
+    popen = subprocess.Popen(
+        [
+            "ffmpeg",
+            "-i",
+            file,
+            "-ss",
+            str(
+                int((0, metadata.get("duration").seconds)[metadata.has("duration")] / 2)
+            ),
+            "-filter:v",
+            "scale={}:-1".format(width),
+            "-vframes",
+            "1",
+            output,
+        ],
         stdout=subprocess.PIPE,
         stderr=subprocess.DEVNULL,
     )
-    p.communicate()
-    if not p.returncode and os.path.lexists(file):
+    if not popen.returncode and os.path.lexists(file):
         return output
+    return None
 
 
-def sortthings(contents, path):
-    catsort = []
-    contents.sort()
-    for file in contents:
-        catpath = os.path.join(path, file)
-        if os.path.isfile(catpath):
-            catsort.append(file)
-    for file in contents:
-        catpath = os.path.join(path, file)
-        if os.path.isdir(catpath):
-            catsort.append(file)
-    return catsort
-
-
-async def _get_file_name(path: pathlib.Path, full: bool = True) -> str:
-    return str(path.absolute()) if full else path.stem + path.suffix
-
-
-async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
-    catflag = catflag or False
-    reply_to_id = await reply_id(event)
-    if os.path.isdir(path):
-        await event.client.send_message(
-            event.chat_id,
-            f"**Folder : **`{str(path)}`",
-        )
-        Files = os.listdir(path)
-        Files = sortthings(Files, path)
-        for file in Files:
-            catpath = os.path.join(path, file)
-            await upload(Path(catpath), event, udir_event)
-    elif os.path.isfile(path):
-        fname = os.path.basename(path)
-        c_time = time.time()
-        thumb = None
-        if os.path.exists(thumb_image_path):
-            thumb = thumb_image_path
-        f = path.absolute()
-        attributes, mime_type = get_attributes(str(f))
-        ul = io.open(f, "rb")
-        uploaded = await event.client.fast_upload_file(
-            file=ul,
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, event, c_time, "trying to upload", file_name=fname)
-            ),
-        )
-        ul.close()
-        media = types.InputMediaUploadedDocument(
-            file=uploaded,
-            mime_type=mime_type,
-            attributes=attributes,
-            force_file=catflag,
-            thumb=await event.client.upload_file(thumb) if thumb else None,
-        )
-        await event.client.send_file(
-            event.chat_id,
-            file=media,
-            caption=f"**File Name : **`{fname}`",
-            reply_to=reply_to_id,
-        )
-
-        UPLOAD_.uploaded += 1
-
-
-@Andencento.on(admin_cmd(pattern=r"upload (.*)", outgoing=True))
-async def uploadir(event):
-    "To upload files to telegram."
-    input_str = event.pattern_match.group(1)
-    path = Path(input_str)
-    start = datetime.now()
-    flag = event.pattern_match.group(1)
-    flag = bool(flag)
-    if not os.path.exists(path):
-        return await edit_or_reply(
-            event,
-            f"`there is no such directory/file with the name {path} to upload`",
-        )
-    udir_event = await edit_or_reply(event, "Uploading....")
-    if os.path.isdir(path):
-        await edit_or_reply(udir_event, f"`Gathering file details in directory {path}`")
-        UPLOAD_.uploaded = 0
-        await upload(path, event, udir_event, catflag=flag)
-        end = datetime.now()
-        ms = (end - start).seconds
-        await edit_delete(
-            udir_event,
-            f"`Uploaded {UPLOAD_.uploaded} files successfully in {ms} seconds. `",
-        )
+def extract_w_h(file):
+    """ Get width and height of media """
+    command_to_run = [
+        "ffprobe",
+        "-v",
+        "quiet",
+        "-print_format",
+        "json",
+        "-show_format",
+        "-show_streams",
+        file,
+    ]
+    # https://stackoverflow.com/a/11236144/4723940
+    try:
+        t_response = subprocess.check_output(command_to_run, stderr=subprocess.STDOUT)
+    except subprocess.CalledProcessError as exc:
+        LOGS.warning(exc)
     else:
-        await edit_or_reply(udir_event, f"`Uploading file .....`")
-        UPLOAD_.uploaded = 0
-        await upload(path, event, udir_event, catflag=flag)
-        end = datetime.now()
-        ms = (end - start).seconds
-        await edit_delete(
-            udir_event, f"`Uploaded file {str(path)} successfully in {ms} seconds. `"
-        )
+        x_reponse = t_response.decode("UTF-8")
+        response_json = json.loads(x_reponse)
+        width = int(response_json["streams"][0]["width"])
+        height = int(response_json["streams"][0]["height"])
+        return width, height
 
 
 @Andencento.on(admin_cmd(pattern=r"upld_as(stream|vn|all) (.*)", outgoing=True))
@@ -445,7 +343,7 @@ async def _(event):
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
-        start = datetime.now()
+        start = datetime.datetime.now()
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
@@ -459,13 +357,13 @@ async def _(event):
         except Exception as e:  # pylint:disable=C0103,W0703
             await mone.edit(str(e))
         else:
-            end = datetime.now()
+            end = datetime.datetime.now()
             ms = (end - start).seconds
             await mone.edit(
                 f"**  •  Downloaded in {ms} seconds.**\n**  •  Downloaded to :- ** `{downloaded_file_name}`\n**  •  Downloaded by :-** {user_mention}"
             )
     elif input_str:
-        start = datetime.now()
+        start = datetime.datetime.now()
         url = input_str
         file_name = os.path.basename(url)
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
@@ -503,7 +401,7 @@ async def _(event):
                     display_message = current_message
             except Exception as e:
                 logger.info(str(e))
-        end = datetime.now()
+        end = datetime.datetime.now()
         ms = (end - start).seconds
         if downloader.isSuccessful():
             await mone.edit(
@@ -517,8 +415,6 @@ async def _(event):
 
 CmdHelp("up_down").add_command(
   "upload", "<path>", "Uploads a locally stored file to the chat"
-).add_command(
-  "dlto", "<path>", "Uploads a locally stored file to the chat"
 ).add_command(
   "upld_as stream", "<path>", "Uploads the locally stored file in streamable format"
 ).add_command(
