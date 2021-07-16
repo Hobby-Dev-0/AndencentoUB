@@ -443,7 +443,7 @@ from pySmartDL import SmartDL
 from telethon.tl import types
 from telethon.utils import get_extension
 
-from userbot import catub
+from userbot import Andencento
 
 from ..config import Config
 from ..utils import edit_delete, edit_or_reply
