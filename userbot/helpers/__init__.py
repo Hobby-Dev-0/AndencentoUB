@@ -12,3 +12,5 @@ from .tools import *
 from .tweet import *
 from .vidos import *
 from .func import *
+from .FastTelethon import *
+from .fasttelethon import *
