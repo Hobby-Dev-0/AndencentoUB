@@ -305,7 +305,7 @@ async def upload(path, event, udir_event, catflag=None):  # sourcery no-metrics
 @Andencento.on(admin_cmd(pattern=r"upload (.*)", outgoing=True))
 async def uploadir(event):
     "To upload files to telegram."
-    input_str = event.pattern_match.group(2)
+    input_str = event.pattern_match.group(1)
     path = Path(input_str)
     start = datetime.now()
     flag = event.pattern_match.group(1)
