@@ -14,6 +14,10 @@ from telethon.tl.types import DocumentAttributeVideo
 
 from . import *
 
+
+Andencento.fast_upload_file = upload_file
+
+
 @Andencento.on(admin_cmd(pattern=r"webup ?(.*)", outgoing=True))
 @Andencento.on(sudo_cmd(pattern=r"webup ?(.*)", allow_sudo=True))
 async def labstack(event):
