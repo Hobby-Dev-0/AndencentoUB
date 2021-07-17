@@ -41,7 +41,7 @@ async def botstarted():
           "BOT_TOKEN", api_id=Config.APP_ID, api_hash=Config.API_HASH
           ).start(bot_token=Config.BOT_TOKEN)
         LOGS.info("Checking Completed. Proceeding to next step...")
-        LOGS.info(" Starting Andencento")
+        LOGS.info("Starting Andencento")
         Andencento.loop.run_until_complete(Andencento_bot(Config.BOT_USERNAME))
         LOGS.info(" Andencento Startup Completed")
       else:
