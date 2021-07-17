@@ -8,7 +8,7 @@ from sys import argv
 import telethon.utils
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
 from config import Config
-from var import Var
+from .. import *
 from ..utils import *
 from ..utils.modules import extra
 
