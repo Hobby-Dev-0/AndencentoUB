@@ -3,6 +3,7 @@ import glob
 import os
 import sys
 from pathlib import Path
+from sys import argv
 
 import telethon.utils
 from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
