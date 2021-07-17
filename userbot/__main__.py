@@ -9,7 +9,7 @@ from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRe
 from config import Config
 from . import *
 from .utils import *
-from .utils.modules import extra
+from .session.main import *
 hl = Config.HANDLER
 PIC = Config.ALIVE_PIC or "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg"
 ALIVE = Config.YOUR_NAME or "ANDENCENTO USER"
@@ -49,43 +49,13 @@ else:
         sys.exit()
        
 
-
-path = 'userbot/assistant/*.py'
-files = glob.glob(path)
-for name in files:
-    with open(name) as f:
-        path1 = Path(f.name)
-        shortname = path1.stem
-        start_assistant(shortname.replace(".py", ""))   
+async def mod():
+    await asst()
+    await plugs()
+    await addons()
 
 
-
-# Extra Modules...
-extra_repo = "https://github.com/Noob-Stranger/Addons-Andencento"
-if Config.EXTRA == "True":
-    try:
-        os.system(f"git clone {extra_repo}")
-    except BaseException:
-        pass
-    LOGS.info("Installing Extra Plugins")
-    path = "Addons-Andencento/*.py"
-    files = glob.glob(path)
-    for name in files:
-        with open(name) as ex:
-            path2 = Path(ex.name)
-            shortname = path2.stem
-            extra(shortname.replace(".py", ""))
-
-
-
-# imports plugins...
-path = "userbot/plugins/*.py"
-files = glob.glob(path)
-for name in files:
-    with open(name) as f:
-        path1 = Path(f.name)
-        shortname = path1.stem
-        load_module(shortname.replace(".py", ""))
+Andencento.loop.run_until_complete(mod())
 
 async def op():
     await Andencento(JoinChannelRequest("Andencento"))
