@@ -11,7 +11,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Andencento User"
 @command(outgoing=True, pattern="^.alive$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
-    await alive.send_file(PIC,"`Currently Alive, my peru master!` **Andencento Userbot**\n\n"
+    await borg.send_file(alive.chat_id, PIC, "`Currently Alive, my peru master!` **Andencento Userbot**\n\n"
                      "`Telethon version: 1.23.0\nPython: 3.9.6\n`"
                      "`Bot created by:` [Noob-Stranger](tg://user?id=1725374070), @NoobStrangerPerson\n"
                      f"`My peru owner`: {DEFAULTUSER}\n\n"
