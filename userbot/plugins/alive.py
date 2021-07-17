@@ -10,10 +10,10 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Andencento User"
 
 
 TEXT = "`Currently I am Working Fine my peru master!` **Andencento Userbot**\n\n"
-                     "`Telethon version: 1.23.0\nPython: 3.9.6\n`"
-                     "`Bot created by:` [Noob-Stranger](tg://user?id=1725374070), @NoobStrangerPerson\n"
-                     f"`My peru owner`: {DEFAULTUSER}\n\n"
-                     "https://github.com/Noob-Stranger/andencento"
+TEXT = "`Telethon version: 1.23.0\n Python: 3.9.6\n`"
+TEXT = "`Bot created by:` [Noob-Stranger](tg://user?id=1725374070), @NoobStrangerPerson\n"
+TEXT = f"`My peru owner`: {DEFAULTUSER}\n\n"
+TEXT = "https://github.com/Noob-Stranger/andencento"
         
 @Andencento.on(admin_cmd(outgoing=True, pattern="alive$"))
 @Andencento.on(sudo_cmd(pattern="alive$", allow_sudo=True))
