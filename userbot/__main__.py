@@ -39,7 +39,7 @@ else:
             api_id=Var.APP_ID,
             api_hash=Var.API_HASH
         ).start(bot_token=Var.BOT_TOKEN)
-        bot.loop.run_until_complete(add_bot(Var.TG_BOT_USER_NAME_BF_HER))
+        bot.loop.run_until_complete(add_bot(Var.BOT_TOKEN))
         print("CHECKING SUCESS")
     else:
         bot.start()
