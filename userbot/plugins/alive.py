@@ -26,4 +26,3 @@ async def _(event):
     await event.get_chat()
     await event.delete()
     await Andencento.send_file(event.chat_id, PM_IMG, caption=pm_caption)
-    await event.delete
