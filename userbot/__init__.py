@@ -30,6 +30,7 @@ W2Hversion = versionop
 botversion = versionop
 CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 from .session import Andencento
+ver = versionop
 
 
 noob = TelegramClient(None, Var.APP_ID, Var.API_HASH)
