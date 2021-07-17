@@ -33,8 +33,8 @@ async def main():
                      ).start(bot_token=Var.BOT_TOKEN)
                      Andencento.loop.run_until_complete(add_bot(Var.BOT_TOKEN))
                      print("CHECKING SUCESS")
-       else:
-              Andencento.start()
+              else:
+                     Andencento.start()
 
 
 async def asst():
