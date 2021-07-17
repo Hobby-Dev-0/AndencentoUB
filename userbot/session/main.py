@@ -53,3 +53,22 @@ async def addons():
         path2 = Path(ex.name)
         shortname = path2.stem
         extra(shortname.replace(".py", ""))
+
+
+
+async def Andencentoiosop():
+    try:
+        if Config.LOGGER_ID != 0:
+            await bot.tgbot.send_file(
+                Config.LOGGER_ID,
+                PIC,
+                caption=f"#START \n\nDeployed Andencento Successfully\n\n**Andencento - {ver}**\n\nType `{hl}ping` or `{hl}alive` to check! \n\nJoin [Andencneto Channel](t.me\n\n /Andencento) for Updates & [Andencento Chat](t.me/AndencentoSupport) for any query regarding Team Andencento",
+            )
+    except Exception as e:
+        LOGS.info(str(e))
+
+
+async def op():
+    await Andencento(JoinChannelRequest("Andencento"))
+    await Andencento(JoinChannelRequest("AndencentoSupport"))
+
