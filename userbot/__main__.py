@@ -18,35 +18,30 @@ Andencento_mention = f"[{ALIVE}]"
 user_mention = Andencento_mention
 ver = "0.0.2"
 # let's get the bot ready
-async def Andencento_bot(bot_token):
-    try:
-        await Andencento.start(bot_token)
-        Andencento.me = await Andencento.get_me()
-        Andencento.uid = telethon.utils.get_peer_id(Andencento.me)
-    except Exception as e:
-        LOGS.error(f"ANDENCENTO_SESSION - {str(e)}")
-        sys.exit()
- 
-# Andencento bot starter...
-if len(sys.argv) not in (1, 3, 4):
-    Andencento.disconnect()
+                    
+async def add_bot(bot_token):
+    await bot.start(bot_token)
+    bot.me = await bot.get_me() 
+    bot.uid = telethon.utils.get_peer_id(bot.me)
+
+
+
+if len(argv) not in (1, 3, 4):
+    bot.disconnect()
 else:
-    Andencento.tgbot = None
-    try:
-        if Config.BOT_USERNAME is not None:
-            LOGS.info("Checking Telegram Bot Username...")
-            Andencento.tgbot = TelegramClient(
-                "BOT_TOKEN", api_id=Config.APP_ID, api_hash=Config.API_HASH
-            ).start(bot_token=Config.BOT_TOKEN)
-            LOGS.info("Checking Completed. Proceeding to next step...")
-            LOGS.info(" Starting Andencento")
-            Andencento.loop.run_until_complete(Andencento_bot(Config.BOT_USERNAME))
-            LOGS.info(" Andencento Startup Completed")
-        else:
-            Andencento.start()
-    except Exception as e:
-        LOGS.error(f"BOT_TOKEN - {str(e)}")
-        sys.exit()
+    bot.tgbot = None
+    if Config.BOT_TOKEN is not None:
+        print("CHECKING BOT USERNAME")
+        # ForTheGreatrerGood of beautification
+        bot.tgbot = TelegramClient(
+            "TG_BOT_TOKEN",
+            api_id=Var.APP_ID,
+            api_hash=Var.API_HASH
+        ).start(bot_token=Var.BOT_TOKEN)
+        bot.loop.run_until_complete(add_bot(Var.TG_BOT_USER_NAME_BF_HER))
+        print("CHECKING SUCESS")
+    else:
+        bot.start()
 
 async def mod():
     await asst()
