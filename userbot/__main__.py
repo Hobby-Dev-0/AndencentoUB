@@ -10,7 +10,7 @@ from config import Config
 from . import *
 from .utils import *
 from .session.main import *
-
+Andencento.loop.run_until_complete(Andencento_bot(Config.BOT_USERNAME))
 try:
     print ("Configuring Envoirment")
     Andencento.loop.run_until_complete(botstarted())
