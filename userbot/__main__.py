@@ -19,13 +19,10 @@ Andencento_mention = f"[{ALIVE}]"
 user_mention = Andencento_mention
 ver = "0.0.2"
 # let's get the bot ready
-try:
-    print ("Configuring Envoirment")
-    Andencento.loop.run_until_complete(main())
-    LOGS.info("Envoirment is configured for bot")
-except Exception as e:
-    LOGS.error(f"{str(e)}")
-    sys.exit()
+async def stop():
+    await main()
+
+Andencento.loop.run_until_complete(stop())
 
 async def mod():
     await asst()
