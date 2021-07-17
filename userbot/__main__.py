@@ -12,12 +12,6 @@ from . import *
 from .utils import *
 from .session.main import *
 
-hl = Config.HANDLER
-PIC = Config.ALIVE_PIC or "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg"
-ALIVE = Config.YOUR_NAME or "ANDENCENTO USER"
-Andencento_mention = f"[{ALIVE}]"
-user_mention = Andencento_mention
-ver = "0.0.2"
 # let's get the bot ready                    
 async def add_bot(bot_token):
     await bot.start(bot_token)
@@ -46,12 +40,8 @@ async def mod():
     await plugs()
     await addons()
 
-
 Andencento.loop.run_until_complete(mod())
 Andencento.loop.create_task(op())
-
-
-
 Andencento.loop.create_task(Andencentoiosop())
 print("Andencento Deployed And Working Fine")
 
