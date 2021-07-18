@@ -6,9 +6,37 @@ from userbot.sql.gban_sql import is_gbanned, gbaner, ungbaner, all_gbanned
 from userbot.sql import gmute_sql as gsql
 from . import *
 
+@Andencento.on(sudo_cmd(pattern=r"gban ?(.*)", allow_sudo=True))
+async def _(event):
+    user = await eor(event, "`Sudo Restricted Command Sur`")
+    return
+
+@Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"ungmute ?(\d+)?"))
+async def _(event):
+    user = await eor(event, "`Sudo Restricted Command Sur`")
+    return
+
+@Andencento.on(sudo_cmd(pattern="listgban$", allow_sudo=True))
+async def _(event):
+    user = await eor(event, "`Sudo Restricted Command Sur`")
+    return
+
+@Andencento.on(sudo_cmd(pattern=r"ungban ?(.*)", allow_sudo=True))
+async def _(event):
+    user = await eor(event, "`Sudo Restricted Command Sur`")
+    return
+
+@Andencento.on(sudo_cmd(pattern=r"gkick ?(.*)", allow_sudo=True))
+async def _(event):
+    user = await eor(event, "`Sudo Restricted Command Sur`")
+    return
+
+@Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"gmute ?(\d+)?"))
+async def _(event):
+    user = await eor(event, "`Sudo Restricted Command Sur`")
+    return
 
 @Andencento.on(admin_cmd(pattern=r"gban ?(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"gban ?(.*)", allow_sudo=True))
 async def _(event):
     user = await eor(event, "`Gbanning this retard`")
     reason = ""
@@ -65,7 +93,6 @@ async def _(event):
 
 
 @Andencento.on(admin_cmd(pattern=r"ungban ?(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"ungban ?(.*)", allow_sudo=True))
 async def _(event):
     user = await eor(event, "`Ungban in progress...`")
     if event.reply_to_msg_id:
@@ -94,7 +121,6 @@ async def _(event):
 
 
 @Andencento.on(admin_cmd(pattern="listgban$"))
-@Andencento.on(sudo_cmd(pattern="listgban$", allow_sudo=True))
 async def already(event):
     gbanned_users = all_gbanned()
     GBANNED_LIST = "**Gbanned Users :**\n"
@@ -128,7 +154,6 @@ async def _(event):
 
 
 @Andencento.on(admin_cmd(pattern=r"gkick ?(.*)"))
-@Andencento.on(sudo_cmd(pattern=r"gkick ?(.*)", allow_sudo=True))
 async def gkick(event):
     user = await eor(event, "`Kicking globally...`")
     if event.reply_to_msg_id:
@@ -160,7 +185,6 @@ async def gkick(event):
 
 
 @Andencento.on(admin_cmd(pattern=r"gmute ?(\d+)?"))
-@Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"gmute ?(\d+)?"))
 async def gm(event):
     private = False
     if event.fwd_from:
@@ -197,7 +221,6 @@ async def gm(event):
 
 
 @Andencento.on(admin_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
-@Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"ungmute ?(\d+)?"))
 async def endgmute(event):
     private = False
     if event.fwd_from:
