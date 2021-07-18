@@ -1,58 +1,68 @@
 import os
-import datetime
+from datetime import datetime
 
 from PIL import Image
 from telegraph import Telegraph, exceptions, upload_file
 
-from . import *
+from userbot import YOUR_NAME
+from userbot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from userbot.cmdhelp import CmdHelp
 
-HELL_NAME = Config.YOUR_NAME or "ᴀɴᴅᴇɴᴄᴇɴᴛᴏ"
-lg_id = Config.LOGGER_ID
+bot_NAME = str(YOUR_NAME) if YOUR_NAME else "bot User"
+
+aura = bot.uid
 
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 
-@Andencento.on(admin_cmd(pattern=f"t(m|t) ?(.*)", outgoing=True))
-@Andencento.on(sudo_cmd(pattern=f"t(m|t) ?(.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="t(m|t) ?(.*)", outgoing=True))
+@bot.on(sudo_cmd(pattern="t(m|t) ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
-    if Config.LOGGER_ID is None:
-        await eod(event, "You need to setup `LOGGER_ID` to use telegraph...", 7)
+    if Config.PLUGIN_CHANNEL is None:
+        await edit_or_reply(event, "Please set the required environment variable `PLUGIN_CHANNEL` for this plugin to work\n\nGo to [userbot Chat Group](t.me/botSupport) for assistance"
+        )
         return
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    await event.client.send_message(
+        Config.PLUGIN_CHANNEL,
+        "Created New Telegraph account {} for the current session. \n**Do not give this url to anyone, even if they say they are from Telegram!**".format(
+            auth_url
+        ),
+    )
     optional_title = event.pattern_match.group(2)
     if event.reply_to_msg_id:
-        start = datetime.datetime.now()
+        start = datetime.now()
         r_message = await event.get_reply_message()
         input_str = event.pattern_match.group(1)
         if input_str == "m":
-            downloaded_file_name = await bot.download_media(
+            downloaded_file_name = await borg.download_media(
                 r_message, Config.TMP_DOWNLOAD_DIRECTORY
             )
-            end = datetime.datetime.now()
+            end = datetime.now()
             ms = (end - start).seconds
             await edit_or_reply(event, 
-                "Downloaded to  `{}`  in  `{}`  seconds. \nMaking Telegraph Link.....".format(downloaded_file_name, ms)
+                "Downloaded to {} in {} seconds. \nMaking Telegraph Link.....".format(downloaded_file_name, ms)
             )
             if downloaded_file_name.endswith((".webp")):
                 resize_image(downloaded_file_name)
             try:
-                start = datetime.datetime.now()
+                start = datetime.now()
                 media_urls = upload_file(downloaded_file_name)
             except exceptions.TelegraphException as exc:
-                await eod(event, "ERROR: " + str(exc), 8)
+                await edit_or_reply(event, "ERROR: " + str(exc))
                 os.remove(downloaded_file_name)
             else:
-                end = datetime.datetime.now()
+                end = datetime.now()
                 ms_two = (end - start).seconds
                 os.remove(downloaded_file_name)
-                await eor(event, 
-                   "✓ **File uploaded to [telegraph](https://telegra.ph{})** \n✓ **Time Taken :-** `{}` secs \n✓ **By :- {}**".format(
-                        media_urls[0], (ms + ms_two), user_mention,
+                await edit_or_reply(event, 
+                   "✓ **YOUR FILE :-** https://telegra.ph{} \n✓ **Time Taken :-** `{}` secs \n✓ **By :- [{}](tg://user?id={})**".format(
+                        media_urls[0], (ms + ms_two), bot_NAME, aura
                     ),
                     link_preview=True,
                 )
@@ -77,13 +87,13 @@ async def _(event):
                 os.remove(downloaded_file_name)
             page_content = page_content.replace("\n", "<br>")
             response = telegraph.create_page(title_of_page, html_content=page_content)
-            end = datetime.datetime.now()
+            end = datetime.now()
             ms = (end - start).seconds
-            userboy = f"https://telegra.ph/{response['path']}"
+            David99q = f"https://telegra.ph/{response['path']}"
             await edit_or_reply(event, 
-                  f"✓ **Pasted to** [telegraph]({userboy}) \n✓ **Time Taken :-** `{ms}` secs\n✓** By :**  {user_mention}", link_preview=True)
+                  f"✓ **Pasted to** [telegraph]({David99q}) \n✓ **Time Taken :-** `{ms}` secs\n✓** By :- **[{bot_NAME}](tg://user?id={aura})", link_preview=True)
     else:
-        await eod(event, 
+        await edit_or_reply(event, 
             "Reply to a message to get a permanent telegra.ph link."
         )
 
@@ -97,8 +107,4 @@ CmdHelp("telegraph").add_command(
   "tt", "<reply to text message>", "Uploads the replied text message to telegraph making a short telegraph link"
 ).add_command(
   "tm", "<reply to media>", "Uploads the replied media (sticker/ gif/ video/ image) to telegraph and gives a short telegraph link"
-).add_info(
-  "Make Telegraph Links."
-).add_warning(
-  "✅ Harmless Module."
 ).add()
