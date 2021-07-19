@@ -76,7 +76,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         else:
             reply_pop_up_alert = help_string
         reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
-            © DYNAMIC-UserbotBot".format(plugin_name)
+            © ANDENCENTo".format(plugin_name)
         try:
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
         except:
@@ -93,7 +93,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
 
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = 8
-    number_of_cols = 2
+    number_of_cols = 3
     helpable_plugins = []
     for p in loaded_plugins:
         if not p.startswith("_"):
