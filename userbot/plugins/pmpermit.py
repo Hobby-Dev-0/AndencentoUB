@@ -143,8 +143,6 @@ if Var.PRIVATE_GROUP_ID is not None:
             return
         if event.sender_id in devs_id:
             return
-        if sender.user.verified:
-            return
         if PM_ON_OFF == "DISABLE":
             return
         if pmpermit_sql.is_approved(chat_ids):
