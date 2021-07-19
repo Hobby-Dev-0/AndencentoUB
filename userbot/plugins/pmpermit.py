@@ -172,7 +172,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 return
             except BaseException:
                 return
-        botusername = Var.TG_BOT_USER_NAME_BF_HER
+        botusername = Config.BOT_USERNAME
         tap = await bot.inline_query(botusername, USER_BOT_NO_WARN)
         sed = await tap[0].click(event.chat_id)
         PM_WARNS[chat_ids] += 1
