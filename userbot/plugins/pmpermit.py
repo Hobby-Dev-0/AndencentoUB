@@ -9,7 +9,7 @@ from . import devs
 devs_id = devs
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from userbot import ALIVE_NAME
-CUSTOM_PMPERMIT = "PM SECURITY OF ANDENCENTO"
+CUSTOM_PMPERMIT = "🔥 ᴀɴᴅᴇɴᴄᴇɴᴛᴏ ᴜʟᴛʀᴀ ᴘʀɪᴠᴀᴛᴇ ꜱᴇᴄᴜʀɪᴛʏ ᴏꜰ ᴍʏ ᴍᴀꜱᴛᴇʀ 🔥"
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
