@@ -137,7 +137,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         chat_ids = event.sender_id
         if USER_BOT_NO_WARN == message_text:
             return
-        sender = await bot(GetFullUserRequest(event.sender_id))
+        sender = event.sender_id
         if chat_ids == bot.uid:
             return
         if sender.user.bot:
