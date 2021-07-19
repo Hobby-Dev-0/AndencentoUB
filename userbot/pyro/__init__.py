@@ -1,1 +1,1 @@
-from pyrogram import Client, Idle
+from pyrogram import Client
