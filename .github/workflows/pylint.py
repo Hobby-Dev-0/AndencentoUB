@@ -32,5 +32,5 @@ jobs:
           commit_options: '--no-verify'
           repository: .
           commit_user_name: Noob-Stranger
-          commit_user_email: coder3954@gmail.com
-          commit_author: Noob-Stranger <coder3854@gmail.com>
+          commit_user_email: 58665444+Noob-Stranger@users.noreply.github.com
+          commit_author: sandy1709 <58665444+Noob-Stranger@users.noreply.github.com>
