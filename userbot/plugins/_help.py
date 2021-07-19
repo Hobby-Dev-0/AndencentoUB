@@ -1,4 +1,5 @@
 from .. import *
+from config import Config
 
 
 @command(pattern="^.help ?(.*)")
