@@ -23,7 +23,8 @@ jobs:
           isort .
       - name: lint with black
         run: |
-          black --exclude "exampleconfig\.py" .
+          isort userbot/plugins/*.py
+          black userbot/plugins/*.py
       # commit changes
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
