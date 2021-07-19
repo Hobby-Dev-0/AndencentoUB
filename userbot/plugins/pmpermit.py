@@ -140,8 +140,6 @@ if Var.PRIVATE_GROUP_ID is not None:
         sender = event.sender_id
         if chat_ids == bot.uid:
             return
-        if sender.bot:
-            return
         if event.sender_id in devs_id:
             return
         if sender.user.verified:
