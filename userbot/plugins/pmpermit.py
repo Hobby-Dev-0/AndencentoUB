@@ -5,7 +5,8 @@ import os
 
 from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
-
+from . import devs
+devs_id = devs
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from userbot import ALIVE_NAME
 CUSTOM_PMPERMIT = "PM SECURITY OF ANDENCENTO"
