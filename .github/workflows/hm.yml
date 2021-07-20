@@ -28,7 +28,7 @@ jobs:
 
         with:
 
-          commit_message: 'Andencento'
+          commit_message: 'ANDENCENTO'
 
           commit_options: '--no-verify'
 
