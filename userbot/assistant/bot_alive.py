@@ -10,12 +10,12 @@ pm_caption += "➥ **SYSTEMS STATS**\n"
 pm_caption += "➥ **Telethon Version:** `1.23.0` \n"
 pm_caption += "➥ **Python:** `3.9.6` \n"
 pm_caption += "➥ **Database Status:**  `Functional`\n"
-pm_caption += "➥ **Current Branch** : `master`\n"
+pm_caption += "➥ **Current Branch** : `Andencento`\n"
 pm_caption += f"➥ **Version** : `{ver}`\n"
 pm_caption += f"➥ **My Boss** : {DEFAULTUSER} \n"
-pm_caption += f"➥ **License** : [GNU Affero General Public License v3.0](https://github.com/Noob-Stranger/andencento/blob/master/LICENSE)\n"
+pm_caption += f"➥ **License** : [GNU Affero General Public License v3.0](https://github.com/Andencento/Andencento/blob/Andencento/LICENSE/)\n"
 pm_caption += (
-    "➥ **Copyright** : By [Andencento](https://github.com/Noob-Stranger/andencento)\n"
+    "➥ **Copyright** : By [Andencento](https://github.com/Andencento/Andencento/)\n"
 )
 pm_caption += "[Assistant By Andencento](https://t.me/AndencentoSupport)"
 
