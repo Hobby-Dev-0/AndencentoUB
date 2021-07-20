@@ -1,4 +1,3 @@
-
 import glob
 import os
 import sys
@@ -31,7 +30,7 @@ else:
             api_hash=Var.API_HASH
         ).start(bot_token=Var.BOT_TOKEN)
         Andencento.loop.run_until_complete(add_bot(Var.BOT_TOKEN))
-        print("CHECKING SUCESS")
+        print("CHECKING SUCCESS")
     else:
         Andencento.start()
 
@@ -43,7 +42,7 @@ async def mod():
 Andencento.loop.run_until_complete(mod())
 Andencento.loop.create_task(op())
 Andencento.loop.create_task(Andencentoiosop())
-print("Andencento Deployed And Working Fine")
+print("Andencento Successfully Deployed And Working Fine")
 
 if len(sys.argv) not in (1, 3, 4):
     Andencento.disconnect()
