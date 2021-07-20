@@ -18,9 +18,9 @@ jobs:
 
         with:
 
-          find: "from userbot.plugins.sql_helper"
+          find: "vidos"
 
-          replace: "from userbot.sql"
+          replace: "videos"
 
       - name: Create Pull Request
 
