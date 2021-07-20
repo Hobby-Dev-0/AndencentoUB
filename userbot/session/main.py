@@ -47,7 +47,7 @@ async def plugs():
 
 
 async def addons():
-  extra_repo = "https://github.com/Noob-Stranger/Addons-Andencento"
+  extra_repo = "https://github.com/Andencento/Addons-Andencento"
   if Config.EXTRA == "True":
     try:
       os.system(f"git clone {extra_repo}")  
