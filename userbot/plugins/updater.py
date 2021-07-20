@@ -98,6 +98,58 @@ async def update(event, repo, ups_rem, ac_br):
     os.execle(sys.executable, *args, os.environ)
     return
 
+async def deploy(event, repo, ups_rem, ac_br, txt):
+    if HEROKU_API_KEY is not None:
+        heroku = heroku3.from_key(HEROKU_API_KEY)
+        heroku_app = None
+        heroku_applications = heroku.apps()
+        if HEROKU_APP_NAME is None:
+            await event.edit(
+                "**Please set up**  `HEROKU_APP_NAME`  **to update!"
+            )
+            repo.__del__()
+            return
+        for app in heroku_applications:
+            if app.name == HEROKU_APP_NAME:
+                heroku_app = app
+                break
+        if heroku_app is None:
+            await event.edit(
+                f"{txt}\n" "`Invalid Heroku vars for updating."
+            )
+            return repo.__del__()
+        await event.edit(
+            "`Updating Userbot In Progress...Please wait upto 5 minutes.`"
+        )
+        ups_rem.fetch(ac_br)
+        repo.git.reset("--hard", "FETCH_HEAD")
+        heroku_git_url = heroku_app.git_url.replace(
+            "https://", "https://api:" + HEROKU_API_KEY + "@"
+        )
+        if "heroku" in repo.remotes:
+            remote = repo.remote("heroku")
+            remote.set_url(heroku_git_url)
+        else:
+            remote = repo.create_remote("heroku", heroku_git_url)
+        try:
+            remote.push(refspec="HEAD:refs/heads/master", force=True)
+        except Exception as error:
+            await event.edit(f"{txt}\n**Error log:**\n`{error}`")
+            return repo.__del__()
+        build_status = app.builds(order_by="created_at", sort="desc")[0]
+        if build_status.status == "failed":
+            await event.edit(
+                "`Build failed ⚠️`"
+            )
+            await asyncio.sleep(5)
+            return await event.delete()
+        await event.edit(f"**Your ᴀɴᴅᴇɴᴄᴇɴᴛᴏ Is UpToDate**\n\n**Version :**  __{user_ver}__\n**Oɯɳҽɾ :**  {user_mention}")
+    else:
+        await event.edit("**Please set up**  `HEROKU_API_KEY`  **from heroku to update!**")
+    return
+
+
+
 @Andencento.on(admin_cmd(outgoing=True, pattern=r"update build$"))
 @Andencento.on(sudo_cmd(pattern="update build$", allow_sudo=True))
 async def upstream(event):
