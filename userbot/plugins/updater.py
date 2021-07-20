@@ -20,7 +20,7 @@ UPSTREAM_REPO_BRANCH = "ANdencento"
 UPSTREAM_REPO_URL = "https://github.com/Andencento/Deploy-Andencento"
 
 REPO_REMOTE_NAME = "temponame"
-IFFUCI_ACTIVE_BRANCH_NAME = "Andencento"
+IFFUCI_ACTIVE_BRANCH_NAME = "ANdencento"
 NO_HEROKU_APP_CFGD = "No Heroku App Found!"
 HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/master"
 RESTARTING_APP = "Restarting Heroku App..."
@@ -122,7 +122,7 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("ANdencento", origin.refs.Andencento)
+        repo.create_head("ANdencento", origin.refs.ANdencento)
         repo.heads.ANdencento.set_tracking_branch(origin.refs.ANdencento)
         repo.heads.ANdencento.checkout(True)
     try:
