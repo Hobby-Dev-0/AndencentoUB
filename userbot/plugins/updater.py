@@ -17,12 +17,12 @@ heroku_api = "https://api.heroku.com"
 
 UPSTREAM_REPO_BRANCH = "Andencento"
 
-UPSTREAM_REPO_URL = "https://github.com/Noob-Stranger/andencentopack"
+UPSTREAM_REPO_URL = "https://github.com/Andencento/Deploy-Andencento"
 
 REPO_REMOTE_NAME = "temponame"
 IFFUCI_ACTIVE_BRANCH_NAME = "Andencento"
 NO_HEROKU_APP_CFGD = "No Heroku App Found!"
-HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/Andencento"
+HEROKU_GIT_REF_SPEC = "HEAD:refs/heads/master"
 RESTARTING_APP = "Restarting Heroku App..."
 IS_SELECTED_DIFFERENT_BRANCH = (
     "looks like a custom branch {branch_name} "
@@ -92,7 +92,7 @@ async def update(event, repo, ups_rem, ac_br):
         repo.git.reset("--hard", "FETCH_HEAD")
     await update_requirements()
     await event.edit(
-        "✅ Successfully updated ᴀɴᴅᴇɴᴄᴇɴᴛᴏ!\n\nBot is restarting please wait for a minute."
+        "✅ Successfully updated Aɴᴅᴇɴᴄᴇɴᴛᴏ!\n\nBot is restarting please wait for a minute."
     )
     args = [sys.executable, "-m", "userbot"]
     os.execle(sys.executable, *args, os.environ)
@@ -108,7 +108,7 @@ async def upstream(event):
     force_update = False
     if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
         return await edit_or_reply(
-            event, "Set  `HEROKU_APP_NAME`  and  `HEROKU_API_KEY`  to update your bot 🥴"
+            event, "Set `HEROKU_APP_NAME` and `HEROKU_API_KEY` to update your bot 🥴"
         )
     try:
         txt = "😕 `Updater cannot continue due to some problems occured`\n\n**LOGTRACE:**\n"
@@ -131,9 +131,9 @@ async def upstream(event):
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
         force_update = True
-        repo.create_head("Andencento", origin.refs.Andencento)
-        repo.heads.Andencento.set_tracking_branch(origin.refs.Andencento)
-        repo.heads.Andencento.checkout(True)
+        repo.create_head("master", origin.refs.master)
+        repo.heads.master.set_tracking_branch(origin.refs.master)
+        repo.heads.master.checkout(True)
     ac_br = repo.active_branch.name
     if ac_br != UPSTREAM_REPO_BRANCH:
         await event.edit(
@@ -159,11 +159,11 @@ async def upstream(event):
     if conf == "" and not force_update:
         await print_changelogs(event, ac_br, changelog)
         await event.delete()
-        return await event.respond(f"🌚 Do `{hl}update build` to update your **ᴀɴᴅᴇɴᴄᴇɴᴛᴏ** !!")
+        return await event.respond(f"🌚 Do `{hl}update build` to update your **Aɴᴅᴇɴᴄᴇɴᴛᴏ** !!")
 
     if force_update:
         await event.edit(
-            "`Force-Updating ᴀɴᴅᴇɴᴄᴇɴᴛᴏ. Please wait...`"
+            "`Force-Updating Aɴᴅᴇɴᴄᴇɴᴛᴏ. Please wait...`"
         )
     if conf == "now":
         await event.edit("`Update In Progress! Please Wait....`")
@@ -205,7 +205,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
         else:
             remote = repo.create_remote("heroku", heroku_git_url)
         try:
-            remote.push(refspec="HEAD:refs/heads/Andencento", force=True)
+            remote.push(refspec="HEAD:refs/heads/master", force=True)
         except Exception as error:
             await event.edit(f"{txt}\n**Error log:**\n`{error}`")
             return repo.__del__()
@@ -216,7 +216,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
             )
             await asyncio.sleep(5)
             return await event.delete()
-        await event.edit(f"**Your ᴀɴᴅᴇɴᴄᴇɴᴛᴏ Is UpToDate**\n\n**Version :**  __{user_ver}__\n**Oɯɳҽɾ :**  {user_mention}")
+        await event.edit(f"**Your Aɴᴅᴇɴᴄᴇɴᴛᴏ Is UpToDate**\n\n**Version :**  __{user_ver}__\n**Oɯɳҽɾ :**  {user_mention}")
     else:
         await event.edit("**Please set up**  `HEROKU_API_KEY`  **from heroku to update!**")
     return
@@ -226,7 +226,7 @@ async def deploy(event, repo, ups_rem, ac_br, txt):
 @Andencento.on(sudo_cmd(pattern="update build$", allow_sudo=True))
 async def upstream(event):
     event = await edit_or_reply(event, "`Hard-Update In Progress... \nPlease wait until docker build is finished...`")
-    off_repo = "https://github.com/Noob-Stranger/andencentopack"
+    off_repo = "https://github.com/Andencento/Deploy-Andencento"
     os.chdir("/app")
     git_user = f"rm -rf .git"
     try:
@@ -246,9 +246,9 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("Andencento", origin.refs.Andencento)
-        repo.heads.Andencento.set_tracking_branch(origin.refs.Andencento)
-        repo.heads.Andencento.checkout(True)
+        repo.create_head("master", origin.refs.master)
+        repo.heads.master.set_tracking_branch(origin.refs.master)
+        repo.heads.master.checkout(True)
     try:
         repo.create_remote("upstream", off_repo)
     except BaseException:
@@ -256,18 +256,18 @@ async def upstream(event):
     ac_br = repo.active_branch.name
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
-    await event.edit(f"**ᴀɴᴅᴇɴᴄᴇɴᴛᴏ Docker Build In Progress... Type** `{hl}ping`  **after 5 mins to check if Bot is working!**")
+    await event.edit(f"**Aɴᴅᴇɴᴄᴇɴᴛᴏ Docker Build In Progress... Type** `{hl}ping`  **after 5 mins to check if Bot is working!**")
     await deploy(event, repo, ups_rem, ac_br, txt)
 
 
 CmdHelp("update").add_command(
   "update", None, "Checks if any new update is available."
 ).add_command(
-  "update now", None, "Soft-Update Your ᴀɴᴅᴇɴᴄᴇɴᴛᴏ. Basically if you restart dyno it will go back to previous deploy."
+  "update now", None, "Soft-Update Your Aɴᴅᴇɴᴄᴇɴᴛᴏ. Basically if you restart dyno it will go back to previous deploy."
 ).add_command(
-  "update build", None, "Hard-Update Your ᴀɴᴅᴇɴᴄᴇɴᴛᴏ. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
+  "update build", None, "Hard-Update Your Aɴᴅᴇɴᴄᴇɴᴛᴏ. This won't take you back to your previous deploy. This will be triggered even if there is no changelog."
 ).add_info(
-  "ᴀɴᴅᴇɴᴄᴇɴᴛᴏ Updater."
+  "Aɴᴅᴇɴᴄᴇɴᴛᴏ Updater."
 ).add_warning(
   "✅ Harmless Module."
 ).add()
