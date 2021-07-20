@@ -15,7 +15,7 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY or None
 Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
 
-UPSTREAM_REPO_BRANCH = "Andencento"
+UPSTREAM_REPO_BRANCH = "ANdencento"
 
 UPSTREAM_REPO_URL = "https://github.com/Andencento/Deploy-Andencento"
 
@@ -98,130 +98,6 @@ async def update(event, repo, ups_rem, ac_br):
     os.execle(sys.executable, *args, os.environ)
     return
 
-
-@Andencento.on(admin_cmd(outgoing=True, pattern=r"update(| now)$"))
-@Andencento.on(sudo_cmd(pattern="update(| now)$", allow_sudo=True))
-async def upstream(event):
-    conf = event.pattern_match.group(1).strip()
-    event = await edit_or_reply(event, "`Checking for new updates...`")
-    off_repo = UPSTREAM_REPO_URL
-    force_update = False
-    if HEROKU_API_KEY is None or HEROKU_APP_NAME is None:
-        return await edit_or_reply(
-            event, "Set `HEROKU_APP_NAME` and `HEROKU_API_KEY` to update your bot 🥴"
-        )
-    try:
-        txt = "😕 `Updater cannot continue due to some problems occured`\n\n**LOGTRACE:**\n"
-        repo = Repo()
-    except NoSuchPathError as error:
-        await event.edit(f"{txt}\n`directory {error}  not found`")
-        return repo.__del__()
-    except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure! {error}`")
-        return repo.__del__()
-    except InvalidGitRepositoryError as error:
-        if conf is None:
-            return await event.edit(
-                f"`The directory {error} "
-                "does not seem to be a git repository.\n"
-                "Fix that by force updating! Using "
-                f"`{hl}update now.`"
-            )
-        repo = Repo.init()
-        origin = repo.create_remote("upstream", off_repo)
-        origin.fetch()
-        force_update = True
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
-    ac_br = repo.active_branch.name
-    if ac_br != UPSTREAM_REPO_BRANCH:
-        await event.edit(
-            f"`Looks like you are using your own custom git branch ( {ac_br} ). "
-            "Please checkout to official branch that is ( Andencento )`"
-        )
-        return repo.__del__()
-    try:
-        repo.create_remote("upstream", off_repo)
-    except BaseException:
-        pass
-    ups_rem = repo.remote("upstream")
-    ups_rem.fetch(ac_br)
-    changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-    if changelog == "" and not force_update:
-        await event.edit(
-            "\n**😎 ᴀɴᴅᴇɴᴄᴇɴᴛᴏ is UP-TO-DATE.**"
-            f"\n\n**Version :**  {user_ver}"
-            f"\n**Owner :**  {user_mention}"
-            f"\n**Git Branch :**  {UPSTREAM_REPO_BRANCH}\n"
-        )
-        return repo.__del__()
-    if conf == "" and not force_update:
-        await print_changelogs(event, ac_br, changelog)
-        await event.delete()
-        return await event.respond(f"🌚 Do `{hl}update build` to update your **Aɴᴅᴇɴᴄᴇɴᴛᴏ** !!")
-
-    if force_update:
-        await event.edit(
-            "`Force-Updating Aɴᴅᴇɴᴄᴇɴᴛᴏ. Please wait...`"
-        )
-    if conf == "now":
-        await event.edit("`Update In Progress! Please Wait....`")
-        await update(event, repo, ups_rem, ac_br)
-    return
-
-
-async def deploy(event, repo, ups_rem, ac_br, txt):
-    if HEROKU_API_KEY is not None:
-        heroku = heroku3.from_key(HEROKU_API_KEY)
-        heroku_app = None
-        heroku_applications = heroku.apps()
-        if HEROKU_APP_NAME is None:
-            await event.edit(
-                "**Please set up**  `HEROKU_APP_NAME`  **to update!"
-            )
-            repo.__del__()
-            return
-        for app in heroku_applications:
-            if app.name == HEROKU_APP_NAME:
-                heroku_app = app
-                break
-        if heroku_app is None:
-            await event.edit(
-                f"{txt}\n" "`Invalid Heroku vars for updating."
-            )
-            return repo.__del__()
-        await event.edit(
-            "`Updating Userbot In Progress...Please wait upto 5 minutes.`"
-        )
-        ups_rem.fetch(ac_br)
-        repo.git.reset("--hard", "FETCH_HEAD")
-        heroku_git_url = heroku_app.git_url.replace(
-            "https://", "https://api:" + HEROKU_API_KEY + "@"
-        )
-        if "heroku" in repo.remotes:
-            remote = repo.remote("heroku")
-            remote.set_url(heroku_git_url)
-        else:
-            remote = repo.create_remote("heroku", heroku_git_url)
-        try:
-            remote.push(refspec="HEAD:refs/heads/master", force=True)
-        except Exception as error:
-            await event.edit(f"{txt}\n**Error log:**\n`{error}`")
-            return repo.__del__()
-        build_status = app.builds(order_by="created_at", sort="desc")[0]
-        if build_status.status == "failed":
-            await event.edit(
-                "`Build failed ⚠️`"
-            )
-            await asyncio.sleep(5)
-            return await event.delete()
-        await event.edit(f"**Your Aɴᴅᴇɴᴄᴇɴᴛᴏ Is UpToDate**\n\n**Version :**  __{user_ver}__\n**Oɯɳҽɾ :**  {user_mention}")
-    else:
-        await event.edit("**Please set up**  `HEROKU_API_KEY`  **from heroku to update!**")
-    return
-
-
 @Andencento.on(admin_cmd(outgoing=True, pattern=r"update build$"))
 @Andencento.on(sudo_cmd(pattern="update build$", allow_sudo=True))
 async def upstream(event):
@@ -246,9 +122,9 @@ async def upstream(event):
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
+        repo.create_head("ANdencento", origin.refs.Andencento)
+        repo.heads.ANdencento.set_tracking_branch(origin.refs.ANdencento)
+        repo.heads.ANdencento.checkout(True)
     try:
         repo.create_remote("upstream", off_repo)
     except BaseException:
