@@ -10,7 +10,7 @@ from .progress import *
 from .runner import *
 from .tools import *
 from .tweet import *
-from .vidos import *
+from .videos import *
 from .func import *
 from .FastTelethon import *
 from .fasttelethon import *
