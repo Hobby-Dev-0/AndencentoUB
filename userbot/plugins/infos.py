@@ -112,21 +112,20 @@ async def _(event):
     except Exception as e:
         dc_id = "`Need a Profile Picture to check **this**`"
         str(e)
-    caption = """<b>Extracted User info From Telegram<b>
-    
-<b>🆔️ User ID</b>: <code>{}</code>
-<b>📎 Link To Profile</b>: <a href='tg://user?id={}'>Click Here🚪</a>
-<b>🗣️ First Name</b>: <code>{}</code>
-<b>🗣️ Second Name</b>: <code>{}</code>
-<b>👨🏿‍💻 BIO</b>: {}
-<b>🌐 DC ID</b>: {}
-<b>📸 NO OF PSS</b> : {}
-<b>🧐 RESTRICTED</b>: {}
-<b>✅ VERIFIED</b>: {}
-<b>🤖 BOT</b>: {}
-<b>👥 Groups in Common</b>: {}
-
-<b>⚡ <a href='https://t.me/its_userbot'>From DataBase of Andencento </a> ⚡ </b>
+    caption = """<b>Exᴛʀᴀᴄᴛᴇᴅ Usᴇʀ Iɴғᴏ Bʏ Aɴᴅᴇɴᴄᴇɴᴛᴏ</b>\n
+<b>┏━━━━━━━━━━━━━━━━━━━━━</b>
+<b>┣ Usᴇʀ Iᴅ</b>: <code>{}</code>
+<b>┣ Lɪɴᴋ Tᴏ Pʀᴏғɪʟᴇ</b>: <i><a href='tg://user?id={}'>Perma Link 🚪</a></i>
+<b>┣ Fɪʀsᴛ Nᴀᴍᴇ</b>: <code>{}</code>
+<b>┣ Sᴇᴄᴏɴᴅ Nᴀᴍᴇ</b>: <code>{}</code>
+<b>┣ Bɪᴏ</b>: <code>{}</code>
+<b>┣ Dᴄ Iᴅ</b>: <code>{}</code>
+<b>┣ Nᴏ Oғ PғP</b>: <code>{}</code>
+<b>┣ Rᴇsᴛʀɪᴄᴛᴇᴅ</b>: <code>{}</code>
+<b>┣ Vᴇʀɪғɪᴇᴅ</b>: <code>{}</code>
+<b>┣ Bᴏᴛ</b>: <code>{}</code>
+<b>┣ Gʀᴏᴜᴘs Iɴ Cᴏᴍᴍᴏɴ</b>: <code>{}</code>
+<b>┗━━━━━━━━━━━━━━━━━━━━━</b>
 """.format(
         user_id,
         user_id,
