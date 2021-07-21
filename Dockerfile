@@ -1,13 +1,12 @@
-FROM noob-stranger/andencento:latest
+# We're using Ubuntu 20.10
+FROM biansepang/weebproject:buster
 
-#clonning repo 
-RUN git clone https://github.com/noob-stranger/andencento.git /root/userbot
-#working directory 
+RUN git clone -b Andencento https://github.com/Andencento/Andencento /root/userbot
+RUN mkdir /root/userbot/.bin
+RUN pip install --upgrade pip setuptools
 WORKDIR /root/userbot
 
-# Install requirements
-RUN pip3 install -U -r requirements.txt
-
-ENV PATH="/home/userbot/bin:$PATH"
+#Install python requirements
+RUN pip3 install -r https://raw.githubusercontent.com/Andencento/Andencento/Andencento/requirements.txt
 
 CMD ["python3","-m","userbot"]
