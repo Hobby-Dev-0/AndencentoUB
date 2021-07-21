@@ -6,6 +6,7 @@ from datetime import datetime
 from telegraph import Telegraph, upload_file, exceptions
 from userbot.utils import admin_cmd
 from userbot import CMD_HELP
+from config import Config
 
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
