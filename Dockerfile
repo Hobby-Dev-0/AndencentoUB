@@ -5,7 +5,7 @@ RUN git clone -b Andencento https://github.com/Andencento/Andencento /root/userb
 RUN mkdir /root/userbot/.bin
 RUN pip install --upgrade pip setuptools
 WORKDIR /root/userbot
-
+RUN wget https://raw.githubusercontent.com/Andencento/Andencento/Andencento/requirements.txt
 #Install python requirements
 RUN pip3 install -r https://raw.githubusercontent.com/Andencento/Andencento/Andencento/requirements.txt
 
