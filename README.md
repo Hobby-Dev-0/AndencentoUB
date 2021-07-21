@@ -6,7 +6,6 @@
 #### MadBoy
 #### GODBOYX
 #### Shivansh Rajput
-#### MAYANK RAJPUT 
 
 ## SOME INFO
 [![Stars](https://img.shields.io/github/stars/Andencento/Andencento?style=flat-square&color=yellow)](https://github.com/Andencento/Andencento/stargazers)
