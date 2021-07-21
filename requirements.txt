@@ -91,6 +91,12 @@ validators
 wikipedia>=1.4.0
 youtube-dl
 youtube-search-python
+py-tgcalls-wrapper
+python-decouple
+pyrogram==1.2.9
+tgcrypto
+nodejs
+node
 tswift
 telethon==1.23.0
 faker
