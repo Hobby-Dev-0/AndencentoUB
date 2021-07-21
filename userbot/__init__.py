@@ -2,13 +2,6 @@ import os
 import sys
 import time
 from distutils.util import strtobool as sb
-# Temprorary Purpose Soon will be remoced
-op = os.environ.get("REQ", None)
-if {op} == "False" or None:
-    try:
-        os.system("pip install -r requirements.txt")
-    except BaseException:
-        pass
 from logging import DEBUG, INFO, basicConfig, getLogger
 import heroku3
 from dotenv import load_dotenv
