@@ -108,7 +108,7 @@ async def _(event):
 @Andencento.on(admin_cmd(pattern="myfeds ?(.*)"))
 @Andencento.on(sudo_cmd(pattern="myfeds ?(.*)", allow_sudo=True))
 async def myfeds(event):
-    Ok = await event.edit("`Wi8 Master, Collecting all your Feds...``")
+    user = await event.edit("`Wi8 Master, Collecting all your Feds...``")
     async with bot.conversation(bot) as rose:
         await rose.send_message("/start")
         await rose.get_response()
@@ -119,10 +119,10 @@ async def myfeds(event):
             await asyncio.sleep(1.5)
             pro = await rose.get_response()
             await bot.send_file(event.chat_id, pro, caption='**Collected by Andencento ฅ^•ﻌ•^ฅ**')
-            else:
-                await Ok.edit(pro.text + "\n\n**Collected by Andencento ฅ^•ﻌ•^ฅ**")
-                except YouBlockedUserError:
-                    await user.edit("`Please Unblock` @MissRose_Bot")
+        else:
+            await user.edit(pro.text + "\n\n**Collected by Andencento ฅ^•ﻌ•^ฅ**")
+        except YouBlockedUserError:
+            await user.edit("`Please Unblock` @MissRose_Bot")
     
 CmdHelp("federation").add_command(
   "newfed", "<newfed name>", "Makes a federation of Rose bot"
