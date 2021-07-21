@@ -1,13 +1,17 @@
-FROM TeamExtremePro/ExtremeProUserbot:latest
-#clonning repo 
-RUN git clone https://github.com/Andencento/Andencento.git /root/userbot
+# Using Python Slim-Buster
+FROM xluxz/geezproject:buster
+# Andencento By Noob Stranger
+#yaudah iya
 
-#working directory 
+RUN git clone -b main https://github.com/Team-Andencento/Andencento /root/userbot
+RUN mkdir /root/userbot/.bin
+RUN pip install --upgrade pip setuptools
 WORKDIR /root/userbot
 
-# Install requirements
-RUN pip3 install -U -r requirements.txt
+#Install python requirements
+RUN pip3 install -r requirements.txt
 
-ENV PATH="/home/userbot/bin:$PATH"
+EXPOSE 80 443
 
+# Finalization
 CMD ["python3","-m","userbot"]
