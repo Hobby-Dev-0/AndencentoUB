@@ -3,7 +3,7 @@ FROM xluxz/geezproject:buster
 # Andencento By Noob Stranger
 #yaudah iya
 
-RUN git clone -b main https://github.com/Team-Andencento/Andencento /root/userbot
+RUN git clone -b Andencento https://github.com/Team-Andencento/Andencento /root/userbot
 RUN mkdir /root/userbot/.bin
 RUN pip install --upgrade pip setuptools
 WORKDIR /root/userbot
