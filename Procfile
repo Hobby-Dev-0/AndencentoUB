@@ -1,5 +1,1 @@
-build: 
-  docker:
-      worker: Dockerfile
-run:
-   worker: python3 -m userbot
+ANDENCENTO: bash resource/startup/startup.sh
