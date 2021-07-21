@@ -121,8 +121,6 @@ async def myfeds(event):
             await bot.send_file(event.chat_id, pro, caption='**Collected by Andencento ฅ^•ﻌ•^ฅ**')
         else:
             await user.edit(pro.text + "\n\n**Collected by Andencento ฅ^•ﻌ•^ฅ**")
-        except YouBlockedUserError:
-            await user.edit("`Please Unblock` @MissRose_Bot")
     
 CmdHelp("federation").add_command(
   "newfed", "<newfed name>", "Makes a federation of Rose bot"
