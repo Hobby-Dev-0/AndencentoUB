@@ -115,13 +115,4 @@
     "options": {
       "version": "12"
     }
-  }],
-  "buildpacks": [
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
-      "url": "heroku/python"
-    }
-  ]
-}
+  }]
