@@ -1,5 +1,4 @@
-FROM andencento/andencento:latest
-
+FROM TeamExtremePro/ExtremeProUserbot:latest
 #clonning repo 
 RUN git clone https://github.com/Andencento/Andencento.git /root/userbot
 
