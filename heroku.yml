@@ -1,5 +1,5 @@
 build: 
   docker:
-      worker: Dockerfile
+      ANDENCENTO: Dockerfile
 run:
-   worker: bash resource/startup/startup.sh
+   ANDENCENTO: bash resource/startup/startup.sh
