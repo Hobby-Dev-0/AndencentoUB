@@ -5,7 +5,7 @@ from telethon.tl.types import ChatBannedRights
 class Config(object):
     LOGGER = True
     ABUSE = os.environ.get("ABUSE", None)
-    ALIVE_MSG = os.environ.get("ALIVE_MSG", "Ⱥղժҽղçҽղէօ")
+    ALIVE_MSG = os.environ.get("ALIVE_MSG", "Aɴᴅᴇɴᴄᴇɴᴛᴏ")
     ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
     ANTI_FLOOD_WARN_MODE = ChatBannedRights(
         until_date=None,
@@ -25,7 +25,7 @@ class Config(object):
         t_file = open(TMP_DOWNLOAD_DIRECTORY+"auth_token.txt","w")
         t_file.write(AUTH_TOKEN_DATA)
         t_file.close()
-    BIO_MSG = os.environ.get("BIO_MSG", "Ⱥղժҽղçҽղէօ")
+    BIO_MSG = os.environ.get("BIO_MSG", "Aɴᴅᴇɴᴄᴇɴᴛᴏ")
     BL_CHAT = set(int(x) for x in os.environ.get("BL_CHAT", "").split())
     BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
     BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
