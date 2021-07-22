@@ -4,6 +4,8 @@ from ..config import Config
 from ..helpers import *
 from ..utils import *
 from telethon import version
+from var import Config
+from var import Var
 
 from telethon import version
 from telethon.errors.rpcerrorlist import (
