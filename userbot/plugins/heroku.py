@@ -22,7 +22,7 @@ lg_id = Config.LOGGER_ID
 
 async def restart(event):
     await eor(event, f"✅ **Restarted ᴀɴᴅᴇɴᴄᴇɴᴛᴏ** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
-    execl(executable, executable, "bash", "start")
+    await bash("pkill python3 && python3 -m userbot")
 
 @Andencento.on(admin_cmd(pattern="restart$"))
 @Andencento.on(sudo_cmd(pattern="restart$", allow_sudo=True))
