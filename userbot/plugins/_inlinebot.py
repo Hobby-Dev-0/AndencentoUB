@@ -30,7 +30,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         data=re.compile(b"helpme_next\((.+?)\)")
     ))
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid:  # pylint:disable=E0602
+        if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:  # pylint:disable=E0602
             current_page_number = int(
                 event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
@@ -46,7 +46,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         data=re.compile(b"helpme_prev\((.+?)\)")
     ))
     async def on_plug_in_callback_query_handler(event):
-        if event.query.user_id == bot.uid:  # pylint:disable=E0602
+        if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:  # pylint:disable=E0602
             current_page_number = int(
                 event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
@@ -63,7 +63,7 @@ if Config.BOT_USERNAME is not None and tgbot is not None:
         data=re.compile(b"us_plugin_(.*)")
     ))
     async def on_plug_in_callback_query_handler(event):
-      if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS::
+      if event.query.user_id == bot.uid or event.query.user_id in Config.SUDO_USERS:
         plugin_name = event.data_match.group(1).decode("UTF-8")
         help_string = ""
         try:
