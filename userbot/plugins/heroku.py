@@ -29,10 +29,7 @@ async def restart(event):
                 event, "`HEROKU_API_KEY` is wrong. Re-Check in config vars."
             )
         await eor(event, f"✅ **Restarted Dynos** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
-        app = Heroku.apps()[HEROKU_APP_NAME]
-        app.restart()
-    else:
-        execl(executable, executable, "bash", "Andencento ")
+        execl(executable, executable, "bash", "start")
 
 
 @Andencento.on(admin_cmd(pattern="restart$"))
