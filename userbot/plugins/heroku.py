@@ -21,16 +21,8 @@ lg_id = Config.LOGGER_ID
 
 
 async def restart(event):
-    if HEROKU_APP_NAME and HEROKU_API_KEY:
-        try:
-            Heroku
-        except BaseException:
-            return await eor(
-                event, "`HEROKU_API_KEY` is wrong. Re-Check in config vars."
-            )
-        await eor(event, f"✅ **Restarted Dynos** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
-        execl(executable, executable, "bash", "start")
-
+    await eor(event, f"✅ **Restarted ᴀɴᴅᴇɴᴄᴇɴᴛᴏ** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
+    execl(executable, executable, "bash", "start")
 
 @Andencento.on(admin_cmd(pattern="restart$"))
 @Andencento.on(sudo_cmd(pattern="restart$", allow_sudo=True))
@@ -38,11 +30,7 @@ async def re(user):
     if user.fwd_from:
         return
     event = await eor(user, "Restarting Dynos ...")
-    if HEROKU_API_KEY:
-        await restart(event)
-    else:
-        await event.edit("Please Set Your `HEROKU_API_KEY` to restart ᴀɴᴅᴇɴᴄᴇɴᴛᴏ")
-
+    await restart(event)
 
 @Andencento.on(admin_cmd(pattern="shutdown$"))
 @Andencento.on(sudo_cmd(pattern="shutdown$", allow_sudo=True))
