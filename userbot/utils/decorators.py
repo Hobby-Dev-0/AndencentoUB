@@ -20,7 +20,6 @@ from .. import Andencento as bot
 from .. import *
 from ..helpers import *
 from ..config import Config
-from ..sql import sudo_sql as s_ql
 
 # admin cmd or normal user cmd
 
