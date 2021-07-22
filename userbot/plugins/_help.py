@@ -1,4 +1,5 @@
 from userbot import CMD_LIST
+from . import *
 from config import Config
 @command(pattern="^.help ?(.*)")
 async def cmd_list(event):
