@@ -1,5 +1,7 @@
 import os
+
 from telethon.tl.types import ChatBannedRights
+
 
 class Config(object):
     LOGGER = True
@@ -143,7 +145,10 @@ class Development(Config):
     
     
 import os
+
 from telethon.tl.types import ChatBannedRights
+
+
 class Var(object):
     LOGGER = True
     ABUSE = os.environ.get("ABUSE", None)

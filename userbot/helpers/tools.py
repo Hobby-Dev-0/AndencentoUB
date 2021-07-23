@@ -1,10 +1,6 @@
 import functools
-import re
-
-from telethon import events
 
 from userbot import bot
-from userbot.config import Config
 
 
 def forwards():

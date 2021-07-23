@@ -3,12 +3,7 @@ from telethon.tl import types
 
 from .. import bot
 from ..config import Config
-from ..sql.snips_sql import (
-    add_snip,
-    get_all_snips,
-    get_snips,
-    remove_snip,
-)
+from ..sql.snips_sql import add_snip, get_all_snips, get_snips, remove_snip
 
 TYPE_TEXT = 0
 TYPE_PHOTO = 1

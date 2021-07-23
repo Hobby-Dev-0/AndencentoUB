@@ -1,24 +1,11 @@
-import asyncio
-import datetime
-import importlib
-import inspect
-import logging
-import math
-import os
-import re
-import sys
-import time
-import traceback
-from pathlib import Path
-from time import gmtime, strftime
 
 from telethon import events
 from telethon.tl.functions.channels import GetParticipantRequest
-from telethon.tl.types import ChannelParticipantAdmin, ChannelParticipantCreator
+from telethon.tl.types import (ChannelParticipantAdmin,
+                               ChannelParticipantCreator)
 
 from .. import *
 from ..helpers import *
-from ..config import Config
 
 
 # just a small shit for big works

@@ -1,12 +1,11 @@
 import asyncio
 import math
 import os
+import sys
+
 import heroku3
 import requests
 import urllib3
-import sys
-from os import execl
-from time import sleep
 
 from . import *
 
@@ -19,10 +18,13 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY
 lg_id = Config.LOGGER_ID
 
 
-
 async def restart(event):
-    await eor(event, f"✅ **Restarted ᴀɴᴅᴇɴᴄᴇɴᴛᴏ** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**")
+    await eor(
+        event,
+        f"✅ **Restarted ᴀɴᴅᴇɴᴄᴇɴᴛᴏ** \n**Type** `{hl}ping` **after 1 minute to check if I am working !**",
+    )
     await bash("pkill python3 && python3 -m userbot")
+
 
 @Andencento.on(admin_cmd(pattern="restart$"))
 @Andencento.on(sudo_cmd(pattern="restart$", allow_sudo=True))
@@ -32,20 +34,27 @@ async def re(user):
     event = await eor(user, "Restarting Dynos ...")
     await restart(event)
 
+
 @Andencento.on(admin_cmd(pattern="shutdown$"))
 @Andencento.on(sudo_cmd(pattern="shutdown$", allow_sudo=True))
 async def down(user):
     if user.fwd_from:
         return
-    await eor(user, "**[ ! ]** Turning off ᴀɴᴅᴇɴᴄᴇɴᴛᴏ Dynos... Manually turn me on later ಠ_ಠ")
+    await eor(
+        user, "**[ ! ]** Turning off ᴀɴᴅᴇɴᴄᴇɴᴛᴏ Dynos... Manually turn me on later ಠ_ಠ"
+    )
     if HEROKU_APP is not None:
         HEROKU_APP.process_formation()["worker"].scale(0)
     else:
         sys.exit(0)
 
 
-@Andencento.on(admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True))
-@Andencento.on(sudo_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True))
+@Andencento.on(
+    admin_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", outgoing=True)
+)
+@Andencento.on(
+    sudo_cmd(pattern="(set|get|del) var(?: |$)(.*)(?: |$)([\s\S]*)", allow_sudo=True)
+)
 async def variable(user):
     if user.fwd_from:
         return
@@ -66,11 +75,15 @@ async def variable(user):
                 if Config.ABUSE == "ON":
                     await bot.send_file(user.chat_id, cjb, caption=cap)
                     await event.delete()
-                    await bot.send_message(lg_id, f"#HEROKU_VAR \n\n`{heroku_var[variable]}`")
+                    await bot.send_message(
+                        lg_id, f"#HEROKU_VAR \n\n`{heroku_var[variable]}`"
+                    )
                     return
                 else:
                     await event.edit(f"**{capn}**")
-                    await bot.send_message(lg_id, f"#HEROKU_VAR \n\n`{heroku_var[variable]}`")
+                    await bot.send_message(
+                        lg_id, f"#HEROKU_VAR \n\n`{heroku_var[variable]}`"
+                    )
                     return
             if variable in heroku_var:
                 return await event.edit(
@@ -78,7 +91,8 @@ async def variable(user):
                 )
             else:
                 return await event.edit(
-                    "**Heroku Var** :" f"\n\n__Error:__\n-> I doubt `{variable}` exists!"
+                    "**Heroku Var** :"
+                    f"\n\n__Error:__\n-> I doubt `{variable}` exists!"
                 )
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
@@ -116,9 +130,7 @@ async def variable(user):
                 return await event.edit(f"`{hl}set var <Var Name> <Value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
-            await event.edit(
-                f"`{variable}` **successfully changed to**  ->  `{value}`"
-            )
+            await event.edit(f"`{variable}` **successfully changed to**  ->  `{value}`")
         else:
             await event.edit(
                 f"`{variable}` **successfully added with value**  ->  `{value}`"
@@ -204,12 +216,19 @@ async def dyno_usage(user):
 @Andencento.on(sudo_cmd(pattern="logs$", allow_sudo=True))
 async def _(dyno):
     if (HEROKU_APP_NAME is None) or (HEROKU_API_KEY is None):
-        return await eor(dyno, f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {user_grp} for help.", link_preview=False)
+        return await eor(
+            dyno,
+            f"Make Sure Your HEROKU_APP_NAME & HEROKU_API_KEY are filled correct. Visit {user_grp} for help.",
+            link_preview=False,
+        )
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
         app = Heroku.app(HEROKU_APP_NAME)
     except BaseException:
-        return await dyno.reply(f"Make Sure Your Heroku AppName & API Key are filled correct. Visit {user_grp} for help.", link_preview=False)
+        return await dyno.reply(
+            f"Make Sure Your Heroku AppName & API Key are filled correct. Visit {user_grp} for help.",
+            link_preview=False,
+        )
     event = await eor(dyno, "Downloading Logs...")
     with open("userbot-logs.txt", "w") as log:
         log.write(app.get_log())
@@ -217,17 +236,18 @@ async def _(dyno):
         dyno.chat_id,
         "userbot-logs.txt",
         reply_to=dyno.id,
-        caption=f"**🗒️ Heroku Logs of 💯 lines. 🗒️**\n\n🌟 **Bot Of :**  {user_mention}"
+        caption=f"**🗒️ Heroku Logs of 💯 lines. 🗒️**\n\n🌟 **Bot Of :**  {user_mention}",
     )
     await event.edit("Heroku Logs..")
     await asyncio.sleep(5)
     await event.delete()
     return os.remove("userbot-logs.txt")
-    
-  # user_data = app.get_log()
-  # await eor(
-  #     dyno, user_data, deflink=True, linktext=f"**🗒️ Heroku Logs of 💯 lines. 🗒️**\n\n🌟 **Bot Of :**  {user_mention}\n\n🚀** Pasted**  "
-  # )
+
+
+# user_data = app.get_log()
+# await eor(
+#     dyno, user_data, deflink=True, linktext=f"**🗒️ Heroku Logs of 💯 lines. 🗒️**\n\n🌟 **Bot Of :**  {user_mention}\n\n🚀** Pasted**  "
+# )
 """
     key = (
         requests.post("https://nekobin.com/api/documents", json={"content": user_data})
@@ -239,7 +259,6 @@ async def _(dyno):
     url_raw = f"https://nekobin.com/raw/{key}"
     foutput = f"**🗒️ Heroku Logs of 💯 lines. 🗒️** \n\n📍 [Nekobin]({user_url}) & [Raw]({url_raw}) 📍\n\n🌟 **Bot Of :**  {user_mention}"
 """
-    
 
 
 def prettyjson(obj, indent=2, maxlinelength=80):
@@ -256,27 +275,35 @@ def prettyjson(obj, indent=2, maxlinelength=80):
 
 
 CmdHelp("power").add_command(
-  "restart", None, "Restarts your userbot. Redtarting Bot may result in better functioning of bot when its laggy"
+    "restart",
+    None,
+    "Restarts your userbot. Redtarting Bot may result in better functioning of bot when its laggy",
 ).add_command(
-  "shutdown", None, "Turns off Dynos of Userbot. Userbot will stop working unless you manually turn it on from heroku"
+    "shutdown",
+    None,
+    "Turns off Dynos of Userbot. Userbot will stop working unless you manually turn it on from heroku",
 ).add_info(
-  "Power Switch For Bot"
+    "Power Switch For Bot"
 ).add_warning(
-  "✅ Harmless Module"
+    "✅ Harmless Module"
 ).add()
 
 CmdHelp("heroku").add_command(
-  "usage", None, "Check your heroku dyno hours status."
+    "usage", None, "Check your heroku dyno hours status."
 ).add_command(
-  "set var", "<Var Name> <value>", "Add new variable or update existing value/variable\nAfter setting a variable bot will restart so stay calm for 1 minute."
+    "set var",
+    "<Var Name> <value>",
+    "Add new variable or update existing value/variable\nAfter setting a variable bot will restart so stay calm for 1 minute.",
 ).add_command(
-  "get var", "<Var Name", "Gets the variable and its value (if any) from heroku."
+    "get var", "<Var Name", "Gets the variable and its value (if any) from heroku."
 ).add_command(
-  "del var", "<Var Name", "Deletes the variable from heroku. Bot will restart after deleting the variable. So be calm for a minute 😃"
+    "del var",
+    "<Var Name",
+    "Deletes the variable from heroku. Bot will restart after deleting the variable. So be calm for a minute 😃",
 ).add_command(
-  "logs", None, "Gets the app log of 100 lines of your bot directly from heroku."
+    "logs", None, "Gets the app log of 100 lines of your bot directly from heroku."
 ).add_info(
-  "Heroku Stuffs"
+    "Heroku Stuffs"
 ).add_warning(
-  "✅ Harmless Module"
+    "✅ Harmless Module"
 ).add()

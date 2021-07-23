@@ -1,7 +1,8 @@
 import datetime
+
+import cfscrape
 import requests
 from bs4 import BeautifulSoup as bs
-import cfscrape
 
 from . import *
 
@@ -93,7 +94,9 @@ async def tor_search(event):
 
 
 @Andencento.on(admin_cmd(pattern=r"movie (torrentz2\.eu|idop\.se) (.*)"))
-@Andencento.on(sudo_cmd(pattern=r"movie (torrentz2\.eu|idop\.se) (.*)", allow_sudo=True))
+@Andencento.on(
+    sudo_cmd(pattern=r"movie (torrentz2\.eu|idop\.se) (.*)", allow_sudo=True)
+)
 async def _(event):
     if event.fwd_from:
         return
@@ -206,13 +209,15 @@ def search_torrentz_eu(search_query):
 
 
 CmdHelp("torrent").add_command(
-  "tsearch", "<query>", "Fetches torrent links of given query"
+    "tsearch", "<query>", "Fetches torrent links of given query"
 ).add_command(
-  "movie idop.se", "<query>", "Fetches torrent links of given query alternative way"
+    "movie idop.se", "<query>", "Fetches torrent links of given query alternative way"
 ).add_command(
-  "movie torrentz2.eu", "<query>", "Fetches torrent links of given query alternative way"
+    "movie torrentz2.eu",
+    "<query>",
+    "Fetches torrent links of given query alternative way",
 ).add_info(
-  "Search On Torrent."
+    "Search On Torrent."
 ).add_warning(
-  "✅ Harmless Module."
+    "✅ Harmless Module."
 ).add()

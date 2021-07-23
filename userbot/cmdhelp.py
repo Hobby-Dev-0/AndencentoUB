@@ -1,5 +1,6 @@
-from . import *
 import os
+
+from . import *
 
 COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
 

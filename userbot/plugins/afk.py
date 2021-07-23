@@ -6,10 +6,10 @@ from datetime import datetime
 
 from telethon import events
 from telethon.tl import functions, types
-from userbot import CMD_HELP
-from userbot import ALIVE_NAME, botversion
-from userbot.utils import admin_cmd, edit_or_reply
+
+from userbot import ALIVE_NAME
 from userbot.cmdhelp import CmdHelp
+from userbot.utils import admin_cmd
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "bot"
 
@@ -46,21 +46,24 @@ async def set_not_afk(event):
             event.chat_id,
             "🔥__Back alive!__\n**No Longer afk🙂.**\n⏱️ `Was afk for:``"
             + total_afk_time
-            + "`", file=botpic
+            + "`",
+            file=botpic,
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
                 "#AFKFALSE \nSet AFK mode to False\n"
                 + "🔥__Back alive!__\n**No Longer afk🙂.**\n⏱️ `Was afk for:``"
-                + total_afk_time
+                + total_afk_time,
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
                 "Please set LOGGER_ID "
                 + "for the proper functioning of afk functionality "
-                + "Ask in @NoobStranger to get help setting this value\n\n `{}`".format(str(e)),
+                + "Ask in @NoobStranger to get help setting this value\n\n `{}`".format(
+                    str(e)
+                ),
                 reply_to=event.message.id,
                 silent=True,
             )
@@ -94,11 +97,11 @@ async def on_afk(event):
         return False
     if USER_AFK and not (await event.get_sender()).bot:
         msg = None
-        
+
         message_to_reply = (
             f"Hey Sir/Miss🤔!! My Legend master [{DEFAULTUSER}](tg://user?id={bot}) is currently offline... Since when?\n**For** `{total_afk_time}`\n"
             + f"\n\n👇__The Reason Is__👇 :-\n`{reason}`"
-  if reason
+            if reason
             else f"**Hey Sir/Miss🤔!**\n__I am currently unavailable😛. I Reply U After Come BackOnline.__\n__Since when, you ask? From__ `{total_afk_time}`\nI'll be back when I feel to come🚶😛"
         )
         msg = await event.reply(message_to_reply, file=botpic)
@@ -137,7 +140,9 @@ async def _(event):
         USER_AFK = f"yes: {reason} {botpic}"  # pylint:disable=E0602
         if reason:
             await borg.send_message(
-                event.chat_id, f"__**I'm going afk🚶**__ \n⚜️ Because `{reason}`", file=botpic
+                event.chat_id,
+                f"__**I'm going afk🚶**__ \n⚜️ Because `{reason}`",
+                file=botpic,
             )
         else:
             await borg.send_message(event.chat_id, f"**I am Going afk!**🚶", file=botpic)
@@ -146,12 +151,15 @@ async def _(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
-                f"#AFKTRUE \nSet AFK mode to True, and Reason is {reason}",file=botpic
+                f"#AFKTRUE \nSet AFK mode to True, and Reason is {reason}",
+                file=botpic,
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
 
 
 CmdHelp("afk").add_command(
-  'afk', '<reply to media>/<or type a reson>', 'Marks you AFK(Away from Keyboard) with reason(if given) also shows afk time. Media also supported.'
+    "afk",
+    "<reply to media>/<or type a reson>",
+    "Marks you AFK(Away from Keyboard) with reason(if given) also shows afk time. Media also supported.",
 ).add()

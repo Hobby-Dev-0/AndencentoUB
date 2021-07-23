@@ -1,7 +1,7 @@
-import asyncio
 import datetime
 
 from . import *
+
 
 @Andencento.on(admin_cmd(pattern="ping$"))
 @Andencento.on(sudo_cmd(pattern="ping$", allow_sudo=True))
@@ -18,9 +18,7 @@ async def pong(user):
 
 
 CmdHelp("ping").add_command(
-  "ping", None, "Checks the ping speed of your ᴀɴᴅᴇɴᴄᴇɴᴛᴏ"
-).add_warning(
-  "✅ Harmless Module"
-).add()
+    "ping", None, "Checks the ping speed of your ᴀɴᴅᴇɴᴄᴇɴᴛᴏ"
+).add_warning("✅ Harmless Module").add()
 
 # userbot

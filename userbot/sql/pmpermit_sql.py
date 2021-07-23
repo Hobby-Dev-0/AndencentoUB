@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String
-from . import SESSION, BASE
+
+from . import BASE, SESSION
 
 
 class PMPermit(BASE):

@@ -1,15 +1,14 @@
-import glob
-import os
 import sys
-from pathlib import Path
 from sys import argv
 
 import telethon.utils
-from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
+
 from config import Config
+
 from . import *
-from .utils import *
 from .session.main import *
+from .utils import *
+
 
 # let's get the bot ready                    
 async def add_bot(bot_token):

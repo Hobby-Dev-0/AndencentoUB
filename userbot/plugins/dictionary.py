@@ -3,6 +3,7 @@ from PyDictionary import PyDictionary
 
 from . import *
 
+
 @Andencento.on(admin_cmd(pattern="ud (.*)"))
 @Andencento.on(sudo_cmd(pattern="ud (.*)", allow_sudo=True))
 async def _(event):
@@ -42,11 +43,9 @@ async def _(event):
 
 
 CmdHelp("dictionary").add_command(
-  'ud', 'query', 'fetches meaning from Urban Dictionary'
-).add_command(
-  'meaning', 'query', 'Fetches meaning of the given word'
-).add_info(
-  'Dictionary 📕'
+    "ud", "query", "fetches meaning from Urban Dictionary"
+).add_command("meaning", "query", "Fetches meaning of the given word").add_info(
+    "Dictionary 📕"
 ).add_warning(
-  '✅ Harmless Module.'
+    "✅ Harmless Module."
 ).add()

@@ -1,40 +1,50 @@
+import asyncio
+
 from telethon import events
 from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
-import asyncio
-from userbot.sql.gban_sql import is_gbanned, gbaner, ungbaner, all_gbanned
+
 from userbot.sql import gmute_sql as gsql
+from userbot.sql.gban_sql import all_gbanned, gbaner, is_gbanned, ungbaner
+
 from . import *
+
 
 @Andencento.on(sudo_cmd(pattern=r"gban ?(.*)", allow_sudo=True))
 async def _(event):
-    user = await eor(event, "`Sudo Restricted Command Sur`")
+    await eor(event, "`Sudo Restricted Command Sur`")
     return
+
 
 @Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"ungmute ?(\d+)?"))
 async def _(event):
-    user = await eor(event, "`Sudo Restricted Command Sur`")
+    await eor(event, "`Sudo Restricted Command Sur`")
     return
+
 
 @Andencento.on(sudo_cmd(pattern="listgban$", allow_sudo=True))
 async def _(event):
-    user = await eor(event, "`Sudo Restricted Command Sur`")
+    await eor(event, "`Sudo Restricted Command Sur`")
     return
+
 
 @Andencento.on(sudo_cmd(pattern=r"ungban ?(.*)", allow_sudo=True))
 async def _(event):
-    user = await eor(event, "`Sudo Restricted Command Sur`")
+    await eor(event, "`Sudo Restricted Command Sur`")
     return
+
 
 @Andencento.on(sudo_cmd(pattern=r"gkick ?(.*)", allow_sudo=True))
 async def _(event):
-    user = await eor(event, "`Sudo Restricted Command Sur`")
+    await eor(event, "`Sudo Restricted Command Sur`")
     return
+
 
 @Andencento.on(sudo_cmd(allow_sudo=True, pattern=r"gmute ?(\d+)?"))
 async def _(event):
-    user = await eor(event, "`Sudo Restricted Command Sur`")
+    await eor(event, "`Sudo Restricted Command Sur`")
     return
+
 
 @Andencento.on(admin_cmd(pattern=r"gban ?(.*)"))
 async def _(event):
@@ -60,13 +70,18 @@ async def _(event):
         except IndexError:
             reason = ""
     else:
-        return await eod(user, "**To gban a user i need a userid or reply to his/her message!!**")
+        return await eod(
+            user, "**To gban a user i need a userid or reply to his/her message!!**"
+        )
     name = (await event.client.get_entity(userid)).first_name
     chats = 0
     if userid == ForGo10God:
         return await eod(user, "🥴 **Nashe me hai kya lawde ‽**")
     if str(userid) in DEVLIST:
-        return await eod(user, "😑 **Nashe me hai kya lawde. Apne bap ko gban dene chala h bhadwe baap se backchodi nahi ?¿ smjha‽**")
+        return await eod(
+            user,
+            "😑 **Nashe me hai kya lawde. Apne bap ko gban dene chala h bhadwe baap se backchodi nahi ?¿ smjha‽**",
+        )
     if is_gbanned(userid):
         return await eod(
             user,
@@ -75,7 +90,9 @@ async def _(event):
     async for gfuck in event.client.iter_dialogs():
         if gfuck.is_group or gfuck.is_channel:
             try:
-                await event.client.edit_permissions(gfuck.id, userid, view_messages=False)
+                await event.client.edit_permissions(
+                    gfuck.id, userid, view_messages=False
+                )
                 chats += 1
             except BaseException:
                 pass
@@ -110,7 +127,9 @@ async def _(event):
     async for gfuck in event.client.iter_dialogs():
         if gfuck.is_group or gfuck.is_channel:
             try:
-                await event.client.edit_permissions(gfuck.id, userid, view_messages=True)
+                await event.client.edit_permissions(
+                    gfuck.id, userid, view_messages=True
+                )
                 chats += 1
             except BaseException:
                 pass
@@ -147,7 +166,9 @@ async def _(event):
                         view_messages=False,
                     )
                     gban_watcher = f"⚠️⚠️**Warning**⚠️⚠️\n\n`Gbanned User Joined the chat!!`\n**⚜️ Retard Id :**  [{user.first_name}](tg://user?id={user.id})\n"
-                    gban_watcher += f"**🔥 Action 🔥**  \n`Banned this piece of shit....` **AGAIN!**"
+                    gban_watcher += (
+                        f"**🔥 Action 🔥**  \n`Banned this piece of shit....` **AGAIN!**"
+                    )
                     await event.reply(gban_watcher)
                 except BaseException:
                     pass
@@ -201,7 +222,9 @@ async def gm(event):
     elif private is True:
         userid = event.chat_id
     else:
-        return await eod(event, "Need a user to gmute. Reply or give userid to gmute them..")
+        return await eod(
+            event, "Need a user to gmute. Reply or give userid to gmute them.."
+        )
     event.chat_id
     await event.get_chat()
     if gsql.is_gmuted(userid, "gmute"):
@@ -217,7 +240,6 @@ async def gm(event):
         await eod(event, "Error occured!\nError is " + str(e))
     else:
         await eor(event, "Shhh.... Now keep quiet !!")
-        
 
 
 @Andencento.on(admin_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
@@ -237,7 +259,10 @@ async def endgmute(event):
     elif private is True:
         userid = event.chat_id
     else:
-        return await eod(event,"Please reply to a user or add their into the command to ungmute them.")
+        return await eod(
+            event,
+            "Please reply to a user or add their into the command to ungmute them.",
+        )
     event.chat_id
     if not gsql.is_gmuted(userid, "gmute"):
         return await eod(event, "I don't remember I gmuted him...")
@@ -248,21 +273,16 @@ async def endgmute(event):
     else:
         await eor(event, "Ok!! Speak")
 
-marculs=9
-from telethon.errors.rpcerrorlist import (UserIdInvalidError,
-                                            MessageTooLongError)
-from telethon.tl.functions.channels import (EditAdminRequest,
-                                              EditBannedRequest,
-                                                EditPhotoRequest)
-from telethon.tl.functions.messages import UpdatePinnedMessageRequest
-from telethon.tl.types import (ChannelParticipantsAdmins,
-                                 ChatAdminRights,
-                                   ChatBannedRights,
-                                     MessageEntityMentionName,
-                                       MessageMediaPhoto)
+
+marculs = 9
+from telethon.tl.functions.channels import EditAdminRequest
+from telethon.tl.types import ChatAdminRights, MessageEntityMentionName
+
 from . import *
-async def get_full_user(event):  
-    args = event.pattern_match.group(1).split(':', 1)
+
+
+async def get_full_user(event):
+    args = event.pattern_match.group(1).split(":", 1)
     extra = None
     if event.reply_to_msg_id and not len(args) == 2:
         previous_message = await event.get_reply_message()
@@ -279,20 +299,24 @@ async def get_full_user(event):
             return
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
-            if isinstance(probable_user_mention_entity,
-                          MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj
         try:
             user_obj = await event.client.get_entity(user)
         except Exception as err:
-            return await event.edit("Error... Please report at @AndencentoSupport", str(err))           
+            return await event.edit(
+                "Error... Please report at @AndencentoSupport", str(err)
+            )
     return user_obj, extra
 
-global hawk,moth
-hawk="admin"
-moth="owner"
+
+global hawk, moth
+hawk = "admin"
+moth = "owner"
+
+
 async def get_user_from_id(user, event):
     if isinstance(user, str):
         user = int(user)
@@ -302,11 +326,13 @@ async def get_user_from_id(user, event):
         await event.edit(str(err))
         return None
     return user_obj
+
+
 @Andencento.on(admin_cmd(pattern="gpromote ?(.*)"))
 async def gben(userbot):
     dc = dark = userbot
     i = 0
-    sender = await dc.get_sender()
+    await dc.get_sender()
     me = await userbot.client.get_me()
     await dark.edit("`promoting...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
@@ -322,41 +348,46 @@ async def gben(userbot):
     except:
         pass
     if me == user:
-       k = await dark.edit("U want to promote urself 😑😑 waao..")
-       return
+        await dark.edit("U want to promote urself 😑😑 waao..")
+        return
     try:
         if not rank:
             rank = "ㅤㅤ"
     except:
         return await dark.edit(f"**Something W3NT Wrong 🤔**")
     if user:
-        telchanel = [d.entity.id
-                     for d in await userbot.client.get_dialogs()
-                     if (d.is_group or d.is_channel)
-                     ]
-        rgt = ChatAdminRights(add_admins=False,
-                               invite_users=True,
-                                change_info=False,
-                                 ban_users=True,
-                                  delete_messages=True,
-                                   pin_messages=True)
+        telchanel = [
+            d.entity.id
+            for d in await userbot.client.get_dialogs()
+            if (d.is_group or d.is_channel)
+        ]
+        rgt = ChatAdminRights(
+            add_admins=False,
+            invite_users=True,
+            change_info=False,
+            ban_users=True,
+            delete_messages=True,
+            pin_messages=True,
+        )
         for x in telchanel:
-          try:
-             await userbot.client(EditAdminRequest(x, user, rgt, rank))
-             i += 1
-             await dark.edit(f"**Promoted in Chats **: `{i}`")
-          except:
-             pass
+            try:
+                await userbot.client(EditAdminRequest(x, user, rgt, rank))
+                i += 1
+                await dark.edit(f"**Promoted in Chats **: `{i}`")
+            except:
+                pass
     else:
         await dark.edit(f"**Reply to a user you dumbo !!**")
     return await dark.edit(
         f"**Globally promoted [{user.first_name}](tg://user?id={user.id})\n On Chats😏 : {i} **"
     )
+
+
 @Andencento.on(admin_cmd(pattern="gdemote ?(.*)"))
 async def gben(userbot):
     dc = dark = userbot
     i = 0
-    sender = await dc.get_sender()
+    await dc.get_sender()
     me = await userbot.client.get_me()
     await dark.edit("`demoting...`")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
@@ -372,37 +403,39 @@ async def gben(userbot):
     except:
         pass
     if me == user:
-       k = await dark.edit("U want to demote urself 😑😑 waao..")
-       return
+        await dark.edit("U want to demote urself 😑😑 waao..")
+        return
     try:
         if not rank:
             rank = "ㅤㅤ"
     except:
         return await dark.edit(f"**Something W3NT Wrong 🤔**")
     if user:
-        telchanel = [d.entity.id
-                     for d in await userbot.client.get_dialogs()
-                     if (d.is_group or d.is_channel)
-                     ]
-        rgt = ChatAdminRights(add_admins=None,
-                               invite_users=None,
-                                change_info=None,
-                                 ban_users=None,
-                                  delete_messages=None,
-                                   pin_messages=None)
+        telchanel = [
+            d.entity.id
+            for d in await userbot.client.get_dialogs()
+            if (d.is_group or d.is_channel)
+        ]
+        rgt = ChatAdminRights(
+            add_admins=None,
+            invite_users=None,
+            change_info=None,
+            ban_users=None,
+            delete_messages=None,
+            pin_messages=None,
+        )
         for x in telchanel:
-          try:
-             await userbot.client(EditAdminRequest(x, user, rgt, rank))
-             i += 1
-             await dark.edit(f"**Demoted in Chats **: `{i}`")
-          except:
-             pass
+            try:
+                await userbot.client(EditAdminRequest(x, user, rgt, rank))
+                i += 1
+                await dark.edit(f"**Demoted in Chats **: `{i}`")
+            except:
+                pass
     else:
         await dark.edit(f"**Reply to a user you dumbo !!**")
     return await dark.edit(
         f"**Globally Demoted [{user.first_name}](tg://user?id={user.id})\n On Chats😏 : {i} **"
     )
-
 
 
 @command(incoming=True)
@@ -412,23 +445,25 @@ async def watcher(event):
 
 
 CmdHelp("global").add_command(
-  "gban", "<reply>/<userid>", "Globally Bans the mentioned user in 'X' chats you are admin with ban permission."
+    "gban",
+    "<reply>/<userid>",
+    "Globally Bans the mentioned user in 'X' chats you are admin with ban permission.",
 ).add_command(
-  "ungban", "<reply>/<userid>", "Globally Unbans the user in 'X' chats you are admin!"
+    "ungban", "<reply>/<userid>", "Globally Unbans the user in 'X' chats you are admin!"
 ).add_command(
-  "listgban", None, "Gives the list of all GBanned Users."
+    "listgban", None, "Gives the list of all GBanned Users."
 ).add_command(
-  "gkick", "<reply>/<userid>", "Globally Kicks the user in 'X' chats you are admin!"
+    "gkick", "<reply>/<userid>", "Globally Kicks the user in 'X' chats you are admin!"
 ).add_command(
-  "gmute", "<reply> or <userid>", "Globally Mutes the User."
+    "gmute", "<reply> or <userid>", "Globally Mutes the User."
 ).add_command(
-  "ungmute", "<reply> or <userid>", "Globally Unmutes the gmutes user."
+    "ungmute", "<reply> or <userid>", "Globally Unmutes the gmutes user."
 ).add_command(
-  "gpromote", "<reply> or <userid>", "Globally promotes the User."
+    "gpromote", "<reply> or <userid>", "Globally promotes the User."
 ).add_command(
-  "ungdemote", "<reply> or <userid>", "Globally demotes the gpromoted user."
+    "ungdemote", "<reply> or <userid>", "Globally demotes the gpromoted user."
 ).add_info(
-  "Global Admin Tool."
+    "Global Admin Tool."
 ).add_warning(
-  "✅ Harmlesss Module."
+    "✅ Harmlesss Module."
 ).add()

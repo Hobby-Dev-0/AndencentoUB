@@ -1,19 +1,14 @@
 import asyncio
 import os
+
 try:
     pass
 except:
     os.system("pip install colour")
-import re
-import requests
 import time
 import zipfile
 
-from bs4 import BeautifulSoup
-import PIL.ImageOps
-from PIL import Image
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from validators.url import url
 
 
 # generate thumbnail from audio...
@@ -118,7 +113,7 @@ async def make_gif(event, file):
             if response.text.startswith("Send me an animated sticker!"):
                 return "`This file is not supported`"
             response = response if response.media else await conv.get_response()
-            andencentoresponse = response if response.media else await conv.get_response()
+            response if response.media else await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
             andencentofile = await event.client.download_media(Eivaresponse, "./temp")
             return await unzip(andencentofile)

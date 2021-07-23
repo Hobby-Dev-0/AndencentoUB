@@ -1,12 +1,12 @@
-from .. import *
-
-from pySmartDL import SmartDL
-from requests import get
 from config import Config
 from config import Config as Var
+
+from .. import *
+
 ALIVE_NAME = Config.YOUR_NAME
 YOUR_NAME = Config.YOUR_NAME
 from Config import Config
+
 versionop = "0.0.2"
 W2Hversion = versionop
 botversion = versionop

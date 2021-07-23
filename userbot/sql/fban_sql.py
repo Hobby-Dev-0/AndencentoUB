@@ -1,5 +1,6 @@
 from sqlalchemy import Column, String
-from userbot.sql import SESSION, BASE
+
+from userbot.sql import BASE, SESSION
 
 
 class fban(BASE):

@@ -1,34 +1,22 @@
 
-import shlex
 import os
-from os import getcwd
-from os.path import basename, join
-from textwrap import wrap
-from typing import Optional, Tuple
+
 from ..utils import *
 
 try:
-    from colour import Color as asciiColor
+    pass
 except:
     os.system("pip install colour")
-from PIL import Image, ImageDraw, ImageFont
-from telethon.errors.rpcerrorlist import YouBlockedUserError
-from wand.color import Color
-from wand.drawing import Drawing
-from wand.image import Image as hellimage
+import asyncio
 import re
 import time
-import urllib.request
-import zipfile
-from random import choice
-import asyncio
+
 import PIL.ImageOps
 import requests
-from telethon.tl.types import Channel, PollAnswer
-from validators.url import url
 from bs4 import BeautifulSoup
-from asyncio import sleep
-from emoji import get_emoji_regexp
+from PIL import Image
+from telethon.errors.rpcerrorlist import YouBlockedUserError
+from validators.url import url
 
 MARGINS = [50, 150, 250, 350, 450]
 
@@ -72,6 +60,7 @@ async def take_screen_shot(video_file, output_directory, ttl):
 # https://github.com/Nekmo/telegram-upload/blob/master/telegram_upload/video.py#L26
 
 import time
+
 
 async def cult_small_video(video_file, output_directory, start_time, end_time):
     # https://stackoverflow.com/a/13891070/4723940

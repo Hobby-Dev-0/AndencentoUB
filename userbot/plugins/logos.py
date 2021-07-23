@@ -1,14 +1,13 @@
 import os
 import random
-import time
 
 from PIL import Image, ImageDraw, ImageFont
-from telethon.tl.types import InputMessagesFilterPhotos, InputMessagesFilterDocument
+from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
 
 from . import *
 
-
 PICS_STR = []
+
 
 @Andencento.on(admin_cmd(pattern=r"logo ?(.*)"))
 @Andencento.on(sudo_cmd(pattern=r"logo ?(.*)", allow_sudo=True))
@@ -19,8 +18,10 @@ async def lg1(userevent):
         rply = await userevent.get_reply_message()
         logo_ = await rply.download_media()
     else:
-        async for i in bot.iter_messages("@HELLBOT_LOGOS", filter=InputMessagesFilterPhotos):
-    	    PICS_STR.append(i)
+        async for i in bot.iter_messages(
+            "@HELLBOT_LOGOS", filter=InputMessagesFilterPhotos
+        ):
+            PICS_STR.append(i)
         pic = random.choice(PICS_STR)
         logo_ = await pic.download_media()
     text = userevent.pattern_match.group(1)
@@ -67,7 +68,7 @@ async def lg1(userevent):
         os.remove(fnt)
         os.remove(logo_)
     except:
-    	pass
+        pass
 
 
 async def get_font_file(client, channel_id):
@@ -82,9 +83,11 @@ async def get_font_file(client, channel_id):
 
 
 CmdHelp("logos").add_command(
-  "logo", "<reply to pic + text> or <text>", "Makes a logo with the given text. If replied to a picture makes logo on that else gets random BG."
+    "logo",
+    "<reply to pic + text> or <text>",
+    "Makes a logo with the given text. If replied to a picture makes logo on that else gets random BG.",
 ).add_info(
-  "Logo Maker.\n**🙋🏻‍♂️ Note :**  Currently only supports custom pics. Fonts are choosen randomly."
+    "Logo Maker.\n**🙋🏻‍♂️ Note :**  Currently only supports custom pics. Fonts are choosen randomly."
 ).add_warning(
-  "✅ Harmless Module."
+    "✅ Harmless Module."
 ).add()

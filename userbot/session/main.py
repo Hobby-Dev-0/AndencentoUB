@@ -1,17 +1,15 @@
 
 import glob
 import os
-import sys
 from pathlib import Path
-from sys import argv
 
-import telethon.utils
-from telethon.tl.functions.channels import InviteToChannelRequest, JoinChannelRequest
+from telethon.tl.functions.channels import JoinChannelRequest
+
 from config import Config
+
 from .. import *
 from ..utils import *
 from ..utils.modules import extra
-
 
 hl = Config.HANDLER
 PIC = Config.ALIVE_PIC or "https://telegra.ph/file/3d208ecf6d0ea9389d8f8.jpg"

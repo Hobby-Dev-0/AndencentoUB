@@ -1,12 +1,3 @@
-
-from .. import *
-from ..config import Config
-from ..helpers import *
-from ..utils import *
-from telethon import version
-from var import Config
-from var import Var
-
 from telethon import version
 from telethon.errors.rpcerrorlist import (
     MediaEmptyError,
@@ -18,9 +9,15 @@ from telethon.events import CallbackQuery
 from userbot import *
 from userbot.config import Config
 from userbot.helpers import *
-from userbot.utils import *
 from userbot.random_strings import *
-from telethon import version
+from userbot.utils import *
+from var import Config, Var
+
+from .. import *
+from ..config import Config
+from ..helpers import *
+from ..utils import *
+
 uptime = "dekhna jaruri hai kya"
 
 Eiva_USER = Andencento.me.first_name
@@ -39,6 +36,7 @@ Andencento_ver = "0.1"
 tel_ver = version.__version__
 devs = DEVLIST
 user_mention = Andencento_mention
+
 
 async def get_user_id(ids):
     if str(ids).isdigit():
@@ -63,18 +61,18 @@ else:
 START_TIME = datetime.datetime.now()
 
 
-
-
 HANDLER = os.environ.get("HANDLER", ".")
 
-from .. import CMD_HELP, CMD_HELP_BOT
 import os
+
+from .. import CMD_HELP, CMD_HELP_BOT
 
 chnl_link = "https://t.me/Andencento"
 
 COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
 
 #################################################################################################################
+
 
 class CmdHelp:
     """
@@ -150,7 +148,9 @@ class CmdHelp:
         for command in self.COMMANDS:
             command = self.COMMANDS[command]
             if command["params"] == None:
-                result += f"**🛠 Command :** `{COMMAND_HAND_LER[:1]}{command['command']}`\n"
+                result += (
+                    f"**🛠 Command :** `{COMMAND_HAND_LER[:1]}{command['command']}`\n"
+                )
             else:
                 result += f"**🛠 Command :** `{COMMAND_HAND_LER[:1]}{command['command']} {command['params']}`\n"
 
@@ -158,9 +158,7 @@ class CmdHelp:
                 result += f"**💬 Details :** `{command['usage']}`\n\n"
             else:
                 result += f"**💬 Details :** `{command['usage']}`\n"
-                result += (
-                    f"**⌨️ For Example :** `{COMMAND_HAND_LER[:1]}{command['example']}`\n\n"
-                )
+                result += f"**⌨️ For Example :** `{COMMAND_HAND_LER[:1]}{command['example']}`\n\n"
         return result
 
     def add(self):
@@ -185,6 +183,7 @@ class CmdHelp:
             return "or"
         elif text == "USERNAMES":
             return "<user name (s)>"
+
 
 KANGING_STR = [
     "Using Witchery to kang this sticker...",

@@ -1,7 +1,7 @@
+import datetime
 import os
 import subprocess
 import time
-import datetime
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -41,8 +41,8 @@ def get_video_thumb(file, output=None, width=90):
 async def _(event):
     if event.fwd_from:
         return
-    user = await eor(event, 
-        "Renaming in progress...\nThis might take some time if file is big. 🥴"
+    user = await eor(
+        event, "Renaming in progress...\nThis might take some time if file is big. 🥴"
     )
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -60,7 +60,8 @@ async def _(event):
         end = datetime.datetime.now()
         ms = (end - start).seconds
         if os.path.exists(downloaded_file_name):
-            await user.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+            await user.edit(
+                "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
             )
         else:
             await eod(user, "Error Occurred\n {}".format(input_str))
@@ -76,9 +77,7 @@ async def _(event):
     thumb = None
     if os.path.exists(thumb_image_path):
         thumb = thumb_image_path
-    user = await eor(event, 
-        "Renaming And Uploading File..."
-    )
+    user = await eor(event, "Renaming And Uploading File...")
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -107,14 +106,17 @@ async def _(event):
             end_two = datetime.datetime.now()
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
-            await user.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(
+            await user.edit(
+                "Downloaded in {} seconds. Uploaded in {} seconds.".format(
                     ms_one, ms_two
                 )
             )
         else:
             await eod(event, "File Not Found {}".format(input_str))
     else:
-        await user.edit("Syntax // `{}rnupload file.name` as reply to a Telegram media".format(hl))
+        await user.edit(
+            "Syntax // `{}rnupload file.name` as reply to a Telegram media".format(hl)
+        )
 
 
 @Andencento.on(admin_cmd(pattern="rnsupload (.*)", outgoing=True))
@@ -122,9 +124,7 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    user = await eor(event, 
-        "Rename & Upload as streamable format is in progress..."
-    )
+    user = await eor(event, "Rename & Upload as streamable format is in progress...")
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -143,10 +143,11 @@ async def _(event):
         if os.path.exists(downloaded_file_name):
             thumb = None
             if not downloaded_file_name.endswith((".mkv", ".mp4", ".mp3", ".flac")):
-                await eor(event, 
+                await eor(
+                    event,
                     "Sorry. But I don't think {} is a streamable file. Please try again.\n**Supported Formats**: MKV, MP4, MP3, FLAC".format(
                         downloaded_file_name
-                    )
+                    ),
                 )
                 return False
             if os.path.exists(thumb_image_path):
@@ -192,25 +193,31 @@ async def _(event):
                 end = datetime.datetime.now()
                 os.remove(downloaded_file_name)
                 ms_two = (end - end_one).seconds
-                await user.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(
+                await user.edit(
+                    "Downloaded in {} seconds. Uploaded in {} seconds.".format(
                         ms_one, ms_two
                     )
                 )
         else:
             await eod(user, "File Not Found {}".format(input_str))
     else:
-        await user.edit(
-            "Syntax // .rnsupload file.name as reply to a Telegram media"
-        )
+        await user.edit("Syntax // .rnsupload file.name as reply to a Telegram media")
+
 
 CmdHelp("rename").add_command(
-  "rename", "<reply to media> <new name>", "Renames the replied media and downloads it to userbot local storage"
+    "rename",
+    "<reply to media> <new name>",
+    "Renames the replied media and downloads it to userbot local storage",
 ).add_command(
-  "rnupload", "<reply to media> <new name>", "Renames the replied media and directly uploads it to the chat"
+    "rnupload",
+    "<reply to media> <new name>",
+    "Renames the replied media and directly uploads it to the chat",
 ).add_command(
-  "rnsupload", "<reply to media> <new name>", "Renames the replied media and directly upload in streamable format."
+    "rnsupload",
+    "<reply to media> <new name>",
+    "Renames the replied media and directly upload in streamable format.",
 ).add_info(
-  "Rename Yiur Files."
+    "Rename Yiur Files."
 ).add_warning(
-  "✅ Harmless Module."
+    "✅ Harmless Module."
 ).add()

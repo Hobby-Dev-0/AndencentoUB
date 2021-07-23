@@ -8,6 +8,7 @@ if Config.TAG_LOGGER:
     tagger = int(Config.TAG_LOGGER)
 
 if Config.TAG_LOGGER:
+
     @Andencento.on(
         events.NewMessage(
             incoming=True,

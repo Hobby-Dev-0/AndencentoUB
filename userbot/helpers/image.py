@@ -1,11 +1,9 @@
-import asyncio
 import os
+
 try:
     pass
 except:
     os.system("pip install colour")
-import re
-import requests
 
 import PIL.ImageOps
 from PIL import Image
