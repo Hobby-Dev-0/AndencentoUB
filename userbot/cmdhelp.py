@@ -6,6 +6,7 @@ COMMAND_HAND_LER = os.environ.get("HANDLER", ".")
 
 #################################################################################################################
 
+
 class CmdHelp:
     """
     The class I wrote to better generate command aids.
@@ -80,7 +81,9 @@ class CmdHelp:
         for command in self.COMMANDS:
             command = self.COMMANDS[command]
             if command["params"] == None:
-                result += f"**🛠 Command :** `{COMMAND_HAND_LER[:1]}{command['command']}`\n"
+                result += (
+                    f"**🛠 Command :** `{COMMAND_HAND_LER[:1]}{command['command']}`\n"
+                )
             else:
                 result += f"**🛠 Command :** `{COMMAND_HAND_LER[:1]}{command['command']} {command['params']}`\n"
 
@@ -88,9 +91,7 @@ class CmdHelp:
                 result += f"**💬 Details :** `{command['usage']}`\n\n"
             else:
                 result += f"**💬 Details :** `{command['usage']}`\n"
-                result += (
-                    f"**⌨️ For Example :** `{COMMAND_HAND_LER[:1]}{command['example']}`\n\n"
-                )
+                result += f"**⌨️ For Example :** `{COMMAND_HAND_LER[:1]}{command['example']}`\n\n"
         return result
 
     def add(self):

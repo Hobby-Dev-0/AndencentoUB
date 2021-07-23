@@ -10,11 +10,12 @@ from .session.main import *
 from .utils import *
 
 
-# let's get the bot ready                    
+# let's get the bot ready
 async def add_bot(bot_token):
     await bot.start(bot_token)
-    Andencento.me = await bot.get_me() 
+    Andencento.me = await bot.get_me()
     Andencento.uid = telethon.utils.get_peer_id(bot.me)
+
 
 if len(argv) not in (1, 3, 4):
     Andencento.disconnect()
@@ -24,19 +25,19 @@ else:
         print("CHECKING BOT USERNAME")
         # ForTheGreatrerGood of beautification
         Andencento.tgbot = TelegramClient(
-            "TG_BOT_TOKEN",
-            api_id=Var.APP_ID,
-            api_hash=Var.API_HASH
+            "TG_BOT_TOKEN", api_id=Var.APP_ID, api_hash=Var.API_HASH
         ).start(bot_token=Var.BOT_TOKEN)
         Andencento.loop.run_until_complete(add_bot(Var.BOT_TOKEN))
         print("CHECKING SUCCESS")
     else:
         Andencento.start()
 
+
 async def mod():
     await asst()
     await plugs()
     await addons()
+
 
 Andencento.loop.run_until_complete(mod())
 Andencento.loop.create_task(op())

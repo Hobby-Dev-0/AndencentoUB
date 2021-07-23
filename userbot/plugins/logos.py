@@ -2,7 +2,8 @@ import os
 import random
 
 from PIL import Image, ImageDraw, ImageFont
-from telethon.tl.types import InputMessagesFilterDocument, InputMessagesFilterPhotos
+from telethon.tl.types import (InputMessagesFilterDocument,
+                               InputMessagesFilterPhotos)
 
 from . import *
 

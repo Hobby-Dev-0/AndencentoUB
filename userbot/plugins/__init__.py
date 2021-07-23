@@ -1,9 +1,7 @@
 from telethon import version
-from telethon.errors.rpcerrorlist import (
-    MediaEmptyError,
-    WebpageCurlFailedError,
-    WebpageMediaEmptyError,
-)
+from telethon.errors.rpcerrorlist import (MediaEmptyError,
+                                          WebpageCurlFailedError,
+                                          WebpageMediaEmptyError)
 from telethon.events import CallbackQuery
 
 from userbot import *

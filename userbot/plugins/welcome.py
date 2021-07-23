@@ -1,11 +1,7 @@
 from telethon import events
 
-from userbot.sql.welcome_sql import (
-    add_welcome,
-    get_current_welcome,
-    rm_welcome,
-    update_welcome,
-)
+from userbot.sql.welcome_sql import (add_welcome, get_current_welcome,
+                                     rm_welcome, update_welcome)
 
 from . import *
 
