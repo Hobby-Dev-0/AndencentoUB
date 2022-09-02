@@ -4,8 +4,8 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-name = "Andencento"
-author = "TeamAndencento"
+name = "AmanPandey"
+author = "Aman Pandey"
 author_email = "paman7647@gmail.com"
 description = "A Secure  and Powerful Python-Telethon Based Library For Andencento Userbot."
 license = "GNU AFFERO GENERAL PUBLIC LICENSE (v3)"
@@ -14,7 +14,7 @@ url = "https://github.com/Andencento/Andencento"
 
 setuptools.setup(
     name=name,
-    version="0.10",
+    version="2.1",
     author=author,
     author_email=author_email,
     description=description,
